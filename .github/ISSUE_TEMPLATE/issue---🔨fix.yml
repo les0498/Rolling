@@ -1,12 +1,6 @@
----
 name: "Issue : 🔨Fix"
-about: 버그 리포트용 템플릿
+description: 버그 리포트용 템플릿
 title: '[기능이름]: Fix Title"'
-labels: "[🔨Fix]"
-
----
-name: "🔨Fix"
-description: "버그 리포트"
 labels: ["🔨Fix"]
 body:
   - type: textarea

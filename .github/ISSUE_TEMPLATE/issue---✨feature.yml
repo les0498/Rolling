@@ -1,10 +1,7 @@
----
 name: "Issue : ✨Feature"
-about: 기능 추가용 템플릿.
+description: 기능 추가용 템플릿.
 title: '[기능이름]: Feature Title"'
 labels: ["✨ Feature"]
-
----
 body:
   - type: textarea
     attributes:
