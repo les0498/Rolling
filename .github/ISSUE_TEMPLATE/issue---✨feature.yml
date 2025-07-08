@@ -1,15 +1,10 @@
 ---
-name: 'Issue : ✨Feature'
-about: Describe this issue template's purpose here.
-title: ''
-labels: ''
-assignees: ''
+name: "Issue : ✨Feature"
+about: 기능 추가용 템플릿.
+title: '[기능이름]: Feature Title"'
+labels: ["✨ Feature"]
 
 ---
-
-name: "✨ Feature"
-description: "새로운 기능 추가"
-labels: ["feature"]
 body:
   - type: textarea
     attributes:
@@ -27,5 +22,9 @@ body:
       required: true
   - type: textarea
     attributes:
-      label: 🙋🏻 참고 자료
+      label: 📎 관련 Issue
+      description: ex. #5
+  - type: textarea
+    attributes:
+      label: 📚 참고 자료
       description: 참고 자료가 있다면 작성해 주세요.
