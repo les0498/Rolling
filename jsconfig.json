@@ -18,7 +18,8 @@
     "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "src/**/*.svg"
+    "src/**/*.svg",
+    "global.d.ts"
   ],
   "exclude": ["node_modules", "dist", "**/*.test.js"] //컴파일 제외
 }
