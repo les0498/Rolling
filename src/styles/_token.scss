@@ -42,21 +42,24 @@ $black: #000000;
 $error: #dc3a3a;
 $surface: #f6f8ff;
 
-/* Font-Size */
-$font-xs: '0.75rem' /* 12px */;
-$font-sm: '0.875rem' /* 14px */;
-$font-md: '1rem' /* 16px base */;
-$font-lg: '1.125rem' /* 18px */;
-$font-xl: '1.25rem' /* 20px */;
-$font-2xl: '1.5rem' /* 24px */;
-$font-3xl: '1.75rem' /* 28px */;
+/* Font Size */
+$font-xs: 0.75rem /* 12px */;
+$font-sm: 0.875rem /* 14px */;
+$font-md: 1rem /* 16px base */;
+$font-lg: 1.125rem /* 18px */;
+$font-xl: 1.25rem /* 20px */;
+$font-2xl: 1.5rem /* 24px */;
+$font-3xl: 1.75rem /* 28px */;
+
+/* Font Family */
+$font-family-primary: 'pretendard';
 
 /* Spacing */
-$size-xs: '5px';
-$size-sm: '10px';
-$size-md: '16px';
-$size-lg: '24px';
-$size-xl: '32px';
-$size-2xl: '48px';
-$size-3xl: '64px';
-$size-4xl: '128px';
+$size-xs: 5px;
+$size-sm: 10px;
+$size-md: 16px;
+$size-lg: 24px;
+$size-xl: 32px;
+$size-2xl: 48px;
+$size-3xl: 64px;
+$size-4xl: 128px;
