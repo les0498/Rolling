@@ -1,0 +1,24 @@
+//https://code.visualstudio.com/docs/languages/jsconfig
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "checkJs": true, // 컴파일을 수행하지 않더라도 구문과 타입을 체크하고, 타입 에러를 표시
+    "resolveJsonModule": true, //.json 파일을 Import 가능
+    "esModuleInterop": true, // ES6 모듈 사양을 준수하여 CommonJS 모듈을 가져올 수 있게함
+    "baseUrl": ".", // 프로젝트 베이스 경로
+    "paths": {
+      // 파일 경로 대치
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": [
+    //컴파일 포함
+    "src/**/*.d.ts",
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.svg"
+  ],
+  "exclude": ["node_modules", "dist", "**/*.test.js"] //컴파일 제외
+}
