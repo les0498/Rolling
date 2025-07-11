@@ -1,0 +1,35 @@
+.header {
+  @include flex-center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  border-bottom: 1px solid #ededed;
+  width: 100%;
+}
+.nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: $size-sm 20px;
+}
+@include tablet {
+  .header {
+    justify-content: center;
+  }
+  .nav {
+    width: 100%;
+    margin: $size-sm $size-lg;
+  }
+}
+@include desktop {
+  .nav {
+    max-width: 1200px;
+    margin: $size-sm 0;
+  }
+}
+.logo {
+  width: 106px;
+  height: 42px;
+}
