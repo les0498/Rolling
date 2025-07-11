@@ -1,10 +1,10 @@
 .container {
-  margin: $size-md 20px;
+  margin: $size-md auto;
   position: relative;
   flex-grow: 1;
 }
-@include tablet {
+@include mobile {
   .container {
-    margin: $size-md $size-lg;
+    margin: $size-md auto;
   }
 }

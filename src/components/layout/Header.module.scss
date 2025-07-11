@@ -10,9 +10,10 @@
 }
 .nav {
   display: flex;
-  width: 100%;
   justify-content: space-between;
-  margin: $size-sm 20px;
+  margin: $size-sm 0;
+  max-width: 1200px;
+  width: 100%;
 }
 @include tablet {
   .header {
@@ -23,10 +24,10 @@
     margin: $size-sm $size-lg;
   }
 }
-@include desktop {
+@include mobile {
   .nav {
-    max-width: 1200px;
-    margin: $size-sm 0;
+    width: 100%;
+    margin: $size-sm 20px;
   }
 }
 .logo {
