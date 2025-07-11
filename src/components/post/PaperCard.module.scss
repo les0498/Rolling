@@ -1,29 +1,10 @@
 $card-width: 384px;
 $card-height: 280px;
-$button-size: 56px;
-
-@mixin flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 
 .cardBox {
   @include flex-center;
   width: $card-width;
   height: $card-height;
   background-color: $white;
-  border-radius: $radius-lg;
-}
-
-.addCardBox {
-  width: $button-size;
-  height: $button-size;
-  font-size: $font-2xl;
-  color: $white;
-  background-color: $gray600;
-  border-radius: $radius-full;
-  border-style: none;  
-  cursor: pointer;
+  border-radius: 1rem;
 }

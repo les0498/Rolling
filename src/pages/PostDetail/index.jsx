@@ -1,10 +1,11 @@
-import PaperCardList from "@/components/post/PaperCardList";
+import PaperCardList from '@/components/post/PaperCardList';
+import { postMockData } from '@/pages/PostDetail/mock';
 
 function PaperMessagesPage() {
   return (
     <main>
       {/* <PaperHeader /> */}
-      <PaperCardList />
+      <PaperCardList messages={postMockData.messages} />
     </main>
   );
 }

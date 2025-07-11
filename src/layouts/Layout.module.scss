@@ -1,0 +1,10 @@
+.container {
+  margin: $size-md auto;
+  position: relative;
+  flex-grow: 1;
+}
+@include mobile {
+  .container {
+    margin: $size-md auto;
+  }
+}

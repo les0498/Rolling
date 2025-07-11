@@ -1,12 +1,7 @@
-import styles from '@/components/post/PaperCard.module.scss';
-
+import buttonStyle from '@/components/post/AddMessageButton.module.scss';
 
 function AddMessageButton() {
-  return (
-    <div className={`${styles.cardBox} ${styles.addCardBox}`}>
-      +
-    </div>
-  )
+  return <button className={buttonStyle.addCardBox}> + </button>;
 }
 
 export default AddMessageButton;
