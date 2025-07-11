@@ -1,0 +1,10 @@
+.container {
+  margin: $size-md 20px;
+  position: relative;
+  flex-grow: 1;
+}
+@include tablet {
+  .container {
+    margin: $size-md $size-lg;
+  }
+}
