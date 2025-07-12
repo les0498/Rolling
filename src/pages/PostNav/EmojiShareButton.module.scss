@@ -1,0 +1,53 @@
+.flexContainer {
+  @include flex-center;
+}
+.shareContainer {
+  position: relative;
+}
+.btn {
+  @include flex-center;
+  height: 36px;
+  background-color: transparent;
+  border: 1px solid $gray300;
+  border-radius: 6px;
+  margin: 0;
+  padding: 17px 8px;
+}
+
+.icon {
+  width: 21px;
+  height: 21px;
+}
+.line {
+  margin: 0 13px;
+}
+
+.shareBox {
+  width: 140px;
+  height: 120px;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid $gray300;
+  border-radius: 8px;
+  top: 50px;
+  right: 0;
+  z-index: 20;
+  padding: 10px 0;
+
+  > li {
+    display: block;
+    text-align: center;
+    line-height: 50px;
+
+    &:hover {
+      background-color: $gray100;
+    }
+
+    > a {
+      text-decoration: none;
+      color: $gray900;
+      font-size: $font-md;
+      font-weight: 400;
+    }
+  }
+}
