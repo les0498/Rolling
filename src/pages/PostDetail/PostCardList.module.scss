@@ -1,0 +1,28 @@
+.background {
+  min-height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.background-purple {
+  background-color: $purple200;
+}
+
+.background-beige {
+  background-color: $beige200;
+}
+
+.background-blue {
+  background-color: $blue200;
+}
+
+.background-green {
+  background-color: $green200;
+}
+
+.cardListContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 113px 360px;
+}
