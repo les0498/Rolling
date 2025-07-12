@@ -3,6 +3,11 @@
   @include flex-center;
 }
 
+.authorContainer {
+  @include tablet {
+    display: none;
+  }
+}
 .profileWrapper {
   display: flex;
 }
