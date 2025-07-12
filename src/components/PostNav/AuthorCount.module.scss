@@ -1,0 +1,29 @@
+.authorPosition {
+  position: relative;
+}
+.author {
+  position: absolute;
+  left: -50%;
+  border: 1px solid #fff;
+  border-radius: 50%;
+
+  &--count {
+    font-size: $font-xs;
+    font-weight: 500;
+    color: #484848;
+    border: 1px solid #e3e3e3;
+  }
+}
+
+.allCountAuthor {
+  font-size: $font-lg;
+  font-weight: 400;
+  color: $gray900;
+}
+
+.divider {
+  width: 1px;
+  height: 20px;
+  background-color: $gray200;
+  margin-left: 28px;
+}
