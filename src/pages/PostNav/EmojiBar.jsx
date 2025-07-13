@@ -19,12 +19,7 @@ function EmojiBar({ topReactions }) {
   return (
     <div ref={buttonRef} className={styles.iconContainer}>
       <ol
-        className={styles.iconWrapper}
-        style={
-          emojiCount.length > 0 && emojiCount.length < 4
-            ? { marginRight: '28px' }
-            : {}
-        }
+        className={`${styles.iconWrapper} ${emojiCount.length > 0 && emojiCount.length < 4 ? styles['iconWrapperMargin'] : ''}`}
       >
         <EmojiList topReactions={topReactions} limit={3} />
       </ol>

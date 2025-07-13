@@ -3,6 +3,7 @@ import { useRef, useState } from 'react';
 import shareIcon from '@/assets/images/shareIcon.png';
 import useOutsideClick from '@/hooks/useOutsideClick';
 import styles from '@/pages/PostNav/EmojiShareButton.module.scss';
+import ShareKakaoButton from '@/pages/PostNav/ShareKakaoButton';
 
 function ShareBar() {
   //공유 박스
@@ -20,10 +21,10 @@ function ShareBar() {
       {isOpen ? (
         <ol className={styles.shareBox}>
           <li>
-            <a href='https://www.kakao.com'>카카오톡 공유</a>
+            <ShareKakaoButton className={styles.shareBtn} />
           </li>
           <li>
-            <a href='https://www.kakao.com'>URL 공유</a>
+            <button className={styles.shareBtn}>URL 공유</button>
           </li>
         </ol>
       ) : (
