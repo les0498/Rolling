@@ -9,7 +9,7 @@ $profile: 56px;
 
 .cardBoxAdd {
   @include flex-center;
-  width: $card-width;
+  width: 100%;
   height: $card-height;
   background-color: $white;
   border-radius: 1rem;
@@ -17,7 +17,7 @@ $profile: 56px;
 
 .cardBox {
   @include column;
-  width: $card-width;
+  width: 100%;
   height: $card-height;
   background-color: $white;
   border-radius: 1rem;

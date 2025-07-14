@@ -1,5 +1,9 @@
 import CStyle from '@/pages/PostDetail/PostCard.module.scss';
 
+function formatDate(dateString) {
+  return dateString.split('T')[0];
+}
+
 function PostCard({ message }) {
   return (
     <div className={CStyle.cardBox}>
@@ -24,7 +28,7 @@ function PostCard({ message }) {
         <p>{message.content}</p>
       </section>
       <section className={CStyle.cardDate}>
-        <p>{message.createdAt}</p>
+        <p>{formatDate(message.createdAt)}</p>
       </section>
     </div>
   );
