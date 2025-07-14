@@ -1,4 +1,4 @@
-import styles from '@/pages/PostNav/EmojiBar.module.scss';
+import styles from '@/components/PostNav/EmojiBar.module.scss';
 
 function EmojiList({ topReactions, limit }) {
   const visibleReactions = limit ? topReactions.slice(0, limit) : topReactions;

@@ -1,10 +1,10 @@
 import { useRef, useState } from 'react';
 
+import styles from '@/components/PostNav/EmojiBar.module.scss';
+import EmojiList from '@/components/PostNav/EmojiList';
 import useOutsideClick from '@/hooks/useOutsideClick';
-import styles from '@/pages/PostNav/EmojiBar.module.scss';
-import EmojiList from '@/pages/PostNav/EmojiList';
 
-function EmojiBar({ topReactions }) {
+function EmojiBar({ topReactions = [] }) {
   //화살표 회전 애니메이션
   const [isOpen, setIsOpen] = useState(false);
 

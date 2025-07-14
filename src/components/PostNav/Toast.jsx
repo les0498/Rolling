@@ -1,6 +1,6 @@
 import closeIcon from '@/assets/images/closeIcon.png';
 import completedIcon from '@/assets/images/completedIcon.png';
-import styles from '@/pages/PostNav/Toast.module.scss';
+import styles from '@/components/PostNav/Toast.module.scss';
 
 function Toast({ message, onClose }) {
   return (

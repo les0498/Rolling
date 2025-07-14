@@ -1,12 +1,12 @@
 import { useRef, useState } from 'react';
 
 import shareIcon from '@/assets/images/shareIcon.png';
+import buttonStyles from '@/components/PostNav/EmojiAddButton.module.scss';
+import styles from '@/components/PostNav/ShareButton.module.scss';
+import ShareKakaoButton from '@/components/PostNav/ShareKakaoButton';
+import ShareUrlButton from '@/components/PostNav/ShareUrlButton';
+import Toast from '@/components/PostNav/Toast';
 import useOutsideClick from '@/hooks/useOutsideClick';
-import buttonStyles from '@/pages/PostNav/EmojiAddButton.module.scss';
-import styles from '@/pages/PostNav/ShareButton.module.scss';
-import ShareKakaoButton from '@/pages/PostNav/ShareKakaoButton';
-import ShareUrlButton from '@/pages/PostNav/ShareUrlButton';
-import Toast from '@/pages/PostNav/Toast';
 
 function ShareBar() {
   //공유 박스
