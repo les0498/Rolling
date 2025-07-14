@@ -10,7 +10,7 @@ export default function PostPageLayout() {
   return (
     <>
       {isMobile ? null : <Header />}
-      <PostNav />
+      {/*<PostNav />*/}
       <div className={styles.container}>
         <Outlet />
       </div>

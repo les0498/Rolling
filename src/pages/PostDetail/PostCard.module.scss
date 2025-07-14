@@ -1,6 +1,6 @@
-$card-width: 384px;
-$card-height: 280px;
-$profile: 56px;
+$card-width: rem(384px);
+$card-height: rem(280px);
+$profile: rem(56px);
 
 @mixin column {
   display: column;
@@ -12,7 +12,7 @@ $profile: 56px;
   width: 100%;
   height: $card-height;
   background-color: $white;
-  border-radius: 1rem;
+  border-radius: $radius-lg;
 }
 
 .cardBox {
@@ -21,7 +21,7 @@ $profile: 56px;
   height: $card-height;
   background-color: $white;
   border-radius: 1rem;
-  padding: 28px 24px 24px;
+  padding: rem(28px) rem(24px) rem(24px);
 }
 
 .cardTopSection {
@@ -36,14 +36,14 @@ $profile: 56px;
 .profileImage {
   width: $profile;
   height: $profile;
-  border-radius: 100px;
+  border-radius: $radius-full;
 }
 
 .cardWriterInfo {
 }
 
 .title {
-  margin-bottom: 6px;
+  margin-bottom: rem(6px);
 }
 
 .fromLabel {
@@ -57,9 +57,9 @@ $profile: 56px;
 }
 
 .badge {
-  width: 41px;
-  height: 20px;
-  border-radius: 4px;
+  width: rem(41px);
+  height: rem(20px);
+  border-radius: $radius-sm;
 }
 
 .hr {
