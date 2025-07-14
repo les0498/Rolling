@@ -65,7 +65,7 @@ const users = {
   4: {
     id: 3,
     name: '홍길동',
-    backgroundColor: 'begie',
+    backgroundColor: 'beige',
     backgroundImageURL: 'https://picsum.photos/200/200',
     createdAt: '2023-10-27T10:00:00.000000Z',
     messageCount: 1,
