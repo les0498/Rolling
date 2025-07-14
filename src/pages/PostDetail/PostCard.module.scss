@@ -26,6 +26,7 @@ $profile: 56px;
 
 .cardTopSection {
   display: flex;
+  gap: 14px;
 }
 
 .cardProfile {
@@ -35,6 +36,7 @@ $profile: 56px;
 .profileImage {
   width: $profile;
   height: $profile;
+  border-radius: 100px;
 }
 
 .cardWriterInfo {
