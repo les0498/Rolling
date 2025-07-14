@@ -1,5 +1,5 @@
-import { BASE_API_URL } from '@/api/constants';
-import { customFetch } from '@/api/customFetch';
+import { BASE_API_URL } from '@/apis/constants';
+import { customFetch } from '@/apis/customFetch';
 
 const BACKGROUND_COLOR = {
   beige: 'beige',
