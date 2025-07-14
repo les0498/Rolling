@@ -2,12 +2,29 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
+import MainLayout from '@/layouts/MainLayout';
+import PostPageLayout from '@/layouts/PostPageLayout';
+import Home from '@/pages/Home';
+import NotFound from '@/pages/NotFound';
+import PostDetail from '@/pages/PostDetail';
 import ListPage from "@/pages/list/ListPage";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <ListPage />
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path='/' element={<Home />} />
+          <Route path='/list' element={<ListPage />} />
+          <Route path='/post' element={<NotFound />} />
+          <Route path='/post/:id/message' element={<NotFound />} />
+        </Route>
+        <Route element={<PostPageLayout />}>
+          <Route path='/post/:id' element={<PostDetail />} />
+          <Route path='/post/:id/edit' element={<NotFound />} />
+          <Route path='*' element={<NotFound />} />
+        </Route>
+      </Routes>
     </BrowserRouter>
   </StrictMode>,
 );
