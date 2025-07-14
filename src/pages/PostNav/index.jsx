@@ -3,8 +3,9 @@ import { useParams } from 'react-router-dom';
 import AuthorCount from '@/pages/PostNav/AuthorCount';
 import EmojiAddButton from '@/pages/PostNav/EmojiAddButton';
 import EmojiBar from '@/pages/PostNav/EmojiBar';
+import styles from '@/pages/PostNav/index.module.scss';
+//목데이터 삭제
 import postdata from '@/pages/PostNav/mock.json';
-import styles from '@/pages/PostNav/PostNav.module.scss';
 import ShareBar from '@/pages/PostNav/ShareButton';
 
 function PostNav() {

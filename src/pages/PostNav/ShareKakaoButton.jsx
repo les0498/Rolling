@@ -6,11 +6,10 @@ const realUrl = window.location.href;
 // @ts-ignore
 const { Kakao } = window;
 
-function ShareKakaoButton({ className }) {
+function ShareKakaoButton({ className, setIsOpen }) {
   useEffect(() => {
     Kakao.cleanup();
     Kakao.init(KAKAO_JS_KEY);
-    console.log(Kakao.isInitialized());
   }, []);
 
   const shareKakao = () => {
@@ -44,6 +43,7 @@ function ShareKakaoButton({ className }) {
         className={className}
         onClick={() => {
           shareKakao();
+          setIsOpen(false);
         }}
       >
         카카오톡 공유

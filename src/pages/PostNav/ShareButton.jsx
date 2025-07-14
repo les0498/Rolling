@@ -2,34 +2,50 @@ import { useRef, useState } from 'react';
 
 import shareIcon from '@/assets/images/shareIcon.png';
 import useOutsideClick from '@/hooks/useOutsideClick';
-import styles from '@/pages/PostNav/EmojiShareButton.module.scss';
+import buttonStyles from '@/pages/PostNav/EmojiAddButton.module.scss';
+import styles from '@/pages/PostNav/ShareButton.module.scss';
 import ShareKakaoButton from '@/pages/PostNav/ShareKakaoButton';
+import ShareUrlButton from '@/pages/PostNav/ShareUrlButton';
+import Toast from '@/pages/PostNav/Toast';
 
 function ShareBar() {
   //공유 박스
   const [isOpen, setIsOpen] = useState(false);
+  //토스트
+  const [isToast, setIsToast] = useState(false);
+
   const toggleOpen = () => setIsOpen((prev) => !prev);
+  const onClose = () => setIsOpen(false);
   const buttonRef = useRef(null);
 
-  useOutsideClick(buttonRef, () => setIsOpen(false));
+  useOutsideClick(buttonRef, () => {
+    setIsOpen(false);
+  });
 
   return (
     <div ref={buttonRef} className={styles.shareContainer}>
-      <button onClick={toggleOpen} className={styles.btn}>
-        <img className={styles.icon} src={shareIcon} alt='공유 아이콘' />
+      <button onClick={toggleOpen} className={buttonStyles.btn}>
+        <img className={buttonStyles.icon} src={shareIcon} alt='공유 아이콘' />
       </button>
-      {isOpen ? (
+      {isOpen && (
         <ol className={styles.shareBox}>
           <li>
-            <ShareKakaoButton className={styles.shareBtn} />
+            <ShareKakaoButton
+              className={styles.shareBtn}
+              setIsOpen={setIsOpen}
+            />
           </li>
           <li>
-            <button className={styles.shareBtn}>URL 공유</button>
+            <ShareUrlButton
+              className={styles.shareBtn}
+              setIsToast={setIsToast}
+              setIsOpen={setIsOpen}
+            />
           </li>
         </ol>
-      ) : (
-        <></>
       )}
+
+      {isToast && <Toast message='URL이 복사되었습니다.' onClose={onClose} />}
     </div>
   );
 }

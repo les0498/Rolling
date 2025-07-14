@@ -29,12 +29,10 @@ function EmojiBar({ topReactions }) {
           className={`${styles.arrow} ${isOpen ? styles.rotate : ''}`}
         />
       )}
-      {isOpen ? (
+      {isOpen && (
         <ul className={styles.emojiCountBox}>
           <EmojiList topReactions={topReactions} limit={8} />
         </ul>
-      ) : (
-        <></>
       )}
     </div>
   );

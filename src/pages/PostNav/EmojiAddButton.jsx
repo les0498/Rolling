@@ -1,7 +1,7 @@
 import addIcon from '@/assets/images/addIcon.png';
 import useIsMobile from '@/hooks/useIsMobile';
 import lineStyle from '@/pages/PostNav/AuthorCount.module.scss';
-import styles from '@/pages/PostNav/EmojiShareButton.module.scss';
+import styles from '@/pages/PostNav/EmojiAddButton.module.scss';
 
 function EmojiAddButton() {
   const isMobile = useIsMobile();

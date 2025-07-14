@@ -1,26 +1,5 @@
-.flexContainer {
-  @include flex-center;
-}
 .shareContainer {
   position: relative;
-}
-.btn {
-  @include flex-center;
-  height: 36px;
-  background-color: transparent;
-  border: 1px solid $gray300;
-  border-radius: 6px;
-  margin: 0;
-  padding: 17px 8px;
-}
-
-.icon {
-  width: 21px;
-  height: 21px;
-}
-
-.line {
-  margin: 0 13px;
 }
 
 .shareBox {
@@ -42,13 +21,6 @@
 
     &:hover {
       background-color: $gray100;
-    }
-
-    > a {
-      text-decoration: none;
-      color: $gray900;
-      font-size: $font-md;
-      font-weight: 400;
     }
   }
 }
