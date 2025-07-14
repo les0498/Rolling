@@ -19,15 +19,15 @@ const BACKGROUND_COLOR = {
   green: 'green',
 };
 
-const getRecipients = async (limit, offset, sort) => {
+const getRecipients = async ({ limit = 8, offset = 0, sort = '' }) => {
   return await customFetch(
-    `${BASE_API_URL}recipients/?limit=${limit}&offset=${offset}&sort=${sort}/`
+    `${BASE_API_URL}recipients/?limit=${limit}&offset=${offset}&sort=${sort}`
   );
 };
 const getRecipientById = async (id) => {
   return await customFetch(`${BASE_API_URL}recipients/${id}/`);
 };
-const createRecipient = async (name, backgroundColor) => {
+const createRecipient = async ({ name, backgroundColor }) => {
   return await customFetch(`${BASE_API_URL}recipients/`, {
     method: 'POST',
     body: JSON.stringify({
