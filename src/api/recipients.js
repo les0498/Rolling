@@ -13,7 +13,7 @@ const getRecipients = async ({ limit = 8, offset = 0, sort = '' }) => {
     `${BASE_API_URL}recipients/?limit=${limit}&offset=${offset}&sort=${sort}`
   );
 };
-const getRecipientById = async (id) => {
+const getRecipientById = async (id = '') => {
   return await customFetch(`${BASE_API_URL}recipients/${id}/`);
 };
 const createRecipient = async ({ name, backgroundColor }) => {
@@ -25,7 +25,7 @@ const createRecipient = async ({ name, backgroundColor }) => {
     }),
   });
 };
-const deleteRecipientById = async (id) => {
+const deleteRecipientById = async (id = '') => {
   return await customFetch(`${BASE_API_URL}recipients/${id}/`, {
     method: 'DELETE',
   });

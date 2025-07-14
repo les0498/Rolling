@@ -13,7 +13,7 @@ const MESSAGE_FONT = {
   나눔명조: '나눔명조',
   '나눔손글씨 손편지체': '나눔손글씨 손편지체',
 };
-const getMessagesById = async ({ id, limit = 8, offset = 0 }) => {
+const getMessagesById = async ({ id = '', limit = 8, offset = 0 }) => {
   return await customFetch(
     `${BASE_API_URL}recipients/${id}/messages/?limit=${limit}&offset=${offset}`
   );
@@ -38,7 +38,7 @@ const createMessageById = async ({
     }),
   });
 };
-const deleteMessageById = async (id) => {
+const deleteMessageById = async (id = '') => {
   return await customFetch(`${BASE_API_URL}messages/${id}/`, {
     method: 'DELETE',
   });
