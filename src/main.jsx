@@ -5,7 +5,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainLayout from '@/layouts/MainLayout';
 import PostPageLayout from '@/layouts/PostPageLayout';
 import Home from '@/pages/Home';
+import ListPage from '@/pages/list/ListPage';
 import NotFound from '@/pages/NotFound';
+import PostDetail from '@/pages/PostDetail';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -13,12 +15,12 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route element={<MainLayout />}>
           <Route path='/' element={<Home />} />
-          <Route path='/list' element={<NotFound />} />
+          <Route path='/list' element={<ListPage />} />
           <Route path='/post' element={<NotFound />} />
           <Route path='/post/:id/message' element={<NotFound />} />
         </Route>
         <Route element={<PostPageLayout />}>
-          <Route path='/post/:id' element={<NotFound />} />
+          <Route path='/post/:id' element={<PostDetail />} />
           <Route path='/post/:id/edit' element={<NotFound />} />
           <Route path='*' element={<NotFound />} />
         </Route>
