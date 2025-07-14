@@ -1,3 +1,9 @@
+import Toast from '@/components/ui/Toast';
+
 export default function Home() {
-  return <div>home</div>;
+  return (
+    <div>
+      <Toast />
+    </div>
+  );
 }
