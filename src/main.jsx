@@ -1,15 +1,15 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import MainLayout from '@/layouts/MainLayout';
 import PostPageLayout from '@/layouts/PostPageLayout';
 import Home from '@/pages/Home';
+import ListPage from '@/pages/list/ListPage';
 import NotFound from '@/pages/NotFound';
 import PostDetail from '@/pages/PostDetail';
-import ListPage from "@/pages/list/ListPage";
 
-createRoot(document.getElementById("root")).render(
+createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
@@ -26,5 +26,5 @@ createRoot(document.getElementById("root")).render(
         </Route>
       </Routes>
     </BrowserRouter>
-  </StrictMode>,
+  </StrictMode>
 );
