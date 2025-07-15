@@ -15,7 +15,9 @@ export default function Header() {
         {isHome && (
           <Link to='/post' aria-label='만들기 화면으로 이동'>
             {/*TODO: Button--outlined-40 으로 교체*/}
-            <button>롤링 페이퍼 만들기</button>
+            <button className={styles['button-outlined']}>
+              롤링 페이퍼 만들기
+            </button>
           </Link>
         )}
       </nav>
