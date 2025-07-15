@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Header from '@/components/layout/Header';
 import useIsMobile from '@/hooks/useIsMobile';
 import styles from '@/layouts/Layout.module.scss';
-import PostNav from '@/pages/PostNav/PostNav';
+import PostNav from '@/components/PostNav';
 
 export default function PostPageLayout() {
   const isMobile = useIsMobile();
