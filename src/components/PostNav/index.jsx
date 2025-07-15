@@ -1,18 +1,22 @@
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import AuthorCount from '@/components/PostNav/AuthorCount';
 import EmojiAddButton from '@/components/PostNav/EmojiAddButton';
 import EmojiBar from '@/components/PostNav/EmojiBar';
 import styles from '@/components/PostNav/index.module.scss';
-//목데이터 삭제
+//목데이터 삭제 후 API연결해야함
 import postdata from '@/components/PostNav/mock.json';
 import ShareBar from '@/components/PostNav/ShareButton';
 
 function PostNav() {
   const { id } = useParams();
   const targetId = Number(id);
-  const author = postdata.find((p) => p.id === targetId);
-  const { recentMessages = [], topReactions = [] } = author ?? {};
+  const author = postdata?.results?.find((p) => p.id === targetId);
+
+  const { recentMessages = [], topReactions: initialReactions = [] } =
+    author ?? {};
+  const [topReactions, setTopReactions] = useState(initialReactions);
   const postCount = recentMessages.length;
   const profileURL = recentMessages?.map((post) => post.profileImageURL);
 
@@ -22,7 +26,7 @@ function PostNav() {
       <div className={styles.navRight}>
         <AuthorCount count={postCount} profileURLs={profileURL} />
         <EmojiBar topReactions={topReactions} />
-        <EmojiAddButton />
+        <EmojiAddButton setTopReactions={setTopReactions} />
         <ShareBar />
       </div>
     </nav>

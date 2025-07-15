@@ -1,5 +1,6 @@
 .flexContainer {
   @include flex-center;
+  position: relative;
 }
 
 //공통
@@ -17,4 +18,11 @@
 .icon {
   width: rem(21px);
   height: rem(21px);
+}
+
+.emojiBox {
+  position: absolute;
+  top: rem(50px);
+  right: rem(25px);
+  z-index: 50;
 }
