@@ -1,6 +1,8 @@
 import { useRef, useState } from 'react';
 import EmojiPicker, { EmojiStyle } from 'emoji-picker-react';
 
+import { createReactionById } from '@/apis/reactions';
+import { getRecipientById } from '@/apis/recipients';
 import addIcon from '@/assets/images/addIcon.png';
 import lineStyle from '@/components/PostNav/AuthorCount.module.scss';
 import styles from '@/components/PostNav/EmojiAddButton.module.scss';
@@ -8,28 +10,22 @@ import useIsMobile from '@/hooks/useIsMobile';
 import useOutsideClick from '@/hooks/useOutsideClick';
 
 //api로 데이터 내보내기 생성해야함
-function EmojiAddButton({ setTopReactions }) {
+function EmojiAddButton({ setTopReactions, id }) {
   const isMobile = useIsMobile();
 
   const [isEmoji, setIsEmoji] = useState(false);
 
-  const onEmojiClick = (emojiObject) => {
+  const onEmojiClick = async (emojiObject) => {
     const emoji = emojiObject.emoji;
 
-    setTopReactions((prev) => {
-      const found = prev.find((p) => p.emoji === emoji);
+    const updated = await getRecipientById(id);
+    setTopReactions(updated.topReactions);
 
-      if (found) {
-        return prev.map((p) =>
-          p.emoji === emoji ? { ...p, count: p.count + 1 } : p
-        );
-      } else {
-        const newEmojiId = prev.length
-          ? Math.max(...prev.map((p) => p.id)) + 1
-          : 1;
-        return [...prev, { id: newEmojiId, emoji: emoji, count: 1 }];
-      }
-    });
+    try {
+      await createReactionById({ id, emoji, type: 'increase' });
+    } catch (error) {
+      console.error('이모지 추가 실패:', error);
+    }
   };
 
   const emojiRef = useRef(null);

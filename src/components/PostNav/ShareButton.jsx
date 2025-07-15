@@ -22,6 +22,7 @@ function ShareBar() {
     setIsOpen(false);
   });
 
+  //토스트 연결 수정 전
   return (
     <div ref={buttonRef} className={styles.shareContainer}>
       <button onClick={toggleOpen} className={buttonStyles.btn}>
@@ -44,7 +45,6 @@ function ShareBar() {
           </li>
         </ol>
       )}
-
       {isToast && <Toast message='URL이 복사되었습니다.' onClose={onClose} />}
     </div>
   );
