@@ -1,4 +1,5 @@
-import Button, { BUTTON_VARIANT } from '@/components/ui/Button';
+import Button from '@/components/ui/Button';
+import { BUTTON_VARIANT } from '@/components/ui/constants';
 
 export default function Home() {
   return (
@@ -7,15 +8,23 @@ export default function Home() {
         display: 'flex',
         flexDirection: 'column',
         gap: '20px',
-        width: '350px',
+        width: '120px',
         margin: '150px 150px',
       }}
     >
-      <Button text={'확인'} size='small' variant={BUTTON_VARIANT.primary} />
-      <Button text={'확인'} size='big' variant={BUTTON_VARIANT.primary} />
+      <Button size='small' variant={BUTTON_VARIANT.primary}>
+        확인
+      </Button>
+      <Button size='big' variant={BUTTON_VARIANT.primary}>
+        확인
+      </Button>
 
-      <Button text={'확인'} size='small' variant={BUTTON_VARIANT.secondary} />
-      <Button text={'확인'} size='big' variant={BUTTON_VARIANT.secondary} />
+      <Button size='small' variant={BUTTON_VARIANT.secondary}>
+        확인
+      </Button>
+      <Button size='big' variant={BUTTON_VARIANT.secondary}>
+        확인
+      </Button>
     </div>
   );
 }
