@@ -22,8 +22,8 @@ createRoot(document.getElementById('root')).render(
         <Route element={<PostPageLayout />}>
           <Route path='/post/:id' element={<PostDetail />} />
           <Route path='/post/:id/edit' element={<NotFound />} />
-          <Route path='*' element={<NotFound />} />
         </Route>
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
