@@ -1,7 +1,11 @@
+import classNames from 'classnames/bind';
+
 import styles from '@/components/PostNav/AuthorCount.module.scss';
 import AuthorImage from '@/components/PostNav/AuthorImage';
 
 function AuthorCount({ count = 0, profileURLs }) {
+  const cn = classNames.bind(styles);
+
   return (
     <div className={styles.authorContainer}>
       <ul className={styles.profileWrapper}>
@@ -15,7 +19,7 @@ function AuthorCount({ count = 0, profileURLs }) {
               );
             })}
             {count > 3 && (
-              <li className={`${styles.author} ${styles['authorRestCount']}`}>
+              <li className={cn('author', 'authorRestCount')}>
                 <span>+{count - 3}</span>
               </li>
             )}

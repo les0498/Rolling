@@ -3,8 +3,6 @@ import { useParams } from 'react-router-dom';
 
 import { getReactionsById } from '@/apis/reactions';
 import { getRecipientById } from '@/apis/recipients';
-//목데이터 삭제 후 API연결해야함
-// import postdata from '@/components/PostNav/mock.json';
 import AuthorCount from '@/components/PostNav/AuthorCount';
 import EmojiAddButton from '@/components/PostNav/EmojiAddButton';
 import EmojiBar from '@/components/PostNav/EmojiBar';
@@ -31,7 +29,7 @@ function PostNav() {
         const reactionData = await getReactionsById({ id: id });
         setTopReactions(reactionData);
       } catch (error) {
-        console.error('호출 실패', error);
+        console.error('데이터 가져오기 실피', error);
       }
     }
     fetchData();
