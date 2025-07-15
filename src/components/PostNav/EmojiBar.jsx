@@ -10,7 +10,7 @@ function EmojiBar({ topReactions = [] }) {
 
   const toggleOpen = () => setIsOpen((prev) => !prev);
 
-  const emojiCount = topReactions?.map((reaction) => reaction.count);
+  const sortedReactions = [...topReactions].sort((a, b) => b.count - a.count);
 
   const buttonRef = useRef(null);
 
@@ -19,19 +19,19 @@ function EmojiBar({ topReactions = [] }) {
   return (
     <div ref={buttonRef} className={styles.iconContainer}>
       <ol
-        className={`${styles.iconWrapper} ${emojiCount.length > 0 && emojiCount.length < 4 ? styles['iconWrapperMargin'] : ''}`}
+        className={`${styles.iconWrapper} ${sortedReactions.length > 0 && sortedReactions.length < 4 && styles['iconWrapperMargin']}`}
       >
-        <EmojiList topReactions={topReactions} limit={3} />
+        <EmojiList topReactions={sortedReactions} limit={3} />
       </ol>
-      {emojiCount.length > 3 && (
+      {sortedReactions.length > 3 && (
         <button
           onClick={toggleOpen}
           className={`${styles.arrow} ${isOpen ? styles.rotate : ''}`}
         />
       )}
       {isOpen && (
-        <ul className={styles.emojiCountBox}>
-          <EmojiList topReactions={topReactions} limit={8} />
+        <ul className={styles.reactionsBox}>
+          <EmojiList topReactions={sortedReactions} limit={8} />
         </ul>
       )}
     </div>

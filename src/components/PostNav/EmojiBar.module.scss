@@ -13,7 +13,7 @@
   gap: 0.5rem;
 
   &Margin {
-    margin-right: rem(28px);
+    margin-right: rem(20px);
   }
 }
 
@@ -46,7 +46,7 @@
   transform: rotate(180deg);
 }
 
-.emojiCountBox {
+.reactionsBox {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   position: absolute;
