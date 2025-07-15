@@ -29,7 +29,7 @@ function PostNav() {
         const reactionData = await getReactionsById({ id: id });
         setTopReactions(reactionData);
       } catch (error) {
-        console.error('데이터 가져오기 실피', error);
+        console.error('데이터 가져오기 실패', error);
       }
     }
     fetchData();
