@@ -124,7 +124,7 @@ export const messages = [
     createdAt: '2023-11-01T09:01:00Z',
   },
   {
-    id: 10,  
+    id: 10,
     recipientId: 2,
     sender: '박지수',
     profileImageURL: 'https://picsum.photos/200/200',
@@ -200,28 +200,33 @@ export function getUserById(id) {
   return users[id] || null;
 }
 
-export function getMessagesByUserId(id, offset=0, limit=8) {
-  const userMessages = messages.filter((msg) => msg.recipientId === Number(id))
-  .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+export function getMessagesByUserId(id, offset = 0, limit = 8) {
+  const userMessages = messages
+    .filter((msg) => msg.recipientId === Number(id))
+    .sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    );
 
   const sliced = userMessages.slice(offset, offset + limit);
   const count = userMessages.length;
   const nextOffset = offset + limit;
   const prevOffset = offset - limit;
 
-  const next = nextOffset < count
-    ? `/recipients/${id}/messages/?limit=${limit}&offset=${nextOffset}`
-    : null;
+  const next =
+    nextOffset < count
+      ? `/recipients/${id}/messages/?limit=${limit}&offset=${nextOffset}`
+      : null;
 
-  const previous = prevOffset >= 0
-    ? `/recipients/${id}/messages/?limit=${limit}&offset=${prevOffset}`
-    : null; 
+  const previous =
+    prevOffset >= 0
+      ? `/recipients/${id}/messages/?limit=${limit}&offset=${prevOffset}`
+      : null;
 
-
-  return(
+  return {
     count,
     next,
     previous,
     results: sliced,
-  );
+  };
 }
