@@ -18,6 +18,14 @@ export default defineConfig({
       include: '**/*.svg',
     }),
   ],
+  //https://ko.vite.dev/config/shared-options#css-preprocessoroptions-extension-additionaldata
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use '@/styles/common' as *;`,
+      },
+    },
+  },
   build: {
     minify: 'terser',
     terserOptions: {

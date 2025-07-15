@@ -1,0 +1,41 @@
+import { useRef, useState } from 'react';
+
+import styles from '@/components/PostNav/EmojiBar.module.scss';
+import EmojiList from '@/components/PostNav/EmojiList';
+import useOutsideClick from '@/hooks/useOutsideClick';
+
+function EmojiBar({ topReactions = [] }) {
+  //화살표 회전 애니메이션
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleOpen = () => setIsOpen((prev) => !prev);
+
+  const emojiCount = topReactions?.map((reaction) => reaction.count);
+
+  const buttonRef = useRef(null);
+
+  useOutsideClick(buttonRef, () => setIsOpen(false));
+
+  return (
+    <div ref={buttonRef} className={styles.iconContainer}>
+      <ol
+        className={`${styles.iconWrapper} ${emojiCount.length > 0 && emojiCount.length < 4 ? styles['iconWrapperMargin'] : ''}`}
+      >
+        <EmojiList topReactions={topReactions} limit={3} />
+      </ol>
+      {emojiCount.length > 3 && (
+        <button
+          onClick={toggleOpen}
+          className={`${styles.arrow} ${isOpen ? styles.rotate : ''}`}
+        />
+      )}
+      {isOpen && (
+        <ul className={styles.emojiCountBox}>
+          <EmojiList topReactions={topReactions} limit={8} />
+        </ul>
+      )}
+    </div>
+  );
+}
+
+export default EmojiBar;
