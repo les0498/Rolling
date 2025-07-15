@@ -1,5 +1,5 @@
-import styles from '@/pages/PostNav/AuthorCount.module.scss';
-import AuthorImage from '@/pages/PostNav/AuthorImage';
+import styles from '@/components/PostNav/AuthorCount.module.scss';
+import AuthorImage from '@/components/PostNav/AuthorImage';
 
 function AuthorCount({ count = 0, profileURLs }) {
   return (

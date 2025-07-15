@@ -1,10 +1,10 @@
 import { useRef, useState } from 'react';
 
+import styles from '@/components/PostNav/EmojiBar.module.scss';
+import EmojiList from '@/components/PostNav/EmojiList';
 import useOutsideClick from '@/hooks/useOutsideClick';
-import styles from '@/pages/PostNav/EmojiBar.module.scss';
-import EmojiList from '@/pages/PostNav/EmojiList';
 
-function EmojiBar({ topReactions }) {
+function EmojiBar({ topReactions = [] }) {
   //화살표 회전 애니메이션
   const [isOpen, setIsOpen] = useState(false);
 
@@ -19,12 +19,7 @@ function EmojiBar({ topReactions }) {
   return (
     <div ref={buttonRef} className={styles.iconContainer}>
       <ol
-        className={styles.iconWrapper}
-        style={
-          emojiCount.length > 0 && emojiCount.length < 4
-            ? { marginRight: '28px' }
-            : {}
-        }
+        className={`${styles.iconWrapper} ${emojiCount.length > 0 && emojiCount.length < 4 ? styles['iconWrapperMargin'] : ''}`}
       >
         <EmojiList topReactions={topReactions} limit={3} />
       </ol>
@@ -34,12 +29,10 @@ function EmojiBar({ topReactions }) {
           className={`${styles.arrow} ${isOpen ? styles.rotate : ''}`}
         />
       )}
-      {isOpen ? (
+      {isOpen && (
         <ul className={styles.emojiCountBox}>
           <EmojiList topReactions={topReactions} limit={8} />
         </ul>
-      ) : (
-        <></>
       )}
     </div>
   );

@@ -1,0 +1,33 @@
+.shareContainer {
+  position: relative;
+}
+
+.shareBox {
+  width: 140px;
+  height: 120px;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid $gray300;
+  border-radius: 8px;
+  top: 50px;
+  right: 0;
+  z-index: 20;
+  padding: 10px 0;
+
+  > li {
+    display: block;
+    text-align: center;
+    line-height: 50px;
+
+    &:hover {
+      background-color: $gray100;
+    }
+  }
+}
+
+.shareBtn {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+}

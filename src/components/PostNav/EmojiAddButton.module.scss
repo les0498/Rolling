@@ -1,0 +1,20 @@
+.flexContainer {
+  @include flex-center;
+}
+
+//공통
+.btn {
+  @include flex-center;
+  height: 36px;
+  background-color: transparent;
+  border: 1px solid $gray300;
+  border-radius: 6px;
+  margin: 0;
+  padding: 17px 8px;
+}
+
+//공통
+.icon {
+  width: 21px;
+  height: 21px;
+}
