@@ -10,6 +10,7 @@ import NotFound from '@/pages/NotFound';
 import PostDetail from '@/pages/PostDetail';
 
 import '@/styles/reset.scss';
+import '@/styles/theme.scss';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
