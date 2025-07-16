@@ -1,6 +1,6 @@
 import PostCardList from '@/pages/PostDetail/PostCardList';
 import { getUserById, getMessagesByUserId } from '@/pages/PostDetail/mock';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 
 export default function PostDetail() {
@@ -13,7 +13,7 @@ export default function PostDetail() {
   const limit = 8;
   const isLoadingRef = useRef(false);
 
-  const loadMore = () => {
+  const loadMore = useCallback(() => {
     if (isLoadingRef.current || !hasMore) return;
 
     isLoadingRef.current = true;
@@ -27,7 +27,7 @@ export default function PostDetail() {
     setTimeout(() => {
       isLoadingRef.current = false;
     }, 100);
-  };
+  }, [id, offset, hasMore, limit]);
 
   useEffect(() => {
     const userData = getUserById(id);
@@ -35,7 +35,7 @@ export default function PostDetail() {
 
     setUser(userData);
     loadMore();
-  }, [id]);
+  }, [id, loadMore, getUserById]);
 
   if (!user) return <div>사용자를 찾을 수 없습니다.</div>;
 

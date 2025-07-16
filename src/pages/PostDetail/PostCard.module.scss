@@ -1,6 +1,7 @@
 $card-width: rem(384px);
 $card-height: rem(280px);
 $profile: rem(56px);
+$date: rem(24px);
 
 @mixin column {
   display: column;
@@ -17,6 +18,7 @@ $profile: rem(56px);
 
 .cardBox {
   @include column;
+  position: relative;
   width: 100%;
   height: $card-height;
   background-color: $white;
@@ -44,6 +46,7 @@ $profile: rem(56px);
 
 .title {
   margin-bottom: rem(6px);
+  gap: rem(6px);
 }
 
 .fromLabel {
@@ -62,20 +65,27 @@ $profile: rem(56px);
   border-radius: $radius-sm;
 }
 
-.hr {
+.Hr {
+  border: none;
   border-top: 1px solid $gray200;
 }
 
 .cardContent {
+  width: rem(336px);
+  height: rem(106px);
   font-size: $font-lg;
   font-weight: 400;
   line-height: $font-3xl;
   color: $gray600;
   margin-top: $size-md;
   margin-bottom: $size-md;
+  overflow: hidden;
 }
 
 .cardDate {
+  position: absolute;
+  left: $date;
+  bottom: $date;
   font-size: $font-xs;
   font-weight: 400;
   color: $gray400;
