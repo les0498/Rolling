@@ -9,7 +9,6 @@ import styles from '@/components/PostNav/EmojiAddButton.module.scss';
 import useIsMobile from '@/hooks/useIsMobile';
 import useOutsideClick from '@/hooks/useOutsideClick';
 
-//api로 데이터 내보내기 생성해야함
 function EmojiAddButton({ setTopReactions, id }) {
   const isMobile = useIsMobile();
 

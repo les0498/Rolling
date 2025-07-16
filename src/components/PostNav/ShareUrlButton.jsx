@@ -13,7 +13,7 @@ function ShareUrlButton({ className, setIsToast, setIsOpen }) {
         }, 5000);
       })
       .catch((error) => {
-        console.log('클립보드 복사 실패', error);
+        console.log('URL 복사 실패', error);
       });
   };
 
