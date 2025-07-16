@@ -22,8 +22,9 @@ function PostNav() {
 
     async function fetchData() {
       const reactionsData = await fetchReactions({ id });
+
       if (reactionsData) {
-        setTopReactions(reactionsData);
+        setTopReactions(reactionsData.results || []);
       }
     }
 
