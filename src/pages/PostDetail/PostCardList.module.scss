@@ -23,8 +23,8 @@
 .cardListContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  padding: 113px 0;
-  width: 1200px;
+  gap: $size-lg;
+  padding: rem(113px) 0;
+  width: rem(1200px);
   margin: 0 auto;
 }

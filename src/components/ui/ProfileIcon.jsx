@@ -1,29 +1,27 @@
 import classNames from 'classnames/bind';
 
 import DefaultProfile from '@/assets/images/default_profile.png';
+import { PROFILE_ICON_SIZE } from '@/components/ui/constants';
 import styles from '@/components/ui/ProfileIcon.module.scss';
-
-export const PROFILE_ICON_SIZE = {
-  small: 'small',
-  big: 'big',
-};
 
 export default function ProfileIcon({
   src = '',
-  variant = PROFILE_ICON_SIZE.big,
+  size = PROFILE_ICON_SIZE.big,
   stroke = false,
+  ...rest
 }) {
   const cn = classNames.bind(styles);
+  const isEmptySrc = src === '';
+
   const onErrorImg = (e) => {
     e.target.src = DefaultProfile;
   };
-
-  return src === '' ? (
-    <div className={cn('profile', `profile-${variant}`, { stroke })}>
+  return isEmptySrc ? (
+    <div className={cn('profile', `profile-${size}`, { stroke })} {...rest}>
       <img src={DefaultProfile} alt='기본 프로필 이미지' />
     </div>
   ) : (
-    <div className={cn('profile', `profile-${variant}`, { stroke })}>
+    <div className={cn('profile', `profile-${size}`, { stroke })} {...rest}>
       <img
         className={cn('img')}
         src={src}
