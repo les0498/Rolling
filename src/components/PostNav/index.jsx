@@ -15,27 +15,25 @@ function PostNav() {
   const { author, recentMessages, loading, error } = useRecipientId();
 
   const [topReactions, setTopReactions] = useState([]);
-  const [pending, reactionError, fetchReactions] = useAsync(getReactionsById);
+  const [pending, , fetchReactions] = useAsync(getReactionsById);
 
   useEffect(() => {
     if (!id) return;
 
-    const loadReactions = async () => {
+    async function fetchData() {
       const reactionsData = await fetchReactions({ id });
       if (reactionsData) {
         setTopReactions(reactionsData);
       }
-    };
+    }
 
-    loadReactions();
+    fetchData();
   }, [id, fetchReactions]);
 
   const messageCount = author?.messageCount ?? 0;
-  const profileURLs = recentMessages.map((msg) => msg.profileImageURL);
+  const profileURLs = recentMessages?.map((msg) => msg.profileImageURL);
 
   if (loading || pending) return <div>불러오는 중...</div>;
-  if (error || reactionError)
-    return <div>에러 발생: {(error || reactionError).message}</div>;
 
   return (
     <nav className={styles.container}>

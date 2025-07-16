@@ -1,33 +1,20 @@
-import { useEffect, useState } from 'react';
 import { Navigate, Outlet, useParams } from 'react-router-dom';
 
-import { getRecipientById } from '@/apis/recipients';
 import Header from '@/components/layout/Header';
 import PostNav from '@/components/PostNav';
 import useIsMobile from '@/hooks/useIsMobile';
+import useRecipientId from '@/hooks/useRecipientId';
 import styles from '@/layouts/Layout.module.scss';
 
 export default function PostPageLayout() {
   const isMobile = useIsMobile();
   const { id } = useParams();
 
-  //리디렉션
-  const [isValid, setIsValid] = useState(null);
+  // 리디렉션
+  const { author, loading, error } = useRecipientId();
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const recipientData = await getRecipientById(id);
-        setIsValid(recipientData);
-      } catch {
-        //데이터(ID)가 없을 때
-        setIsValid(false);
-      }
-    }
-    fetchData();
-  }, [id]);
-
-  if (isValid === false) {
+  if (loading) return <div>불러오는중...</div>;
+  if (error || author?.id !== id) {
     return <Navigate to='/post' replace />;
   }
 
