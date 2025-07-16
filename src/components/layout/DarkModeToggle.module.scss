@@ -1,0 +1,22 @@
+.toggle {
+  position: relative;
+  border-radius: rem(6px);
+  padding: rem(4px) $size-md;
+  color: $gray900;
+}
+
+.toggle-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.toggle-label {
+  opacity: 0;
+  font-size: 0.1px;
+}
+.button-outlined {
+  background-color: $white;
+}

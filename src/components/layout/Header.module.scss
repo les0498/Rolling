@@ -7,6 +7,11 @@
   z-index: 999;
   border-bottom: 1px solid #ededed;
   width: 100%;
+  @include tablet {
+    .header {
+      justify-content: center;
+    }
+  }
 }
 .nav {
   display: flex;
@@ -15,25 +20,26 @@
   margin: $size-sm 0;
   max-width: rem(1200px);
   width: 100%;
-}
-@include tablet {
-  .header {
-    justify-content: center;
+  @include tablet {
+    .nav {
+      width: 100%;
+      margin: $size-sm $size-lg;
+    }
   }
-  .nav {
-    width: 100%;
-    margin: $size-sm $size-lg;
-  }
-}
-@include mobile {
-  .nav {
-    width: 100%;
-    margin: $size-sm rem(20px);
+  @include mobile {
+    .nav {
+      width: 100%;
+      margin: $size-sm rem(20px);
+    }
   }
 }
 .logo {
   width: rem(106px);
   height: rem(42px);
+}
+.buttons-wrapper {
+  @include flex-center;
+  gap: $size-sm;
 }
 .button-outlined {
   background-color: $white;
