@@ -2,41 +2,40 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { getReactionsById } from '@/apis/reactions';
-import { getRecipientById } from '@/apis/recipients';
 import AuthorCount from '@/components/PostNav/AuthorCount';
 import EmojiAddButton from '@/components/PostNav/EmojiAddButton';
 import EmojiBar from '@/components/PostNav/EmojiBar';
 import styles from '@/components/PostNav/index.module.scss';
 import ShareBar from '@/components/PostNav/ShareButton';
+import useAsync from '@/hooks/useAsync';
+import useRecipientId from '@/hooks/useRecipientId';
 
 function PostNav() {
   const { id } = useParams();
+  const { author, recentMessages, loading, error } = useRecipientId();
 
-  const [author, setAuthor] = useState(null);
-  const [recentMessages, setRecentMessages] = useState([]);
   const [topReactions, setTopReactions] = useState([]);
+  const [pending, reactionError, fetchReactions] = useAsync(getReactionsById);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        //메세지 대상자
-        const recipientData = await getRecipientById(id);
-        setAuthor(recipientData);
-        //메세지
-        setRecentMessages(recipientData.recentMessages);
+    if (!id) return;
 
-        //리액션
-        const reactionData = await getReactionsById({ id: id });
-        setTopReactions(reactionData);
-      } catch (error) {
-        console.error('데이터 가져오기 실패', error);
+    const loadReactions = async () => {
+      const reactionsData = await fetchReactions({ id });
+      if (reactionsData) {
+        setTopReactions(reactionsData);
       }
-    }
-    fetchData();
-  }, [id]);
+    };
+
+    loadReactions();
+  }, [id, fetchReactions]);
 
   const messageCount = author?.messageCount ?? 0;
   const profileURLs = recentMessages.map((msg) => msg.profileImageURL);
+
+  if (loading || pending) return <div>불러오는 중...</div>;
+  if (error || reactionError)
+    return <div>에러 발생: {(error || reactionError).message}</div>;
 
   return (
     <nav className={styles.container}>
