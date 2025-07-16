@@ -1,0 +1,22 @@
+.badge {
+  font-size: $font-sm;
+  border-radius: $radius-sm;
+  padding: rem(1.5px) rem(8px);
+
+  &-family {
+    background-color: $green100;
+    color: $green500;
+  }
+  &-colleague {
+    background-color: $purple100;
+    color: $purple600;
+  }
+  &-acquaintance {
+    background-color: $beige100;
+    color: $beige500;
+  }
+  &-friend {
+    background-color: $blue100;
+    color: $blue500;
+  }
+}
