@@ -20,10 +20,10 @@
   &:disabled {
     background-color: $gray300;
   }
-  &:hover {
+  &:enabled:hover {
     background-color: $purple700;
   }
-  &:active {
+  &:enabled:active {
     background-color: $purple800;
   }
 }
