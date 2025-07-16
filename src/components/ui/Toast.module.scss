@@ -1,15 +1,25 @@
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: rgba(0, 0, 0, 0.8);
   padding: $size-md $size-lg;
   border-radius: $radius-md;
   max-width: rem(524px);
   width: 100%;
-}
-@include mobile {
-  .container {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  max-width: rem(524px);
+  width: 100%;
+  background-color: rgba($color: $black, $alpha: 0.8);
+  border-radius: 0.5rem;
+  padding: rem(20px) rem(30px);
+  bottom: rem(70px);
+  left: 50%;
+  z-index: 20;
+  transform: translateX(-50%);
+
+  @include mobile {
     max-width: rem(320px);
   }
 }
