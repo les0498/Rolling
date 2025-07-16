@@ -12,7 +12,7 @@ import useRecipientId from '@/hooks/useRecipientId';
 
 function PostNav() {
   const { id } = useParams();
-  const { author, recentMessages, loading, error } = useRecipientId();
+  const { author, recentMessages, loading } = useRecipientId();
 
   const [topReactions, setTopReactions] = useState([]);
   const [pending, , fetchReactions] = useAsync(getReactionsById);
