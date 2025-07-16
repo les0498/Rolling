@@ -5,7 +5,7 @@ import buttonStyles from '@/components/PostNav/EmojiAddButton.module.scss';
 import styles from '@/components/PostNav/ShareButton.module.scss';
 import ShareKakaoButton from '@/components/PostNav/ShareKakaoButton';
 import ShareUrlButton from '@/components/PostNav/ShareUrlButton';
-import Toast from '@/components/PostNav/Toast';
+import Toast from '@/components/ui/Toast';
 import useOutsideClick from '@/hooks/useOutsideClick';
 
 function ShareBar() {
@@ -15,7 +15,7 @@ function ShareBar() {
   const [isToast, setIsToast] = useState(false);
 
   const toggleOpen = () => setIsOpen((prev) => !prev);
-  const onClose = () => setIsOpen(false);
+  const onClose = () => setIsToast(false);
   const buttonRef = useRef(null);
 
   useOutsideClick(buttonRef, () => {
@@ -45,7 +45,13 @@ function ShareBar() {
         </ol>
       )}
 
-      {isToast && <Toast message='URL이 복사되었습니다.' onClose={onClose} />}
+      {isToast && (
+        <Toast
+          isValid={isToast}
+          text='URL이 복사되었습니다.'
+          onCloseClick={onClose}
+        />
+      )}
     </div>
   );
 }

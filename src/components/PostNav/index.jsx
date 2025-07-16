@@ -1,28 +1,50 @@
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { getReactionsById } from '@/apis/reactions';
+import { getRecipientById } from '@/apis/recipients';
 import AuthorCount from '@/components/PostNav/AuthorCount';
 import EmojiAddButton from '@/components/PostNav/EmojiAddButton';
 import EmojiBar from '@/components/PostNav/EmojiBar';
 import styles from '@/components/PostNav/index.module.scss';
-//목데이터 삭제
-import postdata from '@/components/PostNav/mock.json';
 import ShareBar from '@/components/PostNav/ShareButton';
 
 function PostNav() {
   const { id } = useParams();
-  const targetId = Number(id);
-  const author = postdata.find((p) => p.id === targetId);
-  const { recentMessages = [], topReactions = [] } = author ?? {};
-  const postCount = recentMessages.length;
-  const profileURL = recentMessages?.map((post) => post.profileImageURL);
+
+  const [author, setAuthor] = useState(null);
+  const [recentMessages, setRecentMessages] = useState([]);
+  const [topReactions, setTopReactions] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        //메세지 대상자
+        const recipientData = await getRecipientById(id);
+        setAuthor(recipientData);
+        //메세지
+        setRecentMessages(recipientData.recentMessages);
+
+        //리액션
+        const reactionData = await getReactionsById({ id: id });
+        setTopReactions(reactionData);
+      } catch (error) {
+        console.error('데이터 가져오기 실패', error);
+      }
+    }
+    fetchData();
+  }, [id]);
+
+  const messageCount = author?.messageCount ?? 0;
+  const profileURLs = recentMessages.map((msg) => msg.profileImageURL);
 
   return (
     <nav className={styles.container}>
       <h2 className={styles.recipient}>To.{author?.name}</h2>
       <div className={styles.navRight}>
-        <AuthorCount count={postCount} profileURLs={profileURL} />
+        <AuthorCount count={messageCount} profileURLs={profileURLs} />
         <EmojiBar topReactions={topReactions} />
-        <EmojiAddButton />
+        <EmojiAddButton setTopReactions={setTopReactions} id={id} />
         <ShareBar />
       </div>
     </nav>
