@@ -11,6 +11,7 @@ export default function PostPageLayout() {
   const isMobile = useIsMobile();
   const { id } = useParams();
 
+  //리디렉션
   const [isValid, setIsValid] = useState(null);
 
   useEffect(() => {

@@ -5,7 +5,7 @@ import styles from '@/components/PostNav/EmojiBar.module.scss';
 import EmojiList from '@/components/PostNav/EmojiList';
 import useOutsideClick from '@/hooks/useOutsideClick';
 
-function EmojiBar({ topReactions = [] }) {
+function EmojiBar({ topReactions }) {
   const cn = classNames.bind(styles);
   //화살표 회전 애니메이션
   const [isOpen, setIsOpen] = useState(false);

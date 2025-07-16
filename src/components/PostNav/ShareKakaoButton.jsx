@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 
 const KAKAO_JS_KEY = '217c3a6ba4f798bddfe248efc83a5917';
-// 배포한 자신의 사이트 수정
+const homeUrl = 'https://rolling-vert.vercel.app/';
 const realUrl = window.location.href;
-// @ts-ignore
+
 const { Kakao } = window;
 
 function ShareKakaoButton({ className, setIsOpen }) {
@@ -24,13 +24,15 @@ function ShareKakaoButton({ className, setIsOpen }) {
           'https://mud-kage.kakao.com/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg',
         link: {
           webUrl: realUrl,
+          mobileWebUrl: realUrl,
         },
       },
       buttons: [
         {
-          title: '나도 테스트 하러가기',
+          title: '나도 작성 하러가기',
           link: {
             webUrl: realUrl,
+            mobileWebUrl: realUrl,
           },
         },
       ],
