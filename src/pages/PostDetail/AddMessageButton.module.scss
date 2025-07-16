@@ -1,4 +1,4 @@
-$button-size: 3.5rem;
+$button-size: rem(56px);
 
 .addCardBox {
   width: $button-size;
@@ -6,7 +6,7 @@ $button-size: 3.5rem;
   font-size: $font-2xl;
   color: $white;
   background-color: $gray600;
-  border-radius: 6.25rem;
+  border-radius: $radius-full;
   border-style: none;
   cursor: pointer;
 }

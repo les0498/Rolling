@@ -1,0 +1,46 @@
+.button {
+  &-big {
+    border-radius: rem(12px);
+    padding: rem(14px) $size-lg;
+    font-size: $font-lg;
+    font-weight: bold;
+  }
+  &-small {
+    border-radius: rem(6px);
+    padding: rem(7px) $size-md;
+    font-size: $font-md;
+    font-weight: 400;
+  }
+}
+.button-primary {
+  background-color: $purple600;
+  width: 100%;
+  color: $white;
+
+  &:disabled {
+    background-color: $gray300;
+  }
+  &:enabled:hover {
+    background-color: $purple700;
+  }
+  &:enabled:active {
+    background-color: $purple800;
+  }
+}
+.button-secondary {
+  background-color: $white;
+  width: 100%;
+  color: $purple700;
+  border: 1px solid $purple600;
+  &:disabled {
+    background-color: $gray300;
+  }
+  &:hover {
+    background-color: $purple100;
+    border: 1px solid $purple700;
+  }
+  &:active {
+    background-color: $purple100;
+    border: 1px solid $purple800;
+  }
+}

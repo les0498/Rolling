@@ -9,6 +9,8 @@ import ListPage from '@/pages/list/ListPage';
 import NotFound from '@/pages/NotFound';
 import PostDetail from '@/pages/PostDetail';
 
+import '@/styles/reset.scss';
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
