@@ -8,11 +8,9 @@ import EmojiBar from '@/components/PostNav/EmojiBar';
 import styles from '@/components/PostNav/index.module.scss';
 import ShareBar from '@/components/PostNav/ShareButton';
 import useAsync from '@/hooks/useAsync';
-import useRecipientId from '@/hooks/useRecipientId';
 
-function PostNav() {
+function PostNav({ author, recentMessages, loading }) {
   const { id } = useParams();
-  const { author, recentMessages, loading } = useRecipientId();
 
   const [topReactions, setTopReactions] = useState([]);
   const [pending, , fetchReactions] = useAsync(getReactionsById);

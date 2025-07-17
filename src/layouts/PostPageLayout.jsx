@@ -1,4 +1,5 @@
-import { Navigate, Outlet, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Outlet, useNavigate, useParams } from 'react-router-dom';
 
 import Header from '@/components/layout/Header';
 import PostNav from '@/components/PostNav';
@@ -10,20 +11,33 @@ export default function PostPageLayout() {
   const isMobile = useIsMobile();
   const { id } = useParams();
 
-  // 리디렉션
-  const { author, loading, error } = useRecipientId();
+  const navigate = useNavigate();
 
-  if (loading) return <div>불러오는중...</div>;
-  if (error || author?.id !== id) {
-    return <Navigate to='/post' replace />;
+  // 리다이렉트
+  const { author, recentMessages, loading, error } = useRecipientId();
+
+  useEffect(() => {
+    if (loading || (!author && !error)) return;
+
+    if (error || author?.id !== Number(id)) {
+      navigate('/post', { replace: true });
+    }
+  }, [author, id, loading, error, navigate]);
+
+  if (loading) {
+    return <div>불러오는중...</div>;
   }
 
   return (
     <>
       {isMobile ? null : <Header />}
-      <PostNav />
+      <PostNav
+        author={author}
+        recentMessages={recentMessages}
+        loading={loading}
+      />
       <div className={styles.container}>
-        <Outlet />
+        <Outlet context={{ author, recentMessages, loading, error }} />
       </div>
     </>
   );
