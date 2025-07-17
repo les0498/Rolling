@@ -1,0 +1,45 @@
+@import './CardDetail.module.scss';
+
+.modalBackdrop {
+  @include flex-center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6); // 투명 회색
+  z-index: 1000;
+}
+
+.modalContent {
+  @include column;
+  background: $white;
+  border-radius: $radius-lg;
+  padding: rem(40px);
+  width: rem(600px);
+  height: rem(476px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; // 상단(내용) - 하단(버튼) 분리
+  align-items: center;
+}
+
+.cardBox {
+  padding: 0;
+}
+
+.cardContent {
+  width: rem(500px);
+  height: rem(240px);
+  overflow-y: scroll;
+}
+
+.cardDate {
+  position: absolute;
+  top: rem(16px);
+  right: rem(45px);
+  margin: 0;
+  left: auto;
+}
