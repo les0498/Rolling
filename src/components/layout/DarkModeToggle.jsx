@@ -7,14 +7,18 @@ import styles from '@/components/layout/DarkModeToggle.module.scss';
 
 export default function DarkModeToggle() {
   const cn = classNames.bind(styles);
-  const [checked, setChecked] = useState(false);
+  const userColorTheme = localStorage.getItem('color-theme') || 'light';
+  const isLightTheme = userColorTheme === 'light';
+  const [checked, setChecked] = useState(isLightTheme);
 
   const onChange = (e) => {
     setChecked(e.target.checked);
     if (e.target.checked) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
       document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('color-theme', 'light');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('color-theme', 'dark');
     }
   };
   return (
@@ -25,6 +29,7 @@ export default function DarkModeToggle() {
           className={cn('toggle-input')}
           type='checkbox'
           id='switch'
+          checked={checked}
           name='mode'
           onChange={onChange}
         />

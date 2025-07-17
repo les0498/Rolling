@@ -3,6 +3,11 @@
   border-radius: rem(6px);
   padding: rem(4px) $size-md;
   color: $gray900;
+  svg {
+    path {
+      fill: var(--color-default-text);
+    }
+  }
 }
 
 .toggle-input {

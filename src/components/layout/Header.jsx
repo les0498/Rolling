@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
-import Logo from '@/assets/images/logo.png';
+import Logo from '@/assets/icons/logo.svg';
 import DarkModeToggle from '@/components/layout/DarkModeToggle';
 import styles from '@/components/layout/Header.module.scss';
 
@@ -13,7 +13,10 @@ export default function Header() {
     <header className={cn('header')}>
       <nav className={cn('nav')}>
         <Link to='/' aria-label='홈 화면으로 이동'>
-          <img className={cn('logo')} src={Logo} alt='Rolling 로고' />
+          <div className={cn('logo-wrapper')}>
+            <Logo />
+            <span className={cn('logo-title')}>Rolling</span>
+          </div>
         </Link>
         <div className={cn('buttons-wrapper')}>
           <DarkModeToggle />

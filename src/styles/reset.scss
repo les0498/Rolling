@@ -113,6 +113,13 @@ ol,
 ul {
   list-style: none;
 }
+a,
+ a:hover,
+a:active,
+a:visited {
+  text-decoration: none;
+  outline: none;
+}
 button {
   font-family: 'Pretendard';
   background: none;
