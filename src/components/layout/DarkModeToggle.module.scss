@@ -1,15 +1,36 @@
 .toggle {
   position: relative;
-  border-radius: rem(6px);
-  padding: rem(4px) $size-md;
+  border-radius: $radius-xl;
+  padding: 0 0.5rem;
   color: $gray900;
   svg {
+    width: rem(18px);
+    height: rem(18px);
     path {
       fill: var(--color-default-text);
     }
   }
+  width: 3rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  background-color: $white;
+  cursor: pointer;
+  box-shadow:
+    inset 0 8px 80px rgba(0, 0, 0, 0.25),
+    inset 0 8px 8px rgba(0, 0, 0, 0.1),
+    inset 0 -4px 4px rgba(0, 0, 0, 0.1);
 }
-
+.toggle-indicator {
+  background-color: var(--color-darkModeToggle-background);
+  border-radius: $radius-full;
+  position: absolute;
+  width: 1.7rem;
+  height: 1.7rem;
+  right: 18px;
+  @include flex-center;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+}
 .toggle-input {
   position: absolute;
   left: 0;
@@ -17,8 +38,10 @@
   width: 100%;
   height: 100%;
   opacity: 0;
+  cursor: pointer;
 }
 .toggle-label {
+  position: absolute;
   opacity: 0;
   font-size: 0.1px;
 }

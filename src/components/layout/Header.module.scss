@@ -40,7 +40,7 @@
 }
 .buttons-wrapper {
   @include flex-center;
-  gap: $size-sm;
+  gap: $size-lg;
 }
 .button-outlined {
   background-color: $white;

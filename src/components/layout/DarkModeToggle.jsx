@@ -24,18 +24,20 @@ export default function DarkModeToggle() {
   return (
     <>
       <div className={cn('toggle')}>
-        {checked ? <DarkModeIcon /> : <LightModeIcon />}
-        <input
-          className={cn('toggle-input')}
-          type='checkbox'
-          id='switch'
-          checked={checked}
-          name='mode'
-          onChange={onChange}
-        />
-        <label className={cn('toggle-label')} htmlFor='switch'>
-          Toggle
-        </label>
+        <div className={cn('toggle-indicator')}>
+          {checked ? <LightModeIcon /> : <DarkModeIcon />}
+          <input
+            className={cn('toggle-input')}
+            type='checkbox'
+            id='switch'
+            checked={checked}
+            name='mode'
+            onChange={onChange}
+          />
+          <label className={cn('toggle-label')} htmlFor='switch'>
+            Toggle
+          </label>
+        </div>
       </div>
     </>
   );
