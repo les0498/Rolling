@@ -1,0 +1,105 @@
+.emoji-section {
+  position: relative;
+  width: 1200px;
+  height: 324px;
+  margin: 30px auto 0 auto; // <- top: 124px 기준
+  background: #f6f8ff;
+  border-radius: 16px;
+  box-sizing: border-box;
+
+  .emoji-section__left {
+    position: absolute;
+    width: 288px;
+    height: 156px;
+    left: 720px;
+    top: 60px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    gap: 16px;
+
+    .point-badge {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 6px 12px;
+      gap: 10px;
+
+      width: 82px;
+      height: 32px;
+      background: #9935ff;
+      border-radius: 50px;
+
+      font-family: 'Pretendard';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: -0.005em;
+      color: #ffffff;
+    }
+
+    .text-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+
+      h2 {
+        margin: 0;
+        width: 237px;
+        height: 72px;
+
+        display: flex;
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+
+        font-family: 'Pretendard';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 36px; // 150% of 24px
+        letter-spacing: -0.01em;
+        color: #181818; // gray / 900
+      }
+
+      p {
+        margin: 0;
+        width: 288px;
+        height: 28px;
+
+        font-family: 'Pretendard';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 28px; // 156% of 18px
+        letter-spacing: -0.01em;
+        color: #555555;
+
+        flex: none;
+        order: 1;
+        flex-grow: 0;
+      }
+    }
+  }
+
+  .emoji-section__image {
+    flex-shrink: 0;
+
+    img {
+      width: 720px;
+      height: 204px;
+      object-fit: cover;
+      border-radius: 16px;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      opacity: 1;
+      transform: rotate(0deg);
+    }
+  }
+}
