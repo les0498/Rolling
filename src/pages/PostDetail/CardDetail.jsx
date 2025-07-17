@@ -9,6 +9,7 @@ function formatDate(dateString) {
 
 function CardDetail({ message, variant = 'card' }) {
   if (!message) return null;
+
   const style = variant === 'modal' ? MStyle : CStyle;
 
   return (

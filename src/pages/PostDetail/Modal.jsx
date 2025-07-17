@@ -11,7 +11,9 @@ function Modal({ isOpen, onClose, children }) {
     <div className={cn('modalBackdrop')} onClick={onClose}>
       <div className={cn('modalContent')}>
         {children}
-        <Button onClick={onClose}>확인</Button>
+        <div className={cn('modalButton')}>
+          <Button onClick={onClose}>확인</Button>
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-@import './CardDetail.module.scss';
+@import 'CardDetailShared.module.scss';
 
 .modalBackdrop {
   @include flex-center;
@@ -20,26 +20,46 @@
   height: rem(476px);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; // 상단(내용) - 하단(버튼) 분리
-  align-items: center;
 }
 
 .cardBox {
   padding: 0;
 }
 
+.cardTopSection {
+  @include cardTopSection;
+}
+
+.cardProfile {
+  @include cardProfile;
+}
+
+.title {
+  @include title;
+}
+
+.fromLabel {
+  @include fromLabel;
+}
+
+.writerName {
+  @include writerName;
+}
+
+.Hr {
+  @include Hr;
+}
+
 .cardContent {
-  width: rem(500px);
-  height: rem(240px);
+  @include cardContent(rem(500px), rem(240px));
   overflow-y: scroll;
 }
 
 .cardDate {
-  position: absolute;
-  top: rem(16px);
-  right: rem(45px);
-  margin: 0;
-  left: auto;
+  @include cardDate($top: rem(56px), $right: rem(45px));
+}
+
+.modalButton {
+  margin: 0 auto;
+  width: rem(120px);
 }

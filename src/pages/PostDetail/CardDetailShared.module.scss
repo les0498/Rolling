@@ -1,0 +1,62 @@
+@mixin column {
+  display: column;
+  align-items: center;
+}
+
+@mixin cardTopSection {
+  display: flex;
+  gap: 14px;
+}
+
+@mixin cardProfile {
+  margin-bottom: $size-md;
+}
+
+@mixin title {
+  margin-bottom: rem(6px);
+  gap: rem(6px);
+}
+
+@mixin fromLabel {
+  font-size: $font-xl;
+  font-weight: 400;
+}
+
+@mixin writerName {
+  font-size: $font-xl;
+  font-weight: 700;
+}
+
+@mixin Hr {
+  border: none;
+  border-top: 1px solid $gray200;
+}
+
+@mixin cardContent($width, $height) {
+  width: $width;
+  height: $height;
+  font-size: $font-lg;
+  font-weight: 400;
+  line-height: $font-3xl;
+  color: $gray600;
+  margin-top: $size-md;
+  margin-bottom: $size-md;
+  overflow: hidden;
+}
+
+@mixin cardDate(
+  $position: absolute,
+  $top: null,
+  $left: null,
+  $right: null,
+  $bottom: null
+) {
+  position: $position;
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
+  font-size: $font-xs;
+  font-weight: 400;
+  color: $gray400;
+}
