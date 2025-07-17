@@ -51,8 +51,17 @@
 }
 
 .cardContent {
-  @include cardContent(rem(500px), rem(240px));
+  @include cardContent(rem(520px), rem(240px));
   overflow-y: scroll;
+  padding-right: 20px;
+}
+
+.cardContent::-webkit-scrollbar {
+  width: 4px;
+}
+
+.cardContent::-webkit-scrollbar-thumb {
+  background: $gray300;
 }
 
 .cardDate {
