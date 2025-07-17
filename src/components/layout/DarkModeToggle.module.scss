@@ -1,15 +1,8 @@
 .toggle {
   position: relative;
   border-radius: $radius-xl;
-  padding: 0 0.5rem;
+  padding: 0 0.15rem;
   color: $gray900;
-  svg {
-    width: rem(18px);
-    height: rem(18px);
-    path {
-      fill: var(--color-default-text);
-    }
-  }
   width: 3rem;
   height: 2rem;
   display: flex;
@@ -20,11 +13,17 @@
     inset 0 8px 80px rgba(0, 0, 0, 0.25),
     inset 0 8px 8px rgba(0, 0, 0, 0.1),
     inset 0 -4px 4px rgba(0, 0, 0, 0.1);
+  svg {
+    width: rem(18px);
+    height: rem(18px);
+    path {
+      fill: var(--color-default-text);
+    }
+  }
 }
 .toggle-indicator {
   background-color: var(--color-darkModeToggle-background);
   border-radius: $radius-full;
-  position: absolute;
   width: 1.7rem;
   height: 1.7rem;
   right: 18px;

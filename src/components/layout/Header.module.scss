@@ -7,6 +7,7 @@
   z-index: 999;
   border-bottom: 1px solid #ededed;
   width: 100%;
+  height: rem(60px);
   @include tablet {
     justify-content: center;
   }

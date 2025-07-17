@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import classNames from 'classnames/bind';
+import { motion } from 'motion/react';
 
 import DarkModeIcon from '@/assets/icons/dark_mode.svg';
 import LightModeIcon from '@/assets/icons/light_mode.svg';
@@ -23,8 +24,11 @@ export default function DarkModeToggle() {
   };
   return (
     <>
-      <div className={cn('toggle')}>
-        <div className={cn('toggle-indicator')}>
+      <div
+        className={cn('toggle')}
+        style={{ justifyContent: checked ? 'flex-start' : 'flex-end' }}
+      >
+        <motion.div className={cn('toggle-indicator')} layout='position'>
           {checked ? <LightModeIcon /> : <DarkModeIcon />}
           <input
             className={cn('toggle-input')}
@@ -37,7 +41,7 @@ export default function DarkModeToggle() {
           <label className={cn('toggle-label')} htmlFor='switch'>
             Toggle
           </label>
-        </div>
+        </motion.div>
       </div>
     </>
   );

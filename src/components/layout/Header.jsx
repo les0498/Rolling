@@ -19,7 +19,6 @@ export default function Header() {
           </div>
         </Link>
         <div className={cn('buttons-wrapper')}>
-          <DarkModeToggle />
           {isHome && (
             <Link to='/post' aria-label='만들기 화면으로 이동'>
               <button className={cn('button-outlined')}>
@@ -27,6 +26,7 @@ export default function Header() {
               </button>
             </Link>
           )}
+          <DarkModeToggle />
         </div>
       </nav>
     </header>
