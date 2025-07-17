@@ -17,14 +17,14 @@ function EmojiAddButton({ setTopReactions, id }) {
   const onEmojiClick = async (emojiObject) => {
     const emoji = emojiObject.emoji;
 
-    const updated = await getRecipientById(id);
-    setTopReactions(updated.topReactions);
-
     try {
       await createReactionById({ id, emoji, type: 'increase' });
     } catch (error) {
       console.error('이모지 추가 실패:', error);
     }
+
+    const updated = await getRecipientById(id);
+    setTopReactions(updated.topReactions);
   };
 
   const emojiRef = useRef(null);

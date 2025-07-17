@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from '@/components/PostNav/EmojiBar.module.scss';
@@ -12,7 +12,14 @@ function EmojiBar({ topReactions }) {
 
   const toggleOpen = () => setIsOpen((prev) => !prev);
 
-  const sortedReactions = [...topReactions].sort((a, b) => b.count - a.count);
+  const [sortedReactions, setSortedReactions] = useState([]);
+
+  useEffect(() => {
+    if (topReactions && topReactions.length > 0) {
+      const sorted = [...topReactions].sort((a, b) => b.count - a.count);
+      setSortedReactions(sorted);
+    }
+  }, [topReactions]);
 
   const buttonRef = useRef(null);
 

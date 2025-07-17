@@ -19,7 +19,7 @@ function PostNav({ author, recentMessages, loading }) {
     if (!id) return;
 
     async function fetchData() {
-      const reactionsData = await fetchReactions({ id });
+      const reactionsData = await getReactionsById({ id, limit: 8 });
 
       if (reactionsData) {
         setTopReactions(reactionsData.results || []);
