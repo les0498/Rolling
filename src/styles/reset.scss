@@ -83,7 +83,8 @@ summary,
 time,
 mark,
 audio,
-video {
+video,
+input {
   margin: 0;
   padding: 0;
   border: 0;
@@ -111,6 +112,13 @@ body {
 ol,
 ul {
   list-style: none;
+}
+a,
+ a:hover,
+a:active,
+a:visited {
+  text-decoration: none;
+  outline: none;
 }
 button {
   font-family: 'Pretendard';

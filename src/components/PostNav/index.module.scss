@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: $white;
+  background-color: var(--color-default-background);
   max-width: rem(1200px);
   width: 100%;
   height: rem(68px);
@@ -21,7 +21,7 @@
 .recipient {
   font-size: $font-3xl;
   font-weight: 700;
-  color: $gray800;
+  color: var(--color-gray-text);
 
   @include mobile {
     line-height: rem(52px);
