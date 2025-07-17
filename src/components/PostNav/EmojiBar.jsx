@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from '@/components/PostNav/EmojiBar.module.scss';
@@ -12,14 +12,7 @@ function EmojiBar({ topReactions }) {
 
   const toggleOpen = () => setIsOpen((prev) => !prev);
 
-  const [sortedReactions, setSortedReactions] = useState([]);
-
-  useEffect(() => {
-    if (topReactions && topReactions.length > 0) {
-      const sorted = [...topReactions].sort((a, b) => b.count - a.count);
-      setSortedReactions(sorted);
-    }
-  }, [topReactions]);
+  const sortedReactions = [...topReactions].sort((a, b) => b.count - a.count);
 
   const buttonRef = useRef(null);
 
@@ -30,12 +23,12 @@ function EmojiBar({ topReactions }) {
       <ol
         className={cn('iconWrapper', {
           iconWrapperMargin:
-            sortedReactions.length > 0 && sortedReactions.length < 4,
+            sortedReactions.length > 0 && sortedReactions.length < 3,
         })}
       >
         <EmojiList topReactions={sortedReactions} limit={3} />
       </ol>
-      {sortedReactions.length > 3 && (
+      {sortedReactions.length >= 3 && (
         <button
           onClick={toggleOpen}
           className={cn('arrow', { rotate: isOpen })}

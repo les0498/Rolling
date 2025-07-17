@@ -1,8 +1,7 @@
 import { useRef, useState } from 'react';
 import EmojiPicker, { EmojiStyle } from 'emoji-picker-react';
 
-import { createReactionById } from '@/apis/reactions';
-import { getRecipientById } from '@/apis/recipients';
+import { createReactionById, getReactionsById } from '@/apis/reactions';
 import addIcon from '@/assets/images/addIcon.png';
 import lineStyle from '@/components/PostNav/AuthorCount.module.scss';
 import styles from '@/components/PostNav/EmojiAddButton.module.scss';
@@ -23,8 +22,8 @@ function EmojiAddButton({ setTopReactions, id }) {
       console.error('이모지 추가 실패:', error);
     }
 
-    const updated = await getRecipientById(id);
-    setTopReactions(updated.topReactions);
+    const updated = await getReactionsById({ id });
+    setTopReactions(updated.results);
   };
 
   const emojiRef = useRef(null);
