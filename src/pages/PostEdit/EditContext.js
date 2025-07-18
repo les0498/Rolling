@@ -1,4 +1,5 @@
 //props로 떨구는게 좋을거 같지만 context를 사용해보고 싶어 사용해봅니다.
+//context 테스트 파일 (파일삭제 바람)
 
 import { createContext, useContext, useState } from 'react';
 

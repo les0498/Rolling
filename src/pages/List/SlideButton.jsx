@@ -1,9 +1,9 @@
-import styles from "@/pages/list/SlideButton.module.scss";
+import styles from '@/pages/List/SlideButton.module.scss';
 
 function SlideButton({ direction, onClick }) {
   // 화살표 방향 결정
-  const isLeft = direction === "left";
-  const arrow = isLeft ? "<" : ">";
+  const isLeft = direction === 'left';
+  const arrow = isLeft ? '<' : '>';
 
   // 왼쪽 방향이면 styles.left 추가
   return (

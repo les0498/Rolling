@@ -5,7 +5,8 @@ import CLStyle from '@/pages/PostDetail/PostCardList.module.scss';
 import AddMessageButton from '@/pages/PostDetail/AddMessageButton';
 import CStyle from '@/pages/PostDetail/PostCard.module.scss';
 import { Link } from 'react-router-dom';
-import EditButton from '@/pages/PostEdit/EditButton';
+import Button from '@/components/ui/Button';
+import { BUTTON_VARIANT } from '@/components/ui/constants';
 
 function PostCardList({
   messages,
@@ -15,8 +16,17 @@ function PostCardList({
   loading,
 }) {
   const cx = classNames.bind(CLStyle);
+
+  // Modal 코드
+  const [modalOpen, setModalOpen] = useState(false);
+  const [msgSelect, setMsgSelect] = useState(null);
+
+  const handleCloseModal = () => setModalOpen(false);
+
+  // observer 코드
   const observerRef = useRef(null);
 
+  // edit 코드
   const [isEdit, setIsEdit] = useState(false);
 
   useEffect(() => {
@@ -44,7 +54,7 @@ function PostCardList({
       <div className={CLStyle.background}>
         <div className={CLStyle.cardListContainer}>
           <div className={CStyle.cardBoxAdd}>
-            <AddMessageButton />
+            <AddMessageButton isEdit={isEdit} />
           </div>
         </div>
       </div>
@@ -53,18 +63,25 @@ function PostCardList({
 
   return (
     <div className={cx('background', `background-${backgroundColor}`)}>
+      {/* Edit 버튼 */}
       <div className={CLStyle.btnEdit}>
-        <Link to={'/post'}>목록으로</Link>
-        <EditButton>수정하기</EditButton>
+        <Link to={'/post'}><Button variant={BUTTON_VARIANT.secondary}>목록으로</Button></Link>
+        <button onClick={() => setIsEdit((prev) => !prev)}>
+          {isEdit ? '돌아가기' : '수정하기'}
+        </button>
       </div>
       <div className={CLStyle.cardListContainer}>
         {/* +버튼 카드(항상 첫 번째) */}
         <div className={CStyle.cardBoxAdd}>
-          <AddMessageButton />
+          <AddMessageButton isEdit={isEdit} />
         </div>
         {/* 메시지 카드들 */}
         {messages.map((msg) => (
-          <PostCard key={msg.id} message={msg} />
+          <PostCard key={msg.id} message={msg} 
+            onClick={() => {
+              setMsgSelect(msg);
+              setModalOpen(true);
+            } isEdit={isEdit} />
         ))}
         {/* 무한 스크롤 */}
         <div ref={observerRef} style={{ height: 1 }} />

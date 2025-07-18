@@ -1,8 +1,14 @@
-function EditButton({ children, isEdit, setIsEdit }) {
+//context 테스트 파일 (파일삭제 바람)
+import { useEditState } from '@/pages/PostEdit/EditContext';
+
+function EditButton() {
+  const [isEdit, setIsEdit] = useEditState();
+
   return (
     <>
-      <button onClick={setIsEdit(true)}>{children}</button>
-      {isEdit && <button onClick={setIsEdit(false)}>돌아가기</button>}
+      <button onClick={() => setIsEdit((prev) => !prev)}>
+        {isEdit ? '돌아가기' : '수정하기'}
+      </button>
     </>
   );
 }

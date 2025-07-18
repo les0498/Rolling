@@ -1,9 +1,9 @@
 //카드 리스트, 스크롤, 버튼 담당
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
 
-import CardItem from "@/pages/list/CardItem";
-import styles from "@/pages/list/CardSlider.module.scss";
-import SlideButton from "@/pages/list/SlideButton";
+import CardItem from '@/pages/List/CardItem';
+import styles from '@/pages/List/CardSlider.module.scss';
+import SlideButton from '@/pages/List/SlideButton';
 
 function CardSlider({ cards }) {
   const sliderRef = useRef(null);
@@ -19,16 +19,16 @@ function CardSlider({ cards }) {
     //clientWidth: 보이는 영역 너비
     setCanScrollLeft(slider.scrollLeft > 0);
     setCanScrollRight(
-      slider.scrollWidth > slider.clientWidth + slider.scrollLeft,
+      slider.scrollWidth > slider.clientWidth + slider.scrollLeft
     );
   };
 
   const scrollLeft = () => {
-    sliderRef.current.scrollBy({ left: -300, behavior: "smooth" });
+    sliderRef.current.scrollBy({ left: -300, behavior: 'smooth' });
   };
 
   const scrollRight = () => {
-    sliderRef.current.scrollBy({ left: 300, behavior: "smooth" });
+    sliderRef.current.scrollBy({ left: 300, behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -37,12 +37,12 @@ function CardSlider({ cards }) {
     if (!slider) return;
 
     //scroll, resize 발생할 때마다 버튼 갱신
-    slider.addEventListener("scroll", updateScrollButtons);
-    window.addEventListener("resize", updateScrollButtons);
+    slider.addEventListener('scroll', updateScrollButtons);
+    window.addEventListener('resize', updateScrollButtons);
 
     return () => {
-      slider.removeEventListener("scroll", updateScrollButtons);
-      window.removeEventListener("resize", updateScrollButtons);
+      slider.removeEventListener('scroll', updateScrollButtons);
+      window.removeEventListener('resize', updateScrollButtons);
     };
   }, []);
 
@@ -53,7 +53,7 @@ function CardSlider({ cards }) {
     <div className={styles.sliderWrapper}>
       {showButtons && canScrollLeft && (
         <div className={styles.buttonLeft}>
-          <SlideButton direction="left" onClick={scrollLeft} />
+          <SlideButton direction='left' onClick={scrollLeft} />
         </div>
       )}
       <div className={styles.sliderOuter} ref={sliderRef}>
@@ -66,7 +66,7 @@ function CardSlider({ cards }) {
 
       {showButtons && canScrollRight && (
         <div className={styles.buttonRight}>
-          <SlideButton direction="right" onClick={scrollRight} />
+          <SlideButton direction='right' onClick={scrollRight} />
         </div>
       )}
     </div>

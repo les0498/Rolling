@@ -7,6 +7,9 @@
   z-index: 999;
   border-bottom: 1px solid #ededed;
   width: 100%;
+  @include tablet {
+    justify-content: center;
+  }
 }
 .nav {
   display: flex;
@@ -15,25 +18,49 @@
   margin: $size-sm 0;
   max-width: rem(1200px);
   width: 100%;
-}
-@include tablet {
-  .header {
-    justify-content: center;
-  }
-  .nav {
+  @include tablet {
     width: 100%;
     margin: $size-sm $size-lg;
   }
-}
-@include mobile {
-  .nav {
+  @include mobile {
     width: 100%;
     margin: $size-sm rem(20px);
   }
 }
-.logo {
-  width: rem(106px);
-  height: rem(42px);
+.logo-wrapper {
+  @include flex-center;
+  gap: rem(8px);
+}
+.logo-title {
+  font-family: $font-family-logo;
+  color: var(--color-gray-text);
+  font-weight: 500;
+  font-size: $font-xl;
+  text-decoration: none;
+}
+.buttons-wrapper {
+  @include flex-center;
+  gap: $size-lg;
+}
+.button-outlined {
+  background-color: $white;
+  width: 100%;
+  border: 1px solid $gray300;
+  border-radius: rem(6px);
+  padding: rem(8px) $size-md;
+  color: $gray900;
+  font-size: $font-md;
+
+  &:disabled {
+    background-color: $gray300;
+    color: $white;
+  }
+  &:hover {
+    background-color: $gray100;
+  }
+  &:active {
+    background-color: $gray100;
+  }
 }
 .button-outlined {
   background-color: $white;

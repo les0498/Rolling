@@ -4,9 +4,10 @@ function formatDate(dateString) {
   return dateString.split('T')[0];
 }
 
-function PostCard({ message }) {
+function PostCard({ message, isEdit }) {
   return (
     <div className={CStyle.cardBox}>
+      {isEdit && <button className={CStyle.btnDelete}></button>}
       <div className={CStyle.cardTopSection}>
         <section className={CStyle.cardProfile}>
           <img

@@ -2,17 +2,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: $white;
+  background-color: var(--color-default-background);
   max-width: rem(1200px);
   width: 100%;
+  height: rem(68px);
   height: rem(68px);
   margin: 0 auto;
 
   @include tablet {
     padding: 0 $size-lg;
+    padding: 0 $size-lg;
   }
   @include mobile {
     display: block;
+    height: rem(104px);
     height: rem(104px);
     padding: 0;
   }
@@ -21,9 +24,12 @@
 .recipient {
   font-size: $font-3xl;
   font-weight: 700;
-  color: $gray800;
+  color: var(--color-gray-text);
 
   @include mobile {
+    line-height: rem(52px);
+    padding: 0 rem(20px);
+    border-bottom: rem(1px) solid $gray200;
     line-height: rem(52px);
     padding: 0 rem(20px);
     border-bottom: rem(1px) solid $gray200;
@@ -34,6 +40,7 @@
   @include flex-center;
 
   @include mobile {
+    height: rem(52px);
     height: rem(52px);
   }
 }

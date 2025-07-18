@@ -5,7 +5,6 @@ import ProfileIcon from '@/components/ui/ProfileIcon';
 
 function AuthorCount({ count = 0, profileURLs }) {
   const cn = classNames.bind(styles);
-
   return (
     <div className={styles.authorContainer}>
       <ul className={styles.profileWrapper}>
