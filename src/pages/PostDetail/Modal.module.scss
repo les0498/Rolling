@@ -1,4 +1,4 @@
-@import 'CardDetailShared.module.scss';
+@use './CardDetailShared.module.scss' as *;
 
 .modalBackdrop {
   @include flex-center;

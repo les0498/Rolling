@@ -1,3 +1,5 @@
+@use '@/styles/common' as common;
+
 @mixin column {
   display: column;
   align-items: center;
@@ -9,38 +11,38 @@
 }
 
 @mixin cardProfile {
-  margin-bottom: $size-md;
+  margin-bottom: common.$size-md;
 }
 
 @mixin title {
-  margin-bottom: rem(6px);
-  gap: rem(6px);
+  margin-bottom: common.rem(6px);
+  gap: common.rem(6px);
 }
 
 @mixin fromLabel {
-  font-size: $font-xl;
+  font-size: common.$font-xl;
   font-weight: 400;
 }
 
 @mixin writerName {
-  font-size: $font-xl;
+  font-size: common.$font-xl;
   font-weight: 700;
 }
 
 @mixin Hr {
   border: none;
-  border-top: 1px solid $gray200;
+  border-top: 1px solid common.$gray200;
 }
 
 @mixin cardContent($width, $height) {
   width: $width;
   height: $height;
-  font-size: $font-lg;
+  font-size: common.$font-lg;
   font-weight: 400;
-  line-height: $font-3xl;
-  color: $gray600;
-  margin-top: $size-md;
-  margin-bottom: $size-md;
+  line-height: common.$font-3xl;
+  color: common.$gray600;
+  margin-top: common.$size-md;
+  margin-bottom: common.$size-md;
   overflow: hidden;
 }
 
@@ -56,7 +58,7 @@
   left: $left;
   right: $right;
   bottom: $bottom;
-  font-size: $font-xs;
+  font-size: common.$font-xs;
   font-weight: 400;
-  color: $gray400;
+  color: common.$gray400;
 }
