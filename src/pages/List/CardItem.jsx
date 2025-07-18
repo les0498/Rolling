@@ -1,4 +1,4 @@
-import styles from "@/pages/list/CardItem.module.scss";
+import styles from '@/pages/List/CardItem.module.scss';
 
 function CardItem({
   title,
@@ -12,7 +12,7 @@ function CardItem({
     <div
       className={styles.card}
       style={{
-        backgroundImage: backgroundImage ? `url(${backgroundImage})` : "none",
+        backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none',
         backgroundColor: backgroundImage ? undefined : backgroundColor,
       }}
     >

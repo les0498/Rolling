@@ -1,6 +1,7 @@
 .main-section {
   position: relative;
-  width: 1200px;
+  width: 100%;
+  max-width: 1200px;
   height: 324px;
   margin: 60px auto 30px auto;
   background: #f6f8ff;
@@ -9,6 +10,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 60px;
+  box-sizing: border-box;
 
   &__left {
     position: absolute;
@@ -23,18 +25,15 @@
 
     .point-badge {
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       padding: 6px 12px;
-      gap: 10px;
       width: 80px;
       height: 32px;
       background: #9935ff;
       border-radius: 50px;
       color: #ffffff;
       font-family: 'Pretendard';
-      font-style: normal;
       font-weight: 700;
       font-size: 14px;
       line-height: 20px;
@@ -45,7 +44,6 @@
       width: 268px;
       height: 72px;
       font-family: 'Pretendard';
-      font-style: normal;
       font-weight: 700;
       font-size: 24px;
       line-height: 36px;
@@ -58,7 +56,6 @@
       width: 218px;
       height: 28px;
       font-family: 'Pretendard';
-      font-style: normal;
       font-weight: 400;
       font-size: 18px;
       line-height: 28px;
@@ -79,18 +76,78 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      border-radius: 0;
     }
   }
 }
 
-@media (max-width: 1024px) {
+// PC: 1248px보다 작을 때 좌우 padding 24px
+@media (max-width: 1247px) {
   .main-section {
-    flex-direction: column;
-    text-align: center;
+    padding-left: 24px;
+    padding-right: 24px;
+
+    &__left {
+      left: 24px;
+    }
 
     &__image {
+      left: auto;
+      right: 24px;
+    }
+  }
+}
+
+// Tablet: 구조를 세로 정렬 + 이미지 축소
+@media (max-width: 1023px) {
+  .main-section {
+    flex-direction: column;
+    height: auto;
+    padding: 40px 24px;
+    align-items: flex-start;
+
+    &__left {
+      position: relative;
+      left: 0;
+      top: 0;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    &__image {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      left: 0;
+      top: 0;
       margin-top: 24px;
+    }
+  }
+}
+
+// Mobile: spacing 감소 및 요소 간격 축소
+@media (max-width: 767px) {
+  .main-section {
+    padding: 40px 24px;
+    gap: 20px;
+
+    &__left {
+      gap: 12px;
+
+      h2 {
+        font-size: 20px;
+        line-height: 30px;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 24px;
+        width: 100%;
+      }
+    }
+
+    &__image {
+      margin-top: 20px;
     }
   }
 }
