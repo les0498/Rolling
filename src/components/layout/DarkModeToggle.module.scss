@@ -1,0 +1,55 @@
+.toggle {
+  position: relative;
+  border-radius: $radius-xl;
+  padding: 0 0.15rem;
+  color: $gray900;
+  width: 3rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  background-color: $white;
+  cursor: pointer;
+  box-shadow:
+    inset 0 8px 80px rgba(0, 0, 0, 0.25),
+    inset 0 8px 8px rgba(0, 0, 0, 0.1),
+    inset 0 -4px 4px rgba(0, 0, 0, 0.1);
+  svg {
+    width: rem(18px);
+    height: rem(18px);
+    path {
+      fill: var(--color-default-text);
+    }
+  }
+}
+.toggle-indicator {
+  position: absolute;
+  background-color: var(--color-themeToggle-background);
+  border-radius: $radius-full;
+  width: 1.7rem;
+  height: 1.7rem;
+  right: 18px;
+  @include flex-center;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease-out;
+}
+.toggle-indicator__dark {
+  right: 2px;
+  transition: right 0.3s ease-out;
+}
+.toggle-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.toggle-label {
+  position: absolute;
+  opacity: 0;
+  font-size: 0.1px;
+}
+.button-outlined {
+  background-color: $white;
+}

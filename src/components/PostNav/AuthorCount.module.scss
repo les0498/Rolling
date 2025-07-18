@@ -16,18 +16,25 @@
   width: rem(28px);
   height: rem(28px);
   border: 1px solid $white;
+  width: rem(28px);
+  height: rem(28px);
+  border: 1px solid $white;
   border-radius: 50%;
   overflow: hidden;
   margin-left: -0.5rem;
+  margin-left: -0.5rem;
 
   &RestCount {
+    background-color: $white;
     background-color: $white;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: rem(12px);
+    font-size: rem(12px);
     font-weight: 600;
     color: #484848;
+    border: rem(1px) solid #e3e3e3;
     border: rem(1px) solid #e3e3e3;
   }
 }
@@ -35,20 +42,24 @@
 .allCountAuthor {
   font-size: $font-lg;
   font-weight: 400;
-  color: $gray900;
+  color: var(--color-gray-text);
   margin-left: rem(11px);
 }
 
 .divider {
   width: rem(1px);
   height: rem(20px);
+  width: rem(1px);
+  height: rem(20px);
   background-color: $gray200;
 
   &Count {
     margin: 0 rem(28px);
+    margin: 0 rem(28px);
   }
 
   &Emoji {
+    margin: 0 rem(13px);
     margin: 0 rem(13px);
   }
 }

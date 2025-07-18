@@ -21,7 +21,7 @@ function ShareKakaoButton({ className, setIsOpen }) {
         title: '💌 롤 링 💌',
         description: '✨ 당신의 메세지를 남겨주세요!',
         imageUrl:
-          'https://mud-kage.kakao.com/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg',
+          'https://rolling-vert.vercel.app/assets/images/previewImg.png',
         link: {
           webUrl: realUrl,
           mobileWebUrl: realUrl,
