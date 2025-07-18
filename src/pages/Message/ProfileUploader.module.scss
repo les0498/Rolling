@@ -1,0 +1,68 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 720px;
+  gap: 12px;
+}
+
+.label {
+  font-size: $font-2xl;
+  font-weight: 700;
+  color: $gray900;
+}
+
+.previewRow {
+  display: flex;
+  align-items: center;
+  gap: $size-xl;
+  cursor: pointer;
+
+  &:focus {
+    outline: 2px solid $purple500;
+  }
+
+  &:hover {
+    .caption {
+      color: $purple500;
+    }
+  }
+}
+
+.caption {
+  font-size: $font-md;
+  font-weight: 400;
+  font-family: $font-family-primary;
+  color: $gray500;
+}
+
+.thumbnailRow {
+  display: flex;
+  gap: 5px;
+  margin-top: 12px;
+}
+
+.thumbnail {
+  width: rem(56px);
+  height: rem(56px);
+  border-radius: 100px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid $gray200;
+
+  &:hover,
+  &:focus {
+    border-color: $purple500;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.rightBow {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

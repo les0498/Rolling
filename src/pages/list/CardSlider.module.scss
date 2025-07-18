@@ -29,13 +29,13 @@
   max-width: 100%;
   overflow: visible;
 
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
   // 스크롤바 숨김
   &::-webkit-scrollbar {
     display: none;
   }
-
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 
   & > * {
     flex-shrink: 0;
