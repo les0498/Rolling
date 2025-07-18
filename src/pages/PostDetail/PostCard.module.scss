@@ -1,6 +1,9 @@
 $card-width: rem(384px);
 $card-height: rem(280px);
 $profile: rem(56px);
+$card-width: rem(384px);
+$card-height: rem(280px);
+$profile: rem(56px);
 
 @mixin column {
   display: column;
@@ -22,10 +25,12 @@ $profile: rem(56px);
   background-color: var(--color-default-background);
   border-radius: 1rem;
   padding: rem(28px) rem(24px) rem(24px);
+  padding: rem(28px) rem(24px) rem(24px);
 }
 
 .cardTopSection {
   display: flex;
+  gap: 14px;
   gap: 14px;
 }
 
@@ -37,12 +42,14 @@ $profile: rem(56px);
   width: $profile;
   height: $profile;
   border-radius: $radius-full;
+  border-radius: $radius-full;
 }
 
 .cardWriterInfo {
 }
 
 .title {
+  margin-bottom: rem(6px);
   margin-bottom: rem(6px);
 }
 
@@ -57,6 +64,9 @@ $profile: rem(56px);
 }
 
 .badge {
+  width: rem(41px);
+  height: rem(20px);
+  border-radius: $radius-sm;
   width: rem(41px);
   height: rem(20px);
   border-radius: $radius-sm;

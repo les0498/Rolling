@@ -32,3 +32,28 @@
   color: $white;
   font-weight: 300;
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: $size-md $size-lg;
+  border-radius: $radius-md;
+  max-width: rem(524px);
+  width: 100%;
+}
+@include mobile {
+  .container {
+    max-width: rem(320px);
+  }
+}
+.text-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1 1;
+  gap: rem(12px);
+  color: $white;
+  font-weight: 300;
+}

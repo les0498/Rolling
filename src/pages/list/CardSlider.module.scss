@@ -1,20 +1,21 @@
-@use "@/styles/token" as token;
-
 .sliderWrapper {
   position: relative;
   display: flex;
   align-items: center;
-  margin-top: token.$size-md;
-  max-width: 1130px;
+
   width: 100%;
-  overflow: visible;
+  max-width: 1130px;
+  margin-top: $size-md;
   margin-bottom: 50px;
+
+  overflow: visible;
 }
 
 .sliderOuter {
+  flex: 1;
   overflow-x: auto;
   overflow-y: visible;
-  flex: 1;
+
   padding: 10px 24px;
   scroll-padding: 0 24px;
 }
@@ -22,20 +23,24 @@
 .slider {
   display: flex;
   gap: 20px;
+  padding-bottom: 30px;
+
   scroll-behavior: smooth;
   max-width: 100%;
   overflow: visible;
+
+  // 스크롤바 숨김
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
   & > * {
     flex-shrink: 0;
     width: 260px;
   }
-  padding-bottom: 30px;
-  //스크롤바 숨김
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 .buttonLeft {

@@ -1,11 +1,8 @@
-@use "@/styles/_token" as token;
-@use "@/styles/font" as font;
-
 .title {
   margin-left: 380px;
 
-  font-size: token.$font-2xl;
+  font-size: $font-2xl;
   font-weight: 700;
-  font-family: token.$font-family-primary;
-  color: token.$black;
+  font-family: $font-family-primary;
+  color: $black;
 }

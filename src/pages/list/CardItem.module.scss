@@ -1,24 +1,23 @@
-@use '@/styles/token' as token;
-
 .card {
   width: 275px;
   height: 260px;
-  border-radius: token.$size-md;
+  border-radius: $size-md;
   overflow: visible;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  //현재 색상 기본값
-  background-color: token.$white;
+  background-color: $white;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  //호버시 효과
+
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
   will-change: transform;
+
   &:hover {
-    transform: scale(1.03); // 약간 확대
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); // 떠오르는 느낌
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   }
 }
 
@@ -27,6 +26,7 @@
   padding: 30px 24px 20px;
   background-size: cover;
   background-position: center;
+
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -35,9 +35,9 @@
 }
 
 .title {
-  font-size: token.$font-2xl;
+  font-size: $font-2xl;
   font-weight: 700;
-  color: token.$gray900;
+  color: $gray900;
 }
 
 .participants {
@@ -48,7 +48,7 @@
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    border: 1.5px solid token.$white;
+    border: 1.5px solid $white;
     object-fit: cover;
     margin-left: -12px;
 
@@ -59,36 +59,37 @@
 }
 
 .extra {
-  background-color: token.$white;
-  color: token.$gray500;
-  font-size: token.$font-xs;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 33px;
   height: 28px;
   border-radius: 30px;
   margin-left: -12px;
+
+  background-color: $white;
+  color: $gray500;
+  font-size: $font-xs;
+  font-weight: 400;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .count {
-  font-size: token.$font-md;
+  font-size: $font-md;
   font-weight: 400;
-  color: token.$gray700;
+  color: $gray700;
 }
 
 .total {
-  font-size: token.$font-md;
+  font-size: $font-md;
   font-weight: 700;
-  font-style: Bold;
-  color: token.$gray700;
+  color: $gray700;
 }
 
 .divider {
-  border: none;
   width: 227px;
   height: 1px;
+  border: none;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
 
@@ -96,20 +97,22 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 16px 0 20px 24px;
+  margin: $size-md 0 20px 24px;
 }
 
 .reaction {
+  width: 65px;
+  height: 32px;
+  padding: 8px 12px;
+  gap: 2px;
+  border-radius: 32px;
+
+  background-color: rgba(0, 0, 0, 0.54);
+  color: $white;
+  font-size: $font-sm;
+  font-weight: 500;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px 12px;
-  gap: 2px;
-  background-color: rgba(0, 0, 0, 0.54);
-  color: token.$white;
-  border-radius: 32px;
-  font-size: token.$font-sm;
-  font-weight: 500;
-  height: 32px;
-  width: 65px;
 }
