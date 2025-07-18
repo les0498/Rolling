@@ -1,0 +1,32 @@
+.button {
+  width: rem(40px);
+  height: rem(40px);
+  border-radius: 50%;
+
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #dadcdf;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
+
+  color: #101010;
+  font-size: $font-md;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    color: $purple500;
+    transform: scale(1.1);
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.3;
+    transform: none;
+  }
+}

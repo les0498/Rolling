@@ -1,7 +1,7 @@
 .selectWrapper {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: rem(12px);
   width: 100%;
 }
 
@@ -14,7 +14,7 @@
 
 .select {
   width: 100%;
-  padding: 12px $size-md;
+  padding: rem(12px) $size-md;
   border: 1px solid $gray300;
   border-radius: $radius-md;
   font-size: $font-md;

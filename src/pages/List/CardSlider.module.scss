@@ -1,0 +1,60 @@
+.sliderWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  max-width: rem(1130px);
+  margin-top: $size-md;
+  margin-bottom: rem(50px);
+
+  overflow: visible;
+}
+
+.sliderOuter {
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: visible;
+
+  padding: $size-sm $size-lg;
+  scroll-padding: 0 $size-lg;
+}
+
+.slider {
+  display: flex;
+  gap: rem(20px);
+  padding-bottom: rem(30px);
+
+  scroll-behavior: smooth;
+  max-width: 100%;
+  overflow: visible;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  // 스크롤바 숨김
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  & > * {
+    flex-shrink: 0;
+    width: rem(260px);
+  }
+}
+
+.buttonLeft {
+  position: absolute;
+  top: 50%;
+  left: rem(-20px);
+  transform: translateY(-100%);
+  z-index: 10;
+}
+
+.buttonRight {
+  position: absolute;
+  top: 50%;
+  right: rem(-20px);
+  transform: translateY(-100%);
+  z-index: 10;
+}
