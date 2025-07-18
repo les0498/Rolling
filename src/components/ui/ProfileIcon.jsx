@@ -12,10 +12,10 @@ export default function ProfileIcon({
 }) {
   const cn = classNames.bind(styles);
   const isEmptySrc = src === '';
+
   const onErrorImg = (e) => {
     e.target.src = DefaultProfile;
   };
-
   return isEmptySrc ? (
     <div className={cn('profile', `profile-${size}`, { stroke })} {...rest}>
       <img src={DefaultProfile} alt='기본 프로필 이미지' />

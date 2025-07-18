@@ -1,16 +1,18 @@
 import { useRef, useState } from 'react';
+import classNames from 'classnames/bind';
 
 import styles from '@/components/PostNav/EmojiBar.module.scss';
 import EmojiList from '@/components/PostNav/EmojiList';
 import useOutsideClick from '@/hooks/useOutsideClick';
 
-function EmojiBar({ topReactions = [] }) {
+function EmojiBar({ topReactions }) {
+  const cn = classNames.bind(styles);
   //화살표 회전 애니메이션
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = () => setIsOpen((prev) => !prev);
 
-  const emojiCount = topReactions?.map((reaction) => reaction.count);
+  const sortedReactions = [...topReactions].sort((a, b) => b.count - a.count);
 
   const buttonRef = useRef(null);
 
@@ -19,19 +21,22 @@ function EmojiBar({ topReactions = [] }) {
   return (
     <div ref={buttonRef} className={styles.iconContainer}>
       <ol
-        className={`${styles.iconWrapper} ${emojiCount.length > 0 && emojiCount.length < 4 ? styles['iconWrapperMargin'] : ''}`}
+        className={cn('iconWrapper', {
+          iconWrapperMargin:
+            sortedReactions.length > 0 && sortedReactions.length < 3,
+        })}
       >
-        <EmojiList topReactions={topReactions} limit={3} />
+        <EmojiList topReactions={sortedReactions} limit={3} />
       </ol>
-      {emojiCount.length > 3 && (
+      {sortedReactions.length >= 3 && (
         <button
           onClick={toggleOpen}
-          className={`${styles.arrow} ${isOpen ? styles.rotate : ''}`}
+          className={cn('arrow', { rotate: isOpen })}
         />
       )}
       {isOpen && (
-        <ul className={styles.emojiCountBox}>
-          <EmojiList topReactions={topReactions} limit={8} />
+        <ul className={styles.reactionsBox}>
+          <EmojiList topReactions={sortedReactions} limit={8} />
         </ul>
       )}
     </div>

@@ -1,8 +1,6 @@
-@use "@/styles/token" as token;
-
 .button {
-  width: 40px;
-  height: 40px;
+  width: rem(40px);
+  height: rem(40px);
   border-radius: 50%;
 
   background-color: rgba(255, 255, 255, 0.9);
@@ -10,7 +8,7 @@
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
 
   color: #101010;
-  font-size: token.$font-md;
+  font-size: $font-md;
 
   display: flex;
   justify-content: center;
@@ -22,7 +20,7 @@
     color 0.2s ease;
 
   &:hover {
-    color: token.$purple500;
+    color: $purple500;
     transform: scale(1.1);
   }
 
