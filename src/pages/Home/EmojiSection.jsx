@@ -1,5 +1,5 @@
-import '../styles/EmojiSection.scss';
-import img02 from '../assets/images/img_02-2.png';
+import '@/pages/Home/EmojiSection.scss';
+import img02 from '@/assets/images/img_02-2.png';
 
 export default function EmojiSection() {
   return (
