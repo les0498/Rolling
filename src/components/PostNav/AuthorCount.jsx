@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 
 import styles from '@/components/PostNav/AuthorCount.module.scss';
-import AuthorImage from '@/components/PostNav/AuthorImage';
+import ProfileIcon from '@/components/ui/ProfileIcon';
 
 function AuthorCount({ count = 0, profileURLs }) {
   const cn = classNames.bind(styles);
@@ -14,7 +14,7 @@ function AuthorCount({ count = 0, profileURLs }) {
             {profileURLs.slice(0, 3).map((url, index) => {
               return (
                 <li key={index} className={styles.author}>
-                  <AuthorImage src={url} alt={`프로필 이미지 ${index + 1}`} />
+                  <ProfileIcon src={url} />
                 </li>
               );
             })}
