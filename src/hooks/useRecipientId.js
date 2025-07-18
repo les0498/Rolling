@@ -5,6 +5,7 @@ import useAsync from '@/hooks/useAsync';
 
 function useRecipientId(id) {
   const [author, setAuthor] = useState(null);
+  const [topMessage, setTopMessage] = useState([]);
 
   const [pending, error, fetchRecipient] = useAsync(getRecipientById);
 
@@ -16,6 +17,7 @@ function useRecipientId(id) {
 
       if (recipientData) {
         setAuthor(recipientData);
+        setTopMessage(recipientData.recentMessages || []);
       }
     }
     fetchData();
@@ -23,6 +25,7 @@ function useRecipientId(id) {
 
   return {
     author,
+    topMessage,
     loading: pending,
     error,
   };

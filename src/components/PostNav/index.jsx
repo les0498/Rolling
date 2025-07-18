@@ -12,11 +12,10 @@ import useRecipientId from '@/hooks/useRecipientId';
 
 function PostNav() {
   const { id } = useParams();
+  const { author, topMessage, loading } = useRecipientId(id);
 
   const [topReactions, setTopReactions] = useState([]);
   const [pending, , fetchReactions] = useAsync(getReactionsById);
-
-  const { author, loading } = useRecipientId(id);
 
   useEffect(() => {
     if (!id) return;
@@ -33,7 +32,7 @@ function PostNav() {
   }, [id, fetchReactions]);
 
   const messageCount = author?.messageCount ?? 0;
-  const profileURLs = author.recentMessages?.map((msg) => msg.profileImageURL);
+  const profileURLs = topMessage?.map((msg) => msg.profileImageURL);
 
   if (loading || pending) return <div>불러오는 중...</div>;
 

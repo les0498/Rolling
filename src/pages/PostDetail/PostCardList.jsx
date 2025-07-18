@@ -9,7 +9,8 @@ import CardDetail from '@/pages/PostDetail/CardDetail';
 
 import { Link } from 'react-router-dom';
 import Button from '@/components/ui/Button';
-import { BUTTON_VARIANT } from '@/components/ui/constants';
+import { BUTTON_SIZE, BUTTON_VARIANT } from '@/components/ui/constants';
+import DeleteModal from '@/pages/PostEdit/DeleteModal';
 
 function PostCardList({
   messages,
@@ -31,6 +32,11 @@ function PostCardList({
 
   // edit 코드
   const [isEdit, setIsEdit] = useState(false);
+  // 메세지 삭제 모달
+  const [isDeleteMessage, setIsDeleteMessage] = useState(false);
+  const deleteCloseHandler = () => {
+    setIsDeleteMessage(false);
+  };
 
   useEffect(() => {
     if (!hasMore) return;
@@ -67,16 +73,28 @@ function PostCardList({
 
   return (
     <div className={cx('background', `background-${backgroundColor}`)}>
-      {/* Edit 버튼 */}
-      <div className={CLStyle.btnEdit}>
-        <Link to={'/post'}>
-          <Button variant={BUTTON_VARIANT.secondary}>목록으로</Button>
-        </Link>
-        <Button onClick={() => setIsEdit((prev) => !prev)}>
-          {isEdit ? '돌아가기' : '수정하기'}
-        </Button>
-      </div>
       <div className={CLStyle.cardListContainer}>
+        {/* Edit 버튼 */}
+        <ol className={CLStyle.btnEdit}>
+          <li>
+            <Link to={'/post'}>
+              <Button
+                variant={BUTTON_VARIANT.secondary}
+                size={BUTTON_SIZE.small}
+              >
+                목록으로
+              </Button>
+            </Link>
+          </li>
+          <li>
+            <Button
+              size={BUTTON_SIZE.small}
+              onClick={() => setIsEdit((prev) => !prev)}
+            >
+              {isEdit ? '돌아가기' : '수정하기'}
+            </Button>
+          </li>
+        </ol>
         {/* +버튼 카드(항상 첫 번째) */}
         <div className={CStyle.cardBoxAdd}>
           <AddMessageButton isEdit={isEdit} />
@@ -91,14 +109,26 @@ function PostCardList({
               setModalOpen(true);
             }}
             isEdit={isEdit}
+            setIsDeleteMessage={setIsDeleteMessage}
           />
         ))}
         {/* 모달 */}
         {modalOpen && msgSelect && (
-          <Modal isOpen={modalOpen} onClose={handleCloseModal}>
+          <Modal isOpen={modalOpen} onClose={handleCloseModal} isDelete={false}>
             <CardDetail message={msgSelect} variant='modal' />
           </Modal>
         )}
+        {/* 메시지 삭제 모달 */}
+        {isDeleteMessage && (
+          <Modal
+            isOpen={isDeleteMessage}
+            onClose={deleteCloseHandler}
+            isDelete={true}
+          >
+            <DeleteModal onClose={deleteCloseHandler} isPost={false} />
+          </Modal>
+        )}
+
         {/* 무한 스크롤 */}
         <div ref={observerRef} style={{ height: 1 }} />
 

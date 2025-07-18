@@ -1,16 +1,35 @@
+//AddMessageButton.jsx
+.btnDelete {
+  > svg {
+    width: rem(60px);
+    height: rem(60px);
+  }
+
+  &Copy {
+    display: block;
+    color: $gray400;
+    font-size: $font-md;
+    margin-top: rem(24px);
+  }
+}
+
+// PostCard.jsx
 .cardWrapper {
   position: relative;
 }
 // 화면에서 확인 후 수정
-.btnDelete {
+.btnPostDelete {
   position: absolute;
   width: rem(40px);
   height: rem(40px);
-  border: 1px solid $white;
+  border: 1px solid $gray300;
   border-radius: rem(6px);
-  right: 0;
-  top: 0;
+  top: rem(30px);
+  right: rem(24px);
+  z-index: 2;
+
   svg {
-    width: $size-lg;
+    width: rem(16px);
+    height: rem(16px);
   }
 }
