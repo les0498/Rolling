@@ -1,5 +1,6 @@
-import '@/pages/Home/MainSection.scss';
 import img01 from '@/assets/images/img_01-1.png';
+
+import '@/pages/Home/MainSection.scss';
 
 export default function MainSection() {
   return (
