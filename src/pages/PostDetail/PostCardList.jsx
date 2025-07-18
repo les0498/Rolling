@@ -3,7 +3,10 @@ import { useEffect, useRef, useState } from 'react';
 import PostCard from '@/pages/PostDetail/PostCard';
 import CLStyle from '@/pages/PostDetail/PostCardList.module.scss';
 import AddMessageButton from '@/pages/PostDetail/AddMessageButton';
-import CStyle from '@/pages/PostDetail/PostCard.module.scss';
+import CStyle from '@/pages/PostDetail/CardDetail.module.scss';
+import Modal from '@/pages/PostDetail/Modal';
+import CardDetail from '@/pages/PostDetail/CardDetail';
+
 import { Link } from 'react-router-dom';
 import Button from '@/components/ui/Button';
 import { BUTTON_VARIANT } from '@/components/ui/constants';
@@ -35,6 +38,7 @@ function PostCardList({
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
+          console.log('observer triggered');
           loadMore();
         }
       },
@@ -65,10 +69,12 @@ function PostCardList({
     <div className={cx('background', `background-${backgroundColor}`)}>
       {/* Edit 버튼 */}
       <div className={CLStyle.btnEdit}>
-        <Link to={'/post'}><Button variant={BUTTON_VARIANT.secondary}>목록으로</Button></Link>
-        <button onClick={() => setIsEdit((prev) => !prev)}>
+        <Link to={'/post'}>
+          <Button variant={BUTTON_VARIANT.secondary}>목록으로</Button>
+        </Link>
+        <Button onClick={() => setIsEdit((prev) => !prev)}>
           {isEdit ? '돌아가기' : '수정하기'}
-        </button>
+        </Button>
       </div>
       <div className={CLStyle.cardListContainer}>
         {/* +버튼 카드(항상 첫 번째) */}
@@ -77,12 +83,22 @@ function PostCardList({
         </div>
         {/* 메시지 카드들 */}
         {messages.map((msg) => (
-          <PostCard key={msg.id} message={msg} 
+          <PostCard
+            key={msg.id}
+            message={msg}
             onClick={() => {
               setMsgSelect(msg);
               setModalOpen(true);
-            } isEdit={isEdit} />
+            }}
+            isEdit={isEdit}
+          />
         ))}
+        {/* 모달 */}
+        {modalOpen && msgSelect && (
+          <Modal isOpen={modalOpen} onClose={handleCloseModal}>
+            <CardDetail message={msgSelect} variant='modal' />
+          </Modal>
+        )}
         {/* 무한 스크롤 */}
         <div ref={observerRef} style={{ height: 1 }} />
 

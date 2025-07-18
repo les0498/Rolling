@@ -1,0 +1,16 @@
+.cardWrapper {
+  position: relative;
+}
+// 화면에서 확인 후 수정
+.btnDelete {
+  position: absolute;
+  width: rem(40px);
+  height: rem(40px);
+  border: 1px solid $white;
+  border-radius: rem(6px);
+  right: 0;
+  top: 0;
+  svg {
+    width: $size-lg;
+  }
+}

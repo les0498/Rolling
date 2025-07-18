@@ -8,12 +8,15 @@ import EmojiBar from '@/components/PostNav/EmojiBar';
 import styles from '@/components/PostNav/index.module.scss';
 import ShareBar from '@/components/PostNav/ShareButton';
 import useAsync from '@/hooks/useAsync';
+import useRecipientId from '@/hooks/useRecipientId';
 
-function PostNav({ author, recentMessages, loading }) {
+function PostNav() {
   const { id } = useParams();
 
   const [topReactions, setTopReactions] = useState([]);
   const [pending, , fetchReactions] = useAsync(getReactionsById);
+
+  const { author, loading } = useRecipientId(id);
 
   useEffect(() => {
     if (!id) return;
@@ -30,7 +33,7 @@ function PostNav({ author, recentMessages, loading }) {
   }, [id, fetchReactions]);
 
   const messageCount = author?.messageCount ?? 0;
-  const profileURLs = recentMessages?.map((msg) => msg.profileImageURL);
+  const profileURLs = author.recentMessages?.map((msg) => msg.profileImageURL);
 
   if (loading || pending) return <div>불러오는 중...</div>;
 

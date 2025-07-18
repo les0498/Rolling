@@ -14,7 +14,7 @@ export default function PostPageLayout() {
   const navigate = useNavigate();
 
   // 리다이렉트
-  const { author, recentMessages, loading, error } = useRecipientId();
+  const { author, loading, error } = useRecipientId(id);
 
   useEffect(() => {
     if (loading || (!author && !error)) return;
@@ -31,13 +31,9 @@ export default function PostPageLayout() {
   return (
     <>
       {isMobile ? null : <Header />}
-      <PostNav
-        author={author}
-        recentMessages={recentMessages}
-        loading={loading}
-      />
+      <PostNav />
       <div className={styles.container}>
-        <Outlet context={{ author, recentMessages, loading, error }} />
+        <Outlet />
       </div>
     </>
   );
