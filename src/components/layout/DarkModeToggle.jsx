@@ -24,24 +24,25 @@ export default function DarkModeToggle() {
   };
   return (
     <>
-      <div
-        className={cn('toggle')}
-        style={{ justifyContent: checked ? 'flex-start' : 'flex-end' }}
-      >
-        <motion.div className={cn('toggle-indicator')} layout='position'>
+      <div className={cn('toggle')}>
+        <div
+          className={cn('toggle-indicator', {
+            'toggle-indicator__dark': !checked,
+          })}
+        >
           {checked ? <LightModeIcon /> : <DarkModeIcon />}
-          <input
-            className={cn('toggle-input')}
-            type='checkbox'
-            id='switch'
-            checked={checked}
-            name='mode'
-            onChange={onChange}
-          />
-          <label className={cn('toggle-label')} htmlFor='switch'>
-            Toggle
-          </label>
-        </motion.div>
+        </div>
+        <input
+          className={cn('toggle-input')}
+          type='checkbox'
+          id='switch'
+          checked={checked}
+          name='mode'
+          onChange={onChange}
+        />
+        <label className={cn('toggle-label')} htmlFor='switch'>
+          Toggle
+        </label>
       </div>
     </>
   );

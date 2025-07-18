@@ -22,13 +22,19 @@
   }
 }
 .toggle-indicator {
-  background-color: var(--color-darkModeToggle-background);
+  position: absolute;
+  background-color: var(--color-themeToggle-background);
   border-radius: $radius-full;
   width: 1.7rem;
   height: 1.7rem;
   right: 18px;
   @include flex-center;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease-out;
+}
+.toggle-indicator__dark {
+  right: 2px;
+  transition: right 0.3s ease-out;
 }
 .toggle-input {
   position: absolute;
