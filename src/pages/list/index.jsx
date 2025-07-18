@@ -1,5 +1,5 @@
 import CardSliderSection from '@/pages/List/CardSliderSection';
-import styles from '@/pages/list/ListPage.module.scss';
+import styles from '@/pages/List/ListPage.module.scss';
 
 function ListPage() {
   return (

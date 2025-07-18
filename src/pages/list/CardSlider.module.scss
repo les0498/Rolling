@@ -4,9 +4,9 @@
   align-items: center;
 
   width: 100%;
-  max-width: 1130px;
+  max-width: rem(1130px);
   margin-top: $size-md;
-  margin-bottom: 50px;
+  margin-bottom: rem(50px);
 
   overflow: visible;
 }
@@ -16,14 +16,14 @@
   overflow-x: auto;
   overflow-y: visible;
 
-  padding: 10px 24px;
-  scroll-padding: 0 24px;
+  padding: $size-sm $size-lg;
+  scroll-padding: 0 $size-lg;
 }
 
 .slider {
   display: flex;
-  gap: 20px;
-  padding-bottom: 30px;
+  gap: rem(20px);
+  padding-bottom: rem(30px);
 
   scroll-behavior: smooth;
   max-width: 100%;
@@ -39,14 +39,14 @@
 
   & > * {
     flex-shrink: 0;
-    width: 260px;
+    width: rem(260px);
   }
 }
 
 .buttonLeft {
   position: absolute;
   top: 50%;
-  left: -20px;
+  left: rem(-20px);
   transform: translateY(-100%);
   z-index: 10;
 }
@@ -54,7 +54,7 @@
 .buttonRight {
   position: absolute;
   top: 50%;
-  right: -20px;
+  right: rem(-20px);
   transform: translateY(-100%);
   z-index: 10;
 }

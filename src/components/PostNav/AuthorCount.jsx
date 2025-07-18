@@ -5,9 +5,6 @@ import ProfileIcon from '@/components/ui/ProfileIcon';
 
 function AuthorCount({ count = 0, profileURLs }) {
   const cn = classNames.bind(styles);
-
-  const cn = classNames.bind(styles);
-
   return (
     <div className={styles.authorContainer}>
       <ul className={styles.profileWrapper}>
@@ -21,7 +18,6 @@ function AuthorCount({ count = 0, profileURLs }) {
               );
             })}
             {count > 3 && (
-              <li className={cn('author', 'authorRestCount')}>
               <li className={cn('author', 'authorRestCount')}>
                 <span>+{count - 3}</span>
               </li>

@@ -1,6 +1,6 @@
 //데이터 CardSlider에 전달, 제목 및 Empty 처리
 import CardSlider from '@/pages/List/CardSlider';
-import styles from '@/pages/list/CardSliderSection.module.scss';
+import styles from '@/pages/List/CardSliderSection.module.scss';
 import EmptyState from '@/pages/List/EmptyState';
 import SectionTitle from '@/pages/List/SectionTitle';
 

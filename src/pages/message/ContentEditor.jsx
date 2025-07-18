@@ -1,4 +1,4 @@
-import styles from './ContentEditor.module.scss';
+import styles from '@/pages/Message/ContentEditor.module.scss';
 
 function ContentEditor({ value, onChange }) {
   const maxLength = 500;

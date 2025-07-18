@@ -1,6 +1,6 @@
 .card {
-  width: 275px;
-  height: 260px;
+  width: rem(275px);
+  height: rem(260px);
   border-radius: $size-md;
   overflow: visible;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -22,8 +22,8 @@
 }
 
 .thumbnail {
-  height: 210px;
-  padding: 30px 24px 20px;
+  height: rem(210px);
+  padding: rem(30px) rem(24px) rem(20px);
   background-size: cover;
   background-position: center;
 
@@ -45,12 +45,12 @@
   align-items: center;
 
   & > * {
-    width: 28px;
-    height: 28px;
+    width: rem(28px);
+    height: rem(28px);
     border-radius: 50%;
     border: 1.5px solid $white;
     object-fit: cover;
-    margin-left: -12px;
+    margin-left: rem(-12px);
 
     &:first-child {
       margin-left: 0;
@@ -59,10 +59,10 @@
 }
 
 .extra {
-  width: 33px;
-  height: 28px;
-  border-radius: 30px;
-  margin-left: -12px;
+  width: rem(33px);
+  height: rem(28px);
+  border-radius: rem(30px);
+  margin-left: rem(-12px);
 
   background-color: $white;
   color: $gray500;
@@ -87,7 +87,7 @@
 }
 
 .divider {
-  width: 227px;
+  width: rem(227px);
   height: 1px;
   border: none;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
@@ -96,16 +96,16 @@
 .reactions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: rem(8px);
   margin: $size-md 0 20px 24px;
 }
 
 .reaction {
-  width: 65px;
-  height: 32px;
-  padding: 8px 12px;
+  width: rem(65px);
+  height: rem(32px);
+  padding: rem(8px) rem(12px);
   gap: 2px;
-  border-radius: 32px;
+  border-radius: rem(32px);
 
   background-color: rgba(0, 0, 0, 0.54);
   color: $white;

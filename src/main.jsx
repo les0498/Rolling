@@ -6,7 +6,8 @@ import MainLayout from '@/layouts/MainLayout';
 import PostPageLayout from '@/layouts/PostPageLayout';
 import ThemeLayout from '@/layouts/ThemeLayout';
 import Home from '@/pages/Home';
-import ListPage from '@/pages/list/ListPage';
+import ListPage from '@/pages/List';
+import Message from '@/pages/Message';
 import NotFound from '@/pages/NotFound';
 import PostDetail from '@/pages/PostDetail';
 
@@ -22,7 +23,7 @@ createRoot(document.getElementById('root')).render(
             <Route path='/' element={<Home />} />
             <Route path='/list' element={<ListPage />} />
             <Route path='/post' element={<NotFound />} />
-            <Route path='/post/:id/message' element={<NotFound />} />
+            <Route path='/post/:id/message' element={<Message />} />
           </Route>
           <Route element={<PostPageLayout />}>
             <Route path='/post/:id' element={<PostDetail />} />

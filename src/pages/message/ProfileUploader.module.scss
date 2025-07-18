@@ -1,8 +1,8 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  max-width: 720px;
-  gap: 12px;
+  max-width: rem(720px);
+  gap: rem(12px);
 }
 
 .label {
@@ -38,7 +38,7 @@
 .thumbnailRow {
   display: flex;
   gap: 5px;
-  margin-top: 12px;
+  margin-top: rem(12px);
 }
 
 .thumbnail {
@@ -64,5 +64,5 @@
 .rightBow {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: rem(12px);
 }

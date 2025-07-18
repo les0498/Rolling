@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import CardItem from '@/pages/List/CardItem';
-import styles from '@/pages/list/CardSlider.module.scss';
+import styles from '@/pages/List/CardSlider.module.scss';
 import SlideButton from '@/pages/List/SlideButton';
 
 function CardSlider({ cards }) {
