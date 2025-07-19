@@ -1,3 +1,5 @@
+import { motion } from 'motion/react';
+
 import styles from '@/pages/List/CardItem.module.scss';
 
 function CardItem({
@@ -9,7 +11,9 @@ function CardItem({
   backgroundColor,
 }) {
   return (
-    <div
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.9 }}
       className={styles.card}
       style={{
         backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none',
@@ -48,7 +52,7 @@ function CardItem({
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
