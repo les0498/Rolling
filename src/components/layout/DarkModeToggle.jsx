@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import classNames from 'classnames/bind';
-import { motion } from 'motion/react';
 
 import DarkModeIcon from '@/assets/icons/dark_mode.svg';
 import LightModeIcon from '@/assets/icons/light_mode.svg';

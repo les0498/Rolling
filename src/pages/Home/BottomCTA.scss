@@ -7,65 +7,17 @@
   padding: 0 60px;
   box-sizing: border-box;
 
-  &__button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 14px 24px;
-    gap: 10px;
-
-    width: 280px;
-    height: 56px;
-
-    font-family: 'Pretendard';
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 28px;
-    letter-spacing: -0.01em;
-    color: #ffffff;
-    text-align: center;
-
-    background: #9935ff;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: 0.3s;
-
-    &:hover {
-      background: #7a26cc;
-    }
-  }
-}
-
-// PC: 너비 줄어들면 좌우 padding 24px 고정
-@media (max-width: 1247px) {
-  .bottom-cta {
+  @include tablet {
     padding: 0 24px;
   }
-}
-
-// Tablet: 버튼 width 줄어들기 시작
-@media (max-width: 1023px) {
-  .bottom-cta__button {
-    width: 240px;
-    height: 52px;
-    font-size: 16px;
-    line-height: 26px;
-  }
-}
-
-// Mobile: 버튼 꽉 채우고 좌우 여백 유지
-@media (max-width: 767px) {
-  .bottom-cta {
+  @include mobile {
     padding: 0 24px;
     display: block; // flex 해제
   }
-
-  .bottom-cta__button {
+}
+.button-wrapper {
+  width: rem(280px);
+  @include tablet {
     width: 100%;
-    max-width: 100%;
-    height: 52px;
-    font-size: 16px;
-    line-height: 26px;
   }
 }
