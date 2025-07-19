@@ -1,3 +1,5 @@
+import { useNavigate, useParams } from 'react-router-dom';
+
 import { deleteMessageById } from '@/apis/messages';
 import { deleteRecipientById } from '@/apis/recipients';
 import DeleteIcon from '@/assets/icons/delete.svg';
@@ -5,14 +7,25 @@ import Button from '@/components/ui/Button';
 import { BUTTON_SIZE, BUTTON_VARIANT } from '@/components/ui/constants';
 import styles from '@/pages/PostEdit/DeleteModal.module.scss';
 
-function DeleteModal({ onClose, isPost, id, messageId }) {
+function DeleteModal({ onClose, isPost = false, messageId = '' }) {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
   const handleDelete = async () => {
     try {
-      if (isPost) {
-        deleteRecipientById(id);
-      } else {
-        deleteMessageById(messageId);
+      // 게시판이 아니면 메세지 아이디가 없으면 안된다.
+      if (!isPost && !messageId) {
+        console.error('messageId가 필요합니다!');
+        return;
       }
+
+      if (isPost) {
+        await deleteRecipientById(id);
+      } else {
+        await deleteMessageById(messageId);
+      }
+      onClose();
+      navigate('/post');
     } catch (error) {
       console.error('삭제 실패: ', error);
     }

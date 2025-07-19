@@ -32,11 +32,7 @@ function AddMessageButton({ isEdit }) {
             <span className={DStyle.btnDeleteCopy}>게시판 삭제하기</span>
           </button>
           {isDelete && (
-            <Modal
-              isOpen={isDelete}
-              onClose={onCloseHandler}
-              isDelete={isDelete}
-            >
+            <Modal isOpen={isDelete} onClose={onCloseHandler} isDelete={true}>
               <DeleteModal onClose={onCloseHandler} isPost={true} />
             </Modal>
           )}

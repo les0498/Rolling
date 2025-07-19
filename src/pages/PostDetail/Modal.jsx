@@ -2,7 +2,7 @@ import Button from '@/components/ui/Button';
 import styles from '@/pages/PostDetail/Modal.module.scss';
 import classNames from 'classnames/bind';
 
-function Modal({ isOpen, onClose, children, isDelete }) {
+function Modal({ isOpen, onClose, children, isDelete = false }) {
   if (!isOpen) return;
 
   const cn = classNames.bind(styles);

@@ -18,7 +18,6 @@ function PostCardList({
   loadMore,
   hasMore,
   loading,
-  postId,
 }) {
   const cx = classNames.bind(CLStyle);
 
@@ -34,7 +33,7 @@ function PostCardList({
   // edit 코드
   const [isEdit, setIsEdit] = useState(false);
   // 메세지 삭제 모달
-  const [isDeleteMessage, setIsDeleteMessage] = useState(false);
+  const [isDelMessage, setIsDeleteMessage] = useState(false);
   const deleteCloseHandler = () => {
     setIsDeleteMessage(false);
   };
@@ -110,27 +109,28 @@ function PostCardList({
               setModalOpen(true);
             }}
             isEdit={isEdit}
-            setIsDeleteMessage={setIsDeleteMessage}
+            onDeleteClick={() => {
+              setMsgSelect(msg);
+              setIsDeleteMessage(true);
+            }}
           />
         ))}
         {/* 모달 */}
         {modalOpen && msgSelect && (
-          <Modal isOpen={modalOpen} onClose={handleCloseModal} isDelete={false}>
+          <Modal isOpen={modalOpen} onClose={handleCloseModal}>
             <CardDetail message={msgSelect} variant='modal' />
           </Modal>
         )}
         {/* 메시지 삭제 모달 */}
-        {isDeleteMessage && (
+        {isDelMessage && msgSelect && (
           <Modal
-            isOpen={isDeleteMessage}
+            isOpen={isDelMessage}
             onClose={deleteCloseHandler}
             isDelete={true}
           >
             <DeleteModal
               onClose={deleteCloseHandler}
-              isPost={false}
-              id={postId}
-              messageId={id}
+              messageId={msgSelect.id}
             />
           </Modal>
         )}
