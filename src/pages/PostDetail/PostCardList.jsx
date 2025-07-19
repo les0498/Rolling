@@ -5,7 +5,6 @@ import CLStyle from '@/pages/PostDetail/PostCardList.module.scss';
 import AddMessageButton from '@/pages/PostDetail/AddMessageButton';
 import CStyle from '@/pages/PostDetail/CardDetail.module.scss';
 import Modal from '@/pages/PostDetail/Modal';
-import MStyle from '@/pages/PostDetail/Modal.module.scss';
 import CardDetail from '@/pages/PostDetail/CardDetail';
 
 function PostCardList({
@@ -16,6 +15,7 @@ function PostCardList({
   loading,
 }) {
   const cx = classNames.bind(CLStyle);
+  const cn = classNames.bind(CStyle);
 
   // Modal 코드
   const [modalOpen, setModalOpen] = useState(false);
@@ -47,11 +47,14 @@ function PostCardList({
     };
   }, [hasMore, loadMore]);
 
+  {
+    /* 메시지가 없을 때 */
+  }
   if (!messages || !Array.isArray(messages) || messages.length === 0) {
     return (
-      <div className={CLStyle.background}>
-        <div className={CLStyle.cardListContainer}>
-          <div className={CStyle.cardBoxAdd}>
+      <div className={cx('background', `background-${backgroundColor}`)}>
+        <div className={cx('cardListContainer')}>
+          <div className={cn('cardBoxAdd')}>
             <AddMessageButton />
           </div>
         </div>

@@ -1,18 +1,28 @@
 import PostCardList from '@/pages/PostDetail/PostCardList';
 import useAsync from '@/hooks/useAsync';
 import { getMessagesById } from '@/apis/messages';
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
-import { BACKGROUND_COLOR } from '@/apis/recipients';
+import { BACKGROUND_COLOR, getRecipientById } from '@/apis/recipients';
 
 export default function PostDetail() {
   const { id } = useParams();
   const [messages, setMessages] = useState([]);
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
+  const [user, setUser] = useState([]);
   const limit = 8;
 
   const [pending, error, fetchMessages] = useAsync(getMessagesById);
+
+  useEffect(() => {
+    if (!id) return;
+
+    getRecipientById(id).then((res) => {
+      if (!id) return;
+      setUser(res);
+    });
+  }, [id]);
 
   useEffect(() => {
     if (!id) return;
@@ -38,7 +48,7 @@ export default function PostDetail() {
     <div>
       <PostCardList
         messages={messages}
-        backgroundColor={BACKGROUND_COLOR}
+        backgroundColor={BACKGROUND_COLOR[user.backgroundColor]}
         loadMore={loadMore}
         hasMore={hasMore}
         loading={pending}
