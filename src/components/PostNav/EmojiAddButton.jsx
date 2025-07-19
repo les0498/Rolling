@@ -8,22 +8,30 @@ import styles from '@/components/PostNav/EmojiAddButton.module.scss';
 import useIsMobile from '@/hooks/useIsMobile';
 import useOutsideClick from '@/hooks/useOutsideClick';
 
-function EmojiAddButton({ setTopReactions, id }) {
+function EmojiAddButton({ setReactions, id }) {
   const isMobile = useIsMobile();
 
   const [isEmoji, setIsEmoji] = useState(false);
+  const [isClick, setIsClick] = useState(false);
 
   const onEmojiClick = async (emojiObject) => {
     const emoji = emojiObject.emoji;
-
+    if (isClick) return;
+    setIsClick(true);
     try {
       await createReactionById({ id, emoji, type: 'increase' });
+      const updated = await getReactionsById({ id });
+      setReactions({
+        ...updated,
+        results: [...updated.results],
+      });
     } catch (error) {
       console.error('이모지 추가 실패:', error);
+    } finally {
+      setTimeout(() => {
+        setIsClick(false);
+      }, 30);
     }
-
-    const updated = await getReactionsById({ id });
-    setTopReactions(updated.results);
   };
 
   const emojiRef = useRef(null);

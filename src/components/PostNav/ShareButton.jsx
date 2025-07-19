@@ -14,12 +14,17 @@ function ShareBar() {
   //토스트
   const [isToast, setIsToast] = useState(false);
 
+  // 버튼 클릭했을 때 닫힘
   const toggleOpen = () => setIsOpen((prev) => !prev);
+  // 토스트 close버튼
   const onClose = () => setIsToast(false);
+  // 내부 영역
   const buttonRef = useRef(null);
 
+  //외부클릭했을 때 닫힘
   useOutsideClick(buttonRef, () => {
     setIsOpen(false);
+    setIsToast(false);
   });
 
   return (
@@ -29,12 +34,14 @@ function ShareBar() {
       </button>
       {isOpen && (
         <ol className={styles.shareBox}>
+          {/* 카카오 공유 */}
           <li>
             <ShareKakaoButton
               className={styles.shareBtn}
               setIsOpen={setIsOpen}
             />
           </li>
+          {/* URL복사 */}
           <li>
             <ShareUrlButton
               className={styles.shareBtn}
