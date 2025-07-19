@@ -47,6 +47,7 @@ export default function PostDetail() {
         loadMore={loadMore}
         hasMore={hasMore}
         loading={isLoadingRef.current}
+        postId={id}
       />
     </div>
   );

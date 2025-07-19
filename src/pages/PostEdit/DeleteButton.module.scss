@@ -1,6 +1,6 @@
 //AddMessageButton.jsx
 .btnDelete {
-  > svg {
+  svg {
     width: rem(60px);
     height: rem(60px);
   }
@@ -17,7 +17,7 @@
 .cardWrapper {
   position: relative;
 }
-// 화면에서 확인 후 수정
+
 .btnPostDelete {
   position: absolute;
   width: rem(40px);

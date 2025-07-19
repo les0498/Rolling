@@ -21,7 +21,7 @@ export default function PostPageLayout() {
     if (loading || (!author && !error)) return;
 
     if (error || author?.id !== Number(id)) {
-      // navigate('/post', { replace: true });
+      navigate('/post', { replace: true });
     }
   }, [author, id, loading, error, navigate]);
 
