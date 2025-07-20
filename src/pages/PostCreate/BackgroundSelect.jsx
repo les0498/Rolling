@@ -1,22 +1,54 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { motion } from 'motion/react';
 
-import ClickedIcon from '@/assets/icons/enabled.svg';
+import { getBackgroundImages } from '@/apis/images';
+import { BACKGROUND_COLOR } from '@/apis/recipients';
+import useAsync from '@/hooks/useAsync';
 import styles from '@/pages/PostCreate/BackgroundSelect.module.scss';
+import ColorBox from '@/pages/PostCreate/ColorBox';
+import ImageBox from '@/pages/PostCreate/ImageBox';
+
+const _BACKGROUND_OPTION = {
+  color: '컬러',
+  image: '이미지',
+};
 
 export default function BackgroundSelect() {
-  const [backgroundOption, setBackgroundOption] = useState('컬러');
-  const [background, setBackground] = useState('');
-  const cx = classNames.bind(styles);
+  const [backgroundOption, setBackgroundOption] = useState(
+    _BACKGROUND_OPTION.color
+  );
+  const [backgroundImages, setBackgroundImages] = useState([]);
+  const [select, setSelect] = useState('');
+
+  const [loading, error, getBackgroundImagesAsync] =
+    useAsync(getBackgroundImages);
+
   const handleOptionSelect = (e) => {
     e.preventDefault();
     setBackgroundOption(e.target.name);
   };
   const handleBackgroundSelect = (e) => {
     e.preventDefault();
+    setSelect(e.target.name);
   };
-  const isColorBackgroundOption = backgroundOption === '컬러';
+  const cx = classNames.bind(styles);
+  const isColorBackgroundOption = backgroundOption === _BACKGROUND_OPTION.color;
+  const backgroundColorList = [...Object.keys(BACKGROUND_COLOR)];
+
+  useEffect(() => {
+    (async function fetchData() {
+      const { imageUrls } = await getBackgroundImagesAsync();
+      if (error) {
+        console.log(error);
+        return;
+      }
+      if (imageUrls) {
+        setBackgroundImages(imageUrls);
+      }
+    })();
+  }, [getBackgroundImagesAsync, error]);
+
   return (
     <section className={cx('container')}>
       <div className={cx('label-wrapepr')}>
@@ -34,7 +66,7 @@ export default function BackgroundSelect() {
           }}
         />
         <button
-          name='컬러'
+          name={_BACKGROUND_OPTION.color}
           onClick={handleOptionSelect}
           className={cx('option', 'option-color', {
             'option-selected': isColorBackgroundOption,
@@ -44,7 +76,7 @@ export default function BackgroundSelect() {
           컬러
         </button>
         <button
-          name='이미지'
+          name={_BACKGROUND_OPTION.image}
           onClick={handleOptionSelect}
           className={cx('option', {
             'option-selected': !isColorBackgroundOption,
@@ -57,19 +89,30 @@ export default function BackgroundSelect() {
       <div className={cx('boxes-wrapper')}>
         {isColorBackgroundOption ? (
           <>
-            {Array.from({ length: 4 }, () => 0).map((box, i) => (
-              <button key={i} onClick={handleBackgroundSelect}>
-                <div className={cx('box', 'box-color')}></div>
-              </button>
+            {backgroundColorList.map((color, i) => (
+              <ColorBox
+                key={i}
+                onClick={handleBackgroundSelect}
+                color={color}
+                isSelected={select === color}
+                name={color}
+              />
             ))}
           </>
         ) : (
           <>
-            {Array.from({ length: 4 }, () => 0).map((box, i) => (
-              <button key={i} onClick={handleBackgroundSelect}>
-                <div className={cx('box', 'box-image')}></div>
-              </button>
-            ))}
+            {loading ? (
+              <span>loading...</span>
+            ) : (
+              backgroundImages.map((url, i) => (
+                <ImageBox
+                  key={i}
+                  url={url}
+                  onClick={handleBackgroundSelect}
+                  isSelected={select === url}
+                />
+              ))
+            )}
           </>
         )}
       </div>

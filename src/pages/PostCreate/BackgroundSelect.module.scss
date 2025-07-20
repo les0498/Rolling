@@ -82,22 +82,3 @@
     grid-template-columns: 1fr 1fr;
   }
 }
-.box {
-  width: rem(168px);
-  height: rem(168px);
-  border-radius: $radius-lg;
-  background-color: $beige200;
-  background-repeat: none;
-  background-position: center;
-  @include mobile {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1;
-  }
-  &-color {
-    border: 2px solid rgba(0, 0, 0, 0.08);
-  }
-  &-image {
-    background-color: $purple300;
-  }
-}
