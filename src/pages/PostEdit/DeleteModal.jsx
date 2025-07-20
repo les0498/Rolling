@@ -25,7 +25,7 @@ function DeleteModal({ onClose, isPost = false, messageId = '' }) {
         await deleteMessageById(messageId);
       }
       onClose();
-      navigate('/post');
+      navigate('/list');
     } catch (error) {
       console.error('삭제 실패: ', error);
     }

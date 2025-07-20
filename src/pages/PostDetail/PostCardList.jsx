@@ -77,7 +77,7 @@ function PostCardList({
         {/* Edit 버튼 */}
         <ol className={CLStyle.btnEdit}>
           <li>
-            <Link to={'/post'}>
+            <Link to={'/list'}>
               <Button
                 variant={BUTTON_VARIANT.secondary}
                 size={BUTTON_SIZE.small}

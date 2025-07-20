@@ -21,7 +21,8 @@ export default function PostPageLayout() {
     if (loading || (!author && !error)) return;
 
     if (error || author?.id !== Number(id)) {
-      navigate('/post', { replace: true });
+      navigate('/list', { replace: true });
+      sessionStorage.setItem('showToast', 'true');
     }
   }, [author, id, loading, error, navigate]);
 
