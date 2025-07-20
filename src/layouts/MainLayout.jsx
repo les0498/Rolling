@@ -1,12 +1,26 @@
+import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import Header from '@/components/layout/Header';
 import Toast from '@/components/ui/Toast';
-import useErrorToast from '@/hooks/useErrorToast';
 import styles from '@/layouts/Layout.module.scss';
 
 export default function MainLayout() {
-  const { isToast, setIsToast } = useErrorToast();
+  const [isToast, setIsToast] = useState(false);
+
+  useEffect(() => {
+    const errToast = sessionStorage.getItem('errToast');
+    if (errToast === 'true') {
+      setIsToast(true);
+
+      const timer = setTimeout(() => {
+        setIsToast(false);
+        sessionStorage.removeItem('errToast');
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   return (
     <>
