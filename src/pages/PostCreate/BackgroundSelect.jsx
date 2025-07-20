@@ -7,17 +7,14 @@ import { BACKGROUND_COLOR } from '@/apis/recipients';
 import useAsync from '@/hooks/useAsync';
 import styles from '@/pages/PostCreate/BackgroundSelect.module.scss';
 import ColorBox from '@/pages/PostCreate/ColorBox';
+import { BACKGROUND_OPTION } from '@/pages/PostCreate/constants';
 import ImageBox from '@/pages/PostCreate/ImageBox';
 
-const _BACKGROUND_OPTION = {
-  color: '컬러',
-  image: '이미지',
-};
-
-export default function BackgroundSelect() {
-  const [backgroundOption, setBackgroundOption] = useState(
-    _BACKGROUND_OPTION.color
-  );
+export default function BackgroundSelect({
+  inputs,
+  onChange,
+  removeBackgroundError,
+}) {
   const [backgroundImages, setBackgroundImages] = useState([]);
   const [select, setSelect] = useState('');
 
@@ -26,14 +23,26 @@ export default function BackgroundSelect() {
 
   const handleOptionSelect = (e) => {
     e.preventDefault();
-    setBackgroundOption(e.target.name);
+    setSelect('');
+    onChange({
+      option: e.target.name,
+      backgroundColor: '',
+      backgroundImageURL: null,
+    });
   };
   const handleBackgroundSelect = (e) => {
     e.preventDefault();
     setSelect(e.target.name);
+    if (inputs.option === BACKGROUND_OPTION.color) {
+      onChange({ backgroundColor: e.target.name, backgroundImageURL: null });
+    }
+    if (inputs.option === BACKGROUND_OPTION.image) {
+      onChange({ backgroundColor: '', backgroundImageURL: e.target.name });
+    }
+    removeBackgroundError();
   };
   const cx = classNames.bind(styles);
-  const isColorBackgroundOption = backgroundOption === _BACKGROUND_OPTION.color;
+  const isColorBackgroundOption = inputs.option === BACKGROUND_OPTION.color;
   const backgroundColorList = [...Object.keys(BACKGROUND_COLOR)];
 
   useEffect(() => {
@@ -66,7 +75,7 @@ export default function BackgroundSelect() {
           }}
         />
         <button
-          name={_BACKGROUND_OPTION.color}
+          name={BACKGROUND_OPTION.color}
           onClick={handleOptionSelect}
           className={cx('option', 'option-color', {
             'option-selected': isColorBackgroundOption,
@@ -76,7 +85,7 @@ export default function BackgroundSelect() {
           컬러
         </button>
         <button
-          name={_BACKGROUND_OPTION.image}
+          name={BACKGROUND_OPTION.image}
           onClick={handleOptionSelect}
           className={cx('option', {
             'option-selected': !isColorBackgroundOption,
