@@ -1,0 +1,51 @@
+.label {
+  font-size: $font-2xl;
+  font-weight: 700;
+  color: var(--color-gray-text);
+}
+.caption {
+  font-size: $font-md;
+  font-weight: 400;
+  color: var(--color-light-gray-text);
+}
+.options-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+.option {
+  border-radius: rem(6px);
+  padding: rem(7px) $size-md;
+  font-size: $font-md;
+  font-weight: 400;
+  background-color: $gray100;
+  width: 100%;
+  color: $black;
+  &:hover {
+    background-color: $gray200;
+  }
+  &-color {
+    position: relative;
+    left: 5px;
+  }
+  &-left {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  &-right {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+.option-indicator {
+  position: absolute;
+  inset: 0;
+  width: 50%;
+  border: 3px solid $purple600;
+  border-radius: rem(6px);
+  z-index: 1;
+  color: $purple700;
+  background-color: rgba(153, 53, 255, 0.05);
+}
