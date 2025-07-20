@@ -43,7 +43,7 @@ function PostNav() {
       <h2 className={styles.recipient}>To.{author?.name}</h2>
       <div className={styles.navRight}>
         <AuthorCount count={messageCount} profileURLs={profileURLs} />
-        <EmojiBar reactions={reactions} />
+        <EmojiBar reactions={reactions} setReactions={setReactions} id={id} />
         <EmojiAddButton setReactions={setReactions} id={id} />
         <ShareBar />
       </div>
