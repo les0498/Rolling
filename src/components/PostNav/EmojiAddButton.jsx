@@ -21,10 +21,7 @@ function EmojiAddButton({ setReactions, id }) {
     try {
       await createReactionById({ id, emoji, type: 'increase' });
       const updated = await getReactionsById({ id });
-      setReactions({
-        ...updated,
-        results: [...updated.results],
-      });
+      setReactions(updated);
     } catch (error) {
       console.error('이모지 추가 실패:', error);
     } finally {
