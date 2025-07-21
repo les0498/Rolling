@@ -2,13 +2,19 @@ html[data-theme='light'] {
   --color-default-background: #{$white};
   --color-themeToggle-background: #{$white};
   --color-default-text: #{$black};
+  --color-reverse-text: #{$white};
+
   --color-gray-text: #{$gray800};
+  --color-light-gray-text: #{$gray500};
 }
 html[data-theme='dark'] {
   --color-default-background: #{$dark};
   --color-themeToggle-background: #{$purple600};
   --color-default-text: #{$white};
+  --color-reverse-text: #{$black};
+
   --color-gray-text: #{$gray100};
+  --color-light-gray-text: #{$gray400};
 }
 body {
   background-color: var(--color-default-background);

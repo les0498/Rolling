@@ -16,12 +16,17 @@ const getRecipients = async ({ limit = 8, offset = 0, sort = '' }) => {
 const getRecipientById = async (id = '') => {
   return await customFetch(`${BASE_API_URL}recipients/${id}/`);
 };
-const createRecipient = async ({ name, backgroundColor }) => {
+const createRecipient = async ({
+  name = '',
+  backgroundColor = '',
+  backgroundImageURL = null,
+}) => {
   return await customFetch(`${BASE_API_URL}recipients/`, {
     method: 'POST',
     body: JSON.stringify({
       name,
       backgroundColor,
+      backgroundImageURL,
     }),
   });
 };

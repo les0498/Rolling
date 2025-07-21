@@ -1,0 +1,10 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: rem(50px);
+}
+.errorMessage {
+  font-size: $font-sm;
+  color: $error;
+  margin-top: $size-md;
+}
