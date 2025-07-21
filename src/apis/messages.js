@@ -38,6 +38,27 @@ const createMessageById = async ({
     }),
   });
 };
+
+const patchMessageById = async ({
+  id = '',
+  sender,
+  profileImageURL,
+  relationship,
+  content,
+  font,
+}) => {
+  return await customFetch(`${BASE_API_URL}messages/${id}`, {
+    method: 'PATCH',
+    body: JSON.stringify({
+      sender,
+      profileImageURL,
+      relationship,
+      content,
+      font,
+    }),
+  });
+};
+
 const deleteMessageById = async (id = '') => {
   return await customFetch(`${BASE_API_URL}messages/${id}/`, {
     method: 'DELETE',
@@ -49,5 +70,6 @@ export {
   MESSAGE_FONT,
   getMessagesById,
   createMessageById,
+  patchMessageById,
   deleteMessageById,
 };

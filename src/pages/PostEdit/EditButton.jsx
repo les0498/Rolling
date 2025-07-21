@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import Button from '@/components/ui/Button';
 import { BUTTON_SIZE, BUTTON_VARIANT } from '@/components/ui/constants';
 
-function EditButton({ isEdit, setIsEdit }) {
+function EditButton({ isEdit, setIsEdit, setIsMsgEdit }) {
+  const clickHandler = () => {
+    setIsEdit((prev) => !prev);
+    setIsMsgEdit(false);
+  };
   return (
     <>
       <div>
@@ -14,10 +18,7 @@ function EditButton({ isEdit, setIsEdit }) {
         </Link>
       </div>
       <div>
-        <Button
-          size={BUTTON_SIZE.small}
-          onClick={() => setIsEdit((prev) => !prev)}
-        >
+        <Button size={BUTTON_SIZE.small} onClick={clickHandler}>
           {isEdit ? '돌아가기' : '수정하기'}
         </Button>
       </div>

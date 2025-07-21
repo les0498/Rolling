@@ -9,6 +9,7 @@ import CardDetail from '@/pages/PostDetail/CardDetail';
 
 import DeleteModal from '@/pages/PostEdit/DeleteModal';
 import EditButton from '@/pages/PostEdit/EditButton';
+import MessageEdit from '@/pages/PostEdit/MessageEdit';
 
 function PostCardList({
   messages,
@@ -32,6 +33,7 @@ function PostCardList({
 
   // edit 코드
   const [isEdit, setIsEdit] = useState(false);
+  const [isMsgEdit, setIsMsgEdit] = useState(false);
   // 메세지 삭제 모달
   const [isDelMessage, setIsDeleteMessage] = useState(false);
   const deleteCloseHandler = () => {
@@ -68,7 +70,11 @@ function PostCardList({
         <div className={cx('cardListContainer')}>
           {/* Edit 버튼 */}
           <div className={CLStyle.btnEdit}>
-            <EditButton isEdit={isEdit} setIsEdit={setIsEdit} />
+            <EditButton
+              isEdit={isEdit}
+              setIsEdit={setIsEdit}
+              setIsMsgEdit={setIsMsgEdit}
+            />
           </div>
           <div className={cn('cardBoxAdd')}>
             <AddMessageButton isEdit={isEdit} />
@@ -103,6 +109,7 @@ function PostCardList({
               setMsgSelect(msg);
               setIsDeleteMessage(true);
             }}
+            setIsMsgEdit={setIsMsgEdit}
           />
         ))}
         {/* 모달 */}
@@ -123,6 +130,16 @@ function PostCardList({
               messageId={msgSelect.id}
               setMessages={setMessages}
             />
+          </Modal>
+        )}
+        {/* 메시지 수정 모달 */}
+        {isEdit && isMsgEdit && msgSelect && (
+          <Modal
+            isOpen={isMsgEdit}
+            onClose={() => setIsMsgEdit(false)}
+            isMsgEdit={isMsgEdit}
+          >
+            <MessageEdit />
           </Modal>
         )}
 
