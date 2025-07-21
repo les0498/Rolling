@@ -70,6 +70,11 @@ export default function BackgroundSelect({
         <motion.div
           className={cx('option-indicator')}
           layout
+          transition={{
+            type: 'spring',
+            visualDuration: 0.2,
+            bounce: 0.2,
+          }}
           style={{
             left: isColorBackgroundOption ? '3px' : 'revert',
           }}

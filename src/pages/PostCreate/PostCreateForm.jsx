@@ -1,12 +1,16 @@
 import { useState } from 'react';
 
+import { BACKGROUND_COLOR, createRecipient } from '@/apis/recipients';
 import Button from '@/components/ui/Button';
 import InputField from '@/components/ui/InputField';
+import useAsync from '@/hooks/useAsync';
 import BackgroundSelect from '@/pages/PostCreate/BackgroundSelect';
 import { BACKGROUND_OPTION } from '@/pages/PostCreate/constants';
 import styles from '@/pages/PostCreate/PostCreateForm.module.scss';
 
 export default function PostCreateForm() {
+  const [submitLoading, submitError, createRecipientAsync] =
+    useAsync(createRecipient);
   const [inputErrors, setInputErrors] = useState({
     name: '',
     background: '',
@@ -62,12 +66,13 @@ export default function PostCreateForm() {
       }));
       return;
     }
-    const messageData = {
-      inputs,
-    };
-
-    console.log('폼 제출됨:', messageData);
-    // TODO: 여기서 실제 메시지 전송 API 호출
+    createRecipientAsync({
+      name: inputs.name,
+      backgroundColor: inputs.backgroundColor
+        ? inputs.backgroundColor
+        : BACKGROUND_COLOR.purple,
+      backgroundImageURL: inputs.backgroundImageURL,
+    });
   };
   const removeBackgroundError = () => {
     setInputErrors((prev) => ({
@@ -75,26 +80,31 @@ export default function PostCreateForm() {
       background: '',
     }));
   };
-  return (
-    <form className={styles.form}>
-      <InputField
-        id='to'
-        label='To.'
-        placeholder='이름을 입력해주세요'
-        value={inputs.name}
-        onChange={handleNameInputChange}
-        onBlur={handleNameInputBlur}
-        error={inputErrors.name}
-      />
-      <BackgroundSelect
-        inputs={inputs}
-        onChange={handleInputsChange}
-        removeBackgroundError={removeBackgroundError}
-      />
-      {inputErrors.background && (
-        <p className={styles.errorMessage}>{inputErrors.background}</p>
-      )}
-      <Button onClick={handleSubmit}>생성하기</Button>
-    </form>
-  );
+
+  if (submitLoading) return <p>loading...</p>;
+  else
+    return (
+      <form className={styles.form}>
+        <InputField
+          id='to'
+          label='To.'
+          placeholder='이름을 입력해주세요'
+          value={inputs.name}
+          onChange={handleNameInputChange}
+          onBlur={handleNameInputBlur}
+          error={inputErrors.name}
+        />
+        <div>
+          <BackgroundSelect
+            inputs={inputs}
+            onChange={handleInputsChange}
+            removeBackgroundError={removeBackgroundError}
+          />
+          {inputErrors.background && (
+            <p className={styles.errorMessage}>{inputErrors.background}</p>
+          )}
+        </div>
+        <Button onClick={handleSubmit}>생성하기</Button>
+      </form>
+    );
 }
