@@ -1,12 +1,16 @@
 $button-size: rem(56px);
+$button-img: rem(24px);
 
 .addCardBox {
+  @include flex-center;
   width: $button-size;
   height: $button-size;
-  font-size: $font-2xl;
-  color: $white;
   background-color: $gray600;
   border-radius: $radius-full;
-  border-style: none;
   cursor: pointer;
+}
+
+.plusIcon {
+  width: $button-img;
+  height: $button-img;
 }

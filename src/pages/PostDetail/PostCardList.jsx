@@ -1,9 +1,11 @@
 import classNames from 'classnames/bind';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import PostCard from '@/pages/PostDetail/PostCard';
 import CLStyle from '@/pages/PostDetail/PostCardList.module.scss';
 import AddMessageButton from '@/pages/PostDetail/AddMessageButton';
-import CStyle from '@/pages/PostDetail/PostCard.module.scss';
+import CStyle from '@/pages/PostDetail/CardDetail.module.scss';
+import Modal from '@/pages/PostDetail/Modal';
+import CardDetail from '@/pages/PostDetail/CardDetail';
 
 function PostCardList({
   messages,
@@ -13,6 +15,15 @@ function PostCardList({
   loading,
 }) {
   const cx = classNames.bind(CLStyle);
+  const cn = classNames.bind(CStyle);
+
+  // Modal 코드
+  const [modalOpen, setModalOpen] = useState(false);
+  const [msgSelect, setMsgSelect] = useState(null);
+
+  const handleCloseModal = () => setModalOpen(false);
+
+  // observer 코드
   const observerRef = useRef(null);
 
   useEffect(() => {
@@ -21,6 +32,7 @@ function PostCardList({
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
+          console.log('observer triggered');
           loadMore();
         }
       },
@@ -35,11 +47,14 @@ function PostCardList({
     };
   }, [hasMore, loadMore]);
 
+  {
+    /* 메시지가 없을 때 */
+  }
   if (!messages || !Array.isArray(messages) || messages.length === 0) {
     return (
-      <div className={CLStyle.background}>
-        <div className={CLStyle.cardListContainer}>
-          <div className={CStyle.cardBoxAdd}>
+      <div className={cx('background', `background-${backgroundColor}`)}>
+        <div className={cx('cardListContainer')}>
+          <div className={cn('cardBoxAdd')}>
             <AddMessageButton />
           </div>
         </div>
@@ -56,8 +71,21 @@ function PostCardList({
         </div>
         {/* 메시지 카드들 */}
         {messages.map((msg) => (
-          <PostCard key={msg.id} message={msg} />
+          <PostCard
+            key={msg.id}
+            message={msg}
+            onClick={() => {
+              setMsgSelect(msg);
+              setModalOpen(true);
+            }}
+          />
         ))}
+        {/* 모달 */}
+        {modalOpen && msgSelect && (
+          <Modal isOpen={modalOpen} onClose={handleCloseModal}>
+            <CardDetail message={msgSelect} variant='modal' />
+          </Modal>
+        )}
         {/* 무한 스크롤 */}
         <div ref={observerRef} style={{ height: 1 }} />
 
