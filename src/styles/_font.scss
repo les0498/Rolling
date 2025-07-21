@@ -63,17 +63,17 @@
   'Noto Sans',
   '@/assets/fonts/NotoSans/NotoSansKR-Regular.ttf',
   400,
-  'woff2'
+  'truetype'
 );
 @include font-face(
   '나눔명조',
   '@/assets/fonts/NanumMyeongjo/NanumMyeongjo-Regular.otf',
   400,
-  'woff'
+  'opentype'
 );
 @include font-face(
   '나눔손글씨 손편지체',
   '@/assets/fonts/NanumSonPyeonJiCe/NanumSonPyeonJiCe-Regular.ttf',
   400,
-  'woff'
+  'truetype'
 );
