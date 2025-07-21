@@ -2,6 +2,7 @@ import { BASE_API_URL } from '@/apis/constants';
 import { customFetch } from '@/apis/customFetch';
 
 const BACKGROUND_COLOR = {
+  default: 'beige',
   beige: 'beige',
   purple: 'purple',
   blue: 'blue',

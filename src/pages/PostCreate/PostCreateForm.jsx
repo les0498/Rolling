@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { BACKGROUND_COLOR, createRecipient } from '@/apis/recipients';
 import Button from '@/components/ui/Button';
@@ -11,71 +11,84 @@ import styles from '@/pages/PostCreate/PostCreateForm.module.scss';
 export default function PostCreateForm() {
   const [submitLoading, submitError, createRecipientAsync] =
     useAsync(createRecipient);
-  const [inputErrors, setInputErrors] = useState({
+  const [errors, setErrors] = useState({
     name: '',
     background: '',
   });
-  const [inputs, setInputs] = useState({
+  const [values, setValues] = useState({
     name: '',
     option: BACKGROUND_OPTION.color,
-    backgroundColor: '',
+    backgroundColor: BACKGROUND_COLOR.beige,
     backgroundImageURL: null,
   });
-  const handleInputsChange = (newInputs) => {
-    setInputs((prev) => ({
+  const handleInputsChange = useCallback((newInputs) => {
+    setValues((prev) => ({
       ...prev,
       ...newInputs,
     }));
-  };
+  }, []);
   /* TODO: InputField를 객체 상태를 수정하는 코드로 변경한 이후, 이 함수도 변경  */
   const handleNameInputChange = (value) => {
-    setInputs((prev) => ({
+    setValues((prev) => ({
       ...prev,
       name: value,
     }));
   };
   const handleNameInputBlur = () => {
-    if (inputs.name.trim() === '') {
-      setInputErrors((prev) => ({
+    if (values.name.trim() === '') {
+      setErrors((prev) => ({
         ...prev,
         name: '값을 입력해 주세요.',
       }));
     } else {
-      setInputErrors((prev) => ({
+      setErrors((prev) => ({
         ...prev,
         name: '',
       }));
     }
   };
+  const validateForm = () => {
+    const errors = {
+      name: '',
+      background: '',
+    };
+    const hasBackgroundInput =
+      values.backgroundColor || values.backgroundImageURL;
+    const hasNameInput = values.name.trim() === '';
+
+    if (!hasNameInput) errors.name = '값을 입력해 주세요.';
+    if (!hasBackgroundInput) errors.background = '배경화면을 선택하세요';
+    return errors;
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (inputs.name.trim() === '') {
-      setInputErrors((prev) => ({
+    if (values.name.trim() === '') {
+      setErrors((prev) => ({
         ...prev,
         name: '값을 입력해 주세요.',
       }));
       return;
     }
     const hasBackgroundInput =
-      inputs.backgroundColor || inputs.backgroundImageURL;
+      values.backgroundColor || values.backgroundImageURL;
 
     if (!hasBackgroundInput) {
-      setInputErrors((prev) => ({
+      setErrors((prev) => ({
         ...prev,
         background: '배경화면을 선택하세요',
       }));
       return;
     }
     createRecipientAsync({
-      name: inputs.name,
-      backgroundColor: inputs.backgroundColor
-        ? inputs.backgroundColor
+      name: values.name,
+      backgroundColor: values.backgroundColor
+        ? values.backgroundColor
         : BACKGROUND_COLOR.purple,
-      backgroundImageURL: inputs.backgroundImageURL,
+      backgroundImageURL: values.backgroundImageURL,
     });
   };
   const removeBackgroundError = () => {
-    setInputErrors((prev) => ({
+    setErrors((prev) => ({
       ...prev,
       background: '',
     }));
@@ -89,19 +102,19 @@ export default function PostCreateForm() {
           id='to'
           label='To.'
           placeholder='이름을 입력해주세요'
-          value={inputs.name}
+          value={values.name}
           onChange={handleNameInputChange}
           onBlur={handleNameInputBlur}
-          error={inputErrors.name}
+          error={errors.name}
         />
         <div>
           <BackgroundSelect
-            inputs={inputs}
+            values={values}
             onChange={handleInputsChange}
             removeBackgroundError={removeBackgroundError}
           />
-          {inputErrors.background && (
-            <p className={styles.errorMessage}>{inputErrors.background}</p>
+          {errors.background && (
+            <p className={styles.errorMessage}>{errors.background}</p>
           )}
         </div>
         <Button onClick={handleSubmit}>생성하기</Button>
