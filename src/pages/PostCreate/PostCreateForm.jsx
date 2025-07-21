@@ -13,7 +13,6 @@ export default function PostCreateForm() {
     useAsync(createRecipient);
   const [errors, setErrors] = useState({
     name: '',
-    background: '',
   });
   const [values, setValues] = useState({
     name: '',
@@ -21,7 +20,7 @@ export default function PostCreateForm() {
     backgroundColor: BACKGROUND_COLOR.beige,
     backgroundImageURL: null,
   });
-  const handleInputsChange = useCallback((newInputs) => {
+  const handleValuesChange = useCallback((newInputs) => {
     setValues((prev) => ({
       ...prev,
       ...newInputs,
@@ -34,64 +33,28 @@ export default function PostCreateForm() {
       name: value,
     }));
   };
-  const handleNameInputBlur = () => {
-    if (values.name.trim() === '') {
-      setErrors((prev) => ({
-        ...prev,
-        name: '값을 입력해 주세요.',
-      }));
-    } else {
-      setErrors((prev) => ({
-        ...prev,
-        name: '',
-      }));
-    }
-  };
   const validateForm = () => {
     const errors = {
       name: '',
-      background: '',
     };
-    const hasBackgroundInput =
-      values.backgroundColor || values.backgroundImageURL;
-    const hasNameInput = values.name.trim() === '';
-
+    const hasNameInput = values.name.trim() !== '';
     if (!hasNameInput) errors.name = '값을 입력해 주세요.';
-    if (!hasBackgroundInput) errors.background = '배경화면을 선택하세요';
+    else errors.name = '';
     return errors;
   };
+  const handleInputErrors = () => {
+    const errors = validateForm();
+    setErrors(errors);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (values.name.trim() === '') {
-      setErrors((prev) => ({
-        ...prev,
-        name: '값을 입력해 주세요.',
-      }));
-      return;
-    }
-    const hasBackgroundInput =
-      values.backgroundColor || values.backgroundImageURL;
 
-    if (!hasBackgroundInput) {
-      setErrors((prev) => ({
-        ...prev,
-        background: '배경화면을 선택하세요',
-      }));
-      return;
-    }
-    createRecipientAsync({
-      name: values.name,
-      backgroundColor: values.backgroundColor
-        ? values.backgroundColor
-        : BACKGROUND_COLOR.purple,
-      backgroundImageURL: values.backgroundImageURL,
-    });
-  };
-  const removeBackgroundError = () => {
-    setErrors((prev) => ({
-      ...prev,
-      background: '',
-    }));
+    const errors = validateForm();
+    setErrors(errors);
+    if (Object.values(errors).some((v) => v)) return;
+
+    createRecipientAsync(values);
   };
 
   if (submitLoading) return <p>loading...</p>;
@@ -104,18 +67,11 @@ export default function PostCreateForm() {
           placeholder='이름을 입력해주세요'
           value={values.name}
           onChange={handleNameInputChange}
-          onBlur={handleNameInputBlur}
+          onBlur={handleInputErrors}
           error={errors.name}
         />
         <div>
-          <BackgroundSelect
-            values={values}
-            onChange={handleInputsChange}
-            removeBackgroundError={removeBackgroundError}
-          />
-          {errors.background && (
-            <p className={styles.errorMessage}>{errors.background}</p>
-          )}
+          <BackgroundSelect values={values} onChange={handleValuesChange} />
         </div>
         <Button onClick={handleSubmit}>생성하기</Button>
       </form>

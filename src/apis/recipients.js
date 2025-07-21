@@ -19,7 +19,7 @@ const getRecipientById = async (id = '') => {
 };
 const createRecipient = async ({
   name = '',
-  backgroundColor = '',
+  backgroundColor = BACKGROUND_COLOR.default,
   backgroundImageURL = null,
 }) => {
   return await customFetch(`${BASE_API_URL}recipients/`, {

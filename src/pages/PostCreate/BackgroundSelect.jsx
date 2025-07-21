@@ -10,13 +10,8 @@ import ColorBox from '@/pages/PostCreate/ColorBox';
 import { BACKGROUND_OPTION } from '@/pages/PostCreate/constants';
 import ImageBox from '@/pages/PostCreate/ImageBox';
 
-export default function BackgroundSelect({
-  values,
-  onChange,
-  removeBackgroundError,
-}) {
+export default function BackgroundSelect({ values, onChange }) {
   const [backgroundImages, setBackgroundImages] = useState([]);
-  console.log(values);
   const [loading, error, getBackgroundImagesAsync] =
     useAsync(getBackgroundImages);
 
@@ -43,7 +38,6 @@ export default function BackgroundSelect({
         backgroundImageURL: e.target.name,
       });
     }
-    removeBackgroundError();
   };
 
   useEffect(() => {
