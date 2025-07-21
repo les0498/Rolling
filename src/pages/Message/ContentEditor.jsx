@@ -65,7 +65,7 @@ function ContentEditor({ value, onChange }) {
       onChange(editor.getHTML());
     },
     onCreate: () => {
-      console.log('✅ editor initialized');
+      console.log('editor initialized');
     },
   });
 
