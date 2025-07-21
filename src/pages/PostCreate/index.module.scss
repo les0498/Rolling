@@ -1,0 +1,9 @@
+.wrapper {
+  max-width: rem(720px);
+  margin: 0 auto;
+  padding-top: rem(47px);
+  @include tablet {
+    max-width: 100%;
+    padding: $size-lg;
+  }
+}

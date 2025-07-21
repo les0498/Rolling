@@ -7,7 +7,7 @@
 .label {
   font-size: $font-2xl;
   font-weight: 700;
-  color: $gray900;
+  color: var(--color-gray-text);
   font-family: $font-family-primary;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .errorMessage {
-  font-size: $font-xs;
+  font-size: $font-sm;
   color: $error;
   margin-top: $size-xs;
 }
