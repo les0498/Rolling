@@ -15,24 +15,24 @@ function CardDetail({ message, variant = 'card' }) {
   return (
     <div className={style.cardBox}>
       <div className={style.cardTopSection}>
-        <section className={style.cardProfile}>
+        <div className={style.cardProfile}>
           <ProfileIcon src={message.profileImageURL} />
-        </section>
-        <section className={style.cardWriterInfo}>
+        </div>
+        <div className={style.cardWriterInfo}>
           <div className={style.title}>
             <span className={style.fromLabel}>From. </span>
             <span className={style.writerName}>{message.sender}</span>
           </div>
           <RelationBadge relationship={message.relationship} />
-        </section>
+        </div>
       </div>
       <hr className={style.Hr} />
-      <section className={style.cardContent}>
+      <div className={style.cardContent}>
         <p>{message.content}</p>
-      </section>
-      <section className={style.cardDate}>
+      </div>
+      <div className={style.cardDate}>
         <p>{formatDate(message.createdAt)}</p>
-      </section>
+      </div>
     </div>
   );
 }
