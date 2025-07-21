@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 
-import { MESSAGE_RELATIONSHIP } from '@/api/message';
+import { MESSAGE_RELATIONSHIP } from '@/apis/messages';
 import styles from '@/components/ui/RelationBadge.module.scss';
 
 export default function RelationBadge({ relationship }) {
