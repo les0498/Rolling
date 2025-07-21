@@ -16,6 +16,7 @@ function PostCardList({
   loadMore,
   hasMore,
   loading,
+  setMessages,
 }) {
   const cx = classNames.bind(CLStyle);
   const cn = classNames.bind(CStyle);
@@ -120,6 +121,7 @@ function PostCardList({
             <DeleteModal
               onClose={deleteCloseHandler}
               messageId={msgSelect.id}
+              setMessages={setMessages}
             />
           </Modal>
         )}

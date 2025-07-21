@@ -52,6 +52,7 @@ export default function PostDetail() {
         loadMore={loadMore}
         hasMore={hasMore}
         loading={pending}
+        setMessages={setMessages}
       />
     </div>
   );

@@ -1,13 +1,19 @@
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { deleteMessageById } from '@/apis/messages';
+import { deleteMessageById, getMessagesById } from '@/apis/messages';
 import { deleteRecipientById } from '@/apis/recipients';
 import DeleteIcon from '@/assets/icons/delete.svg';
 import Button from '@/components/ui/Button';
 import { BUTTON_SIZE, BUTTON_VARIANT } from '@/components/ui/constants';
 import styles from '@/pages/PostEdit/DeleteModal.module.scss';
 
-function DeleteModal({ onClose, isPost = false, messageId = '' }) {
+function DeleteModal({
+  onClose,
+  isPost = false,
+  messageId = null,
+  setMessages = null,
+}) {
+  //postId
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -21,11 +27,13 @@ function DeleteModal({ onClose, isPost = false, messageId = '' }) {
 
       if (isPost) {
         await deleteRecipientById(id);
+        navigate('/list');
       } else {
         await deleteMessageById(messageId);
+        onClose();
+        const update = await getMessagesById({ id });
+        setMessages(update?.results || []);
       }
-      onClose();
-      navigate('/list');
     } catch (error) {
       console.error('삭제 실패: ', error);
     }

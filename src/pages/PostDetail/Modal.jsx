@@ -9,7 +9,7 @@ function Modal({ isOpen, onClose, children, isDelete = false }) {
 
   return (
     <div className={cn('modalBackdrop')} onClick={onClose}>
-      <div className={cn('modalContent')}>
+      <div className={cn('modalContent')} onClick={(e) => e.stopPropagation()}>
         {children}
         <div className={cn('modalButton')}>
           {!isDelete && <Button onClick={onClose}>확인</Button>}
