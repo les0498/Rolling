@@ -1,0 +1,33 @@
+.box {
+  @include flex-center;
+  width: rem(168px);
+  height: rem(168px);
+  border-radius: $radius-lg;
+  background-color: $gray300;
+
+  @include mobile {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+  &-color {
+    border: 2px solid rgba(0, 0, 0, 0.08);
+  }
+  &-image {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+}
+.beige {
+  background-color: $beige200;
+}
+.purple {
+  background-color: $purple200;
+}
+.blue {
+  background-color: $blue200;
+}
+.green {
+  background-color: $green200;
+}
