@@ -9,13 +9,10 @@
   border-radius: $size-md;
   background-color: $white;
   transform-origin: top left;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: box-shadow 0.2s ease;
   will-change: transform;
 
   &:hover {
-    transform: scale(1.03);
     box-shadow: 0 rem(8px) rem(16px) rgba(0, 0, 0, 0.15);
     z-index: 10;
   }
@@ -95,19 +92,4 @@
   align-items: center;
   gap: rem(8px);
   margin: $size-md 0 20px 24px;
-}
-
-.reaction {
-  width: rem(65px);
-  height: rem(32px);
-  padding: rem(8px) rem(12px);
-  gap: 2px;
-  background-color: rgba(0, 0, 0, 0.54);
-  color: $white;
-  font-size: $font-sm;
-  font-weight: 500;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: rem(32px);
 }

@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 
+import EmojiBadge from '@/components/ui/EmojiBadge';
 import styles from '@/pages/List/CardItem.module.scss';
 
 function CardItem({
@@ -21,8 +22,8 @@ function CardItem({
 
   return (
     <motion.div
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.9 }}
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.95 }}
       className={styles.card}
       onClick={handleClick}
       onKeyDown={(e) => {
@@ -62,10 +63,7 @@ function CardItem({
 
       <div className={styles.reactions}>
         {emojiReaction.map((reaction, idx) => (
-          <div key={idx} className={styles.reaction}>
-            <span>{reaction.emoji}</span>
-            <span>{reaction.count}</span>
-          </div>
+          <EmojiBadge key={idx} count={reaction.count} emoji={reaction.emoji} />
         ))}
       </div>
     </motion.div>
