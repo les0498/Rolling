@@ -10,7 +10,7 @@ export default function PostDetail() {
   const [messages, setMessages] = useState([]);
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState({});
   const limit = 8;
 
   const [pending, error, fetchMessages] = useAsync(getMessagesById);
@@ -48,7 +48,8 @@ export default function PostDetail() {
     <div>
       <PostCardList
         messages={messages}
-        backgroundColor={BACKGROUND_COLOR[user.backgroundColor]}
+        backgroundColor={BACKGROUND_COLOR[user?.backgroundColor]}
+        backgroundImage={user?.backgroundImageURL}
         loadMore={loadMore}
         hasMore={hasMore}
         loading={pending}

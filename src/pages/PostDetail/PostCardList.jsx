@@ -10,6 +10,7 @@ import CardDetail from '@/pages/PostDetail/CardDetail';
 function PostCardList({
   messages,
   backgroundColor,
+  backgroundImage,
   loadMore,
   hasMore,
   loading,
@@ -52,7 +53,12 @@ function PostCardList({
   }
   if (!messages || !Array.isArray(messages) || messages.length === 0) {
     return (
-      <div className={cx('background', `background-${backgroundColor}`)}>
+      <div
+        className={cx('background', `background-${backgroundColor}`)}
+        style={
+          backgroundImage ? { backgroundImage: `url(${backgroundImage})` } : {}
+        }
+      >
         <div className={cx('cardListContainer')}>
           <div className={cn('cardBoxAdd')}>
             <AddMessageButton />
@@ -63,7 +69,14 @@ function PostCardList({
   }
 
   return (
-    <div className={cx('background', `background-${backgroundColor}`)}>
+    <div
+      className={cx('background', `background-${backgroundColor}`)}
+      style={
+        backgroundImage
+          ? { backgroundImage: `url(${backgroundImage})` }
+          : undefined
+      }
+    >
       <div className={CLStyle.cardListContainer}>
         {/* +버튼 카드(항상 첫 번째) */}
         <div className={CStyle.cardBoxAdd}>
