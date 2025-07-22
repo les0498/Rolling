@@ -1,4 +1,7 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+  max-width: rem(1165px);
+  box-sizing: border-box;
+  gap: $size-md;
 }

@@ -1,27 +1,27 @@
 import { useEffect, useRef, useState } from 'react';
 
-import Img1 from '@/assets/images/profile1.png';
-import Img2 from '@/assets/images/profile2.png';
 import ProfileIcon from '@/components/ui/ProfileIcon';
 import styles from '@/pages/Message/ProfileUploader.module.scss';
 
 function ProfileUploader({ imageFile, setImageFile }) {
   const [preview, setPreview] = useState(null);
   const inputRef = useRef(null);
-  const selectImages = [...Array(5)].flatMap(() => [Img1, Img2]);
+  const selectImages = [...Array(5)].flatMap(() => [
+    'https://res.cloudinary.com/dxyy6jpne/image/upload/v1753151381/profile1_hg4kxj.png',
+    'https://res.cloudinary.com/dxyy6jpne/image/upload/v1753151381/profile2_euveob.png',
+  ]);
 
   //imageFile 바뀔 때마다 실행
   useEffect(() => {
-    if (!imageFile) {
-      setPreview(null);
-      return;
+    if (!imageFile) return setPreview(null);
+
+    if (typeof imageFile === 'string') {
+      setPreview(imageFile);
+    } else {
+      const objectUrl = URL.createObjectURL(imageFile);
+      setPreview(objectUrl);
+      return () => URL.revokeObjectURL(objectUrl);
     }
-
-    //파일 URL로 preview에 저장
-    const objectUrl = URL.createObjectURL(imageFile);
-    setPreview(objectUrl);
-
-    return () => URL.revokeObjectURL(objectUrl);
   }, [imageFile]);
 
   //file 클릭 유도
@@ -67,7 +67,7 @@ function ProfileUploader({ imageFile, setImageFile }) {
                 key={i}
                 className={styles.thumbnail}
                 onClick={() => {
-                  setImageFile(null);
+                  setImageFile(img);
                   setPreview(img);
                 }}
                 onKeyDown={(e) => {

@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
+import { createMessageById } from '@/apis/messages';
+import { uploads } from '@/apis/uploads.js';
 import Button from '@/components/ui/Button';
 import InputField from '@/components/ui/InputField';
 import ContentEditor from '@/pages/Message/ContentEditor';
@@ -15,9 +17,10 @@ function MessageForm() {
   const [fromError, setFromError] = useState('');
   const [relationship, setRelationship] = useState('지인');
   const [content, setContent] = useState('<p></p>');
-  const [font, setFont] = useState('noto-sans');
+  const [font, setFont] = useState('Noto Sans');
   const [imageFile, setImageFile] = useState(null);
 
+  const { id } = useParams();
   const isDisabled = from.trim() === '' || content.trim() === '<p></p>';
 
   //입력 칸에서 포커스 빠질 때 실행
@@ -29,7 +32,11 @@ function MessageForm() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    console.log('imageFile 타입:', typeof imageFile);
+    console.log('imageFile instanceof File:', imageFile instanceof File);
+    console.log('imageFile 값:', imageFile);
+
     e.preventDefault(); // 폼 제출 시 새로고침 방지
 
     if (from.trim() === '') {
@@ -37,16 +44,27 @@ function MessageForm() {
       return;
     }
 
-    const messageData = {
-      from,
-      relationship,
-      content,
-      font,
-      imageFile,
-    };
+    try {
+      let profileImageURL = '';
 
-    console.log('폼 제출됨:', messageData);
-    // TODO: 여기서 실제 메시지 전송 API 호출
+      if (imageFile instanceof File) {
+        profileImageURL = await uploads(imageFile);
+      } else if (typeof imageFile === 'string') {
+        profileImageURL = imageFile;
+      }
+
+      await createMessageById({
+        id,
+        sender: from,
+        profileImageURL,
+        relationship,
+        content,
+        font,
+      });
+      navigate(`/post/${id}`);
+    } catch (error) {
+      console.error('생성 실패: ', error);
+    }
   };
 
   const handleBack = () => {

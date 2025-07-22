@@ -5,36 +5,36 @@
 }
 
 .label {
+  margin-bottom: rem(12px);
   font-size: $font-2xl;
   font-weight: 700;
   font-family: $font-family-primary;
   color: $gray900;
-  margin-bottom: 12px;
 }
 
 .wrapper {
-  width: 720px;
-  height: 260px;
+  width: rem(720px);
+  height: rem(260px);
   border: 1px solid $gray300;
-  border-radius: 1px;
+  border-radius: rem(1px);
 }
 
 .toolbar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding: 8px;
+  padding: rem(8px);
   background-color: $gray200;
   border: none;
 
   button,
   select {
+    padding: rem(4px) rem(8px);
     background: $gray200;
     border: none;
-    border-radius: 4px;
-    padding: 4px 8px;
+    border-radius: rem(4px);
     cursor: pointer;
-    font-size: 14px;
+    font-size: rem(14px);
 
     &:hover {
       background-color: $purple100;
@@ -60,9 +60,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 4px;
-    width: 32px;
-    height: 32px;
+    padding: rem(4px);
+    width: rem(32px);
+    height: rem(32px);
 
     svg {
       color: $gray800;
@@ -75,8 +75,8 @@
 }
 
 .editorContentWrapper {
-  min-height: 200px;
-  padding: 12px;
+  min-height: rem(200px);
+  padding: rem(12px);
   background-color: white;
   cursor: text;
 }
@@ -84,8 +84,9 @@
 .editorContent {
   border: none;
   outline: none;
-  font-size: 16px;
+  font-size: rem(16px);
   line-height: 1.6;
+  white-space: pre-wrap;
 
   ul {
     list-style-type: disc;
@@ -115,5 +116,5 @@
 .emojiWrapper {
   position: absolute;
   z-index: 20;
-  margin-top: 8px;
+  margin-top: rem(8px);
 }

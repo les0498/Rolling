@@ -1,15 +1,14 @@
 .card {
   width: rem(275px);
   height: rem(260px);
-  border-radius: $size-md;
-  overflow: visible;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: $white;
-
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: $size-md;
+  background-color: $white;
+  transform-origin: top left;
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -17,27 +16,27 @@
 
   &:hover {
     transform: scale(1.03);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 rem(8px) rem(16px) rgba(0, 0, 0, 0.15);
+    z-index: 10;
   }
 }
 
 .thumbnail {
   height: rem(210px);
-  padding: rem(30px) rem(24px) rem(20px);
-  background-size: cover;
-  background-position: center;
-
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: rem(30px) rem(24px) rem(20px);
+  background-position: center;
+  background-size: cover;
   overflow: visible;
 }
 
 .title {
+  color: $gray900;
   font-size: $font-2xl;
   font-weight: 700;
-  color: $gray900;
 }
 
 .participants {
@@ -47,10 +46,10 @@
   & > * {
     width: rem(28px);
     height: rem(28px);
-    border-radius: 50%;
-    border: 1.5px solid $white;
-    object-fit: cover;
     margin-left: rem(-12px);
+    border: 1.5px solid $white;
+    border-radius: 50%;
+    object-fit: cover;
 
     &:first-child {
       margin-left: 0;
@@ -61,29 +60,27 @@
 .extra {
   width: rem(33px);
   height: rem(28px);
-  border-radius: rem(30px);
   margin-left: rem(-12px);
-
   background-color: $white;
   color: $gray500;
   font-size: $font-xs;
   font-weight: 400;
-
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: rem(30px);
 }
 
 .count {
+  color: $gray700;
   font-size: $font-md;
   font-weight: 400;
-  color: $gray700;
 }
 
 .total {
+  color: $gray700;
   font-size: $font-md;
   font-weight: 700;
-  color: $gray700;
 }
 
 .divider {
@@ -105,14 +102,12 @@
   height: rem(32px);
   padding: rem(8px) rem(12px);
   gap: 2px;
-  border-radius: rem(32px);
-
   background-color: rgba(0, 0, 0, 0.54);
   color: $white;
   font-size: $font-sm;
   font-weight: 500;
-
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: rem(32px);
 }
