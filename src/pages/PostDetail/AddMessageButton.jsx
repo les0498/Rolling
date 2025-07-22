@@ -1,13 +1,50 @@
 import { Link, useParams } from 'react-router-dom';
 import bStyle from '@/pages/PostDetail/AddMessageButton.module.scss';
+import classNames from 'classnames/bind';
+import plusIcon from '@/assets/images/plus.png';
 
-function AddMessageButton() {
+import { useState } from 'react';
+import Modal from '@/pages/PostDetail/Modal';
+import DeleteIcon from '@/assets/icons/delete.svg';
+import DStyle from '@/pages/PostEdit/DeleteButton.module.scss';
+import DeleteModal from '@/pages/PostEdit/DeleteModal';
+
+const cx = classNames.bind(bStyle);
+
+function AddMessageButton({ isEdit }) {
   const { id } = useParams();
 
+  const [isDelete, setIsDelete] = useState(false);
+
+  const onCloseHandler = () => {
+    setIsDelete(false);
+  };
+
   return (
-    <Link to={`/post/${id}/message`}>
-      <button className={bStyle.addCardBox}>+</button>
-    </Link>
+    <>
+      {isEdit ? (
+        <>
+          <button
+            onClick={() => setIsDelete(true)}
+            className={DStyle.btnDelete}
+          >
+            <DeleteIcon />
+            <span className={DStyle.btnDeleteCopy}>게시판 삭제하기</span>
+          </button>
+          {isDelete && (
+            <Modal isOpen={isDelete} onClose={onCloseHandler} isDelete={true}>
+              <DeleteModal onClose={onCloseHandler} isPost={true} />
+            </Modal>
+          )}
+        </>
+      ) : (
+        <Link to={`/post/${id}/message`} className={cx('link')}>
+          <button className={cx('addCardBox')}>
+            <img src={plusIcon} className={cx('plusIcon')} alt='plus' />
+          </button>
+        </Link>
+      )}
+    </>
   );
 }
 

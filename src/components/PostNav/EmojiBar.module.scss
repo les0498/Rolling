@@ -17,21 +17,6 @@
   }
 }
 
-.icon {
-  width: rem(63px);
-  height: rem(36px);
-  font-size: $font-md;
-  color: $white;
-  background-color: rgba($color: $black, $alpha: 0.54);
-  border-radius: 2rem;
-
-  @include mobile {
-    font-size: $font-sm;
-    width: rem(53px);
-    height: rem(28px);
-  }
-}
-
 //버튼 리셋 스타일 삭제
 .arrow {
   width: rem(36px);

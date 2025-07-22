@@ -1,0 +1,52 @@
+@use './CardDetailShared.module.scss' as *;
+
+.cardBoxAdd {
+  @include flex-center;
+  width: 100%;
+  height: rem(280px);
+  background-color: $white;
+  border-radius: $radius-lg;
+}
+
+.cardBox {
+  @include column;
+  position: relative;
+  width: 100%;
+  height: rem(280px);
+  background-color: $white;
+  border-radius: $radius-lg;
+  padding: rem(28px) rem(24px) rem(24px);
+  cursor: pointer;
+}
+
+.cardTopSection {
+  @include cardTopSection;
+}
+
+.cardProfile {
+  @include cardProfile;
+}
+
+.title {
+  @include title;
+}
+
+.fromLabel {
+  @include fromLabel;
+}
+
+.writerName {
+  @include writerName;
+}
+
+.Hr {
+  @include Hr;
+}
+
+.cardContent {
+  @include cardContent(rem(336px), rem(106px));
+}
+
+.cardDate {
+  @include cardDate($bottom: rem(24), $left: rem(24px));
+}

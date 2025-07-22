@@ -1,37 +1,25 @@
-import CStyle from '@/pages/PostDetail/PostCard.module.scss';
+import DeleteIcon from '@/assets/icons/delete.svg';
+import CardDetail from '@/pages/PostDetail/CardDetail';
+import DStyle from '@/pages/PostEdit/DeleteButton.module.scss';
 
-function formatDate(dateString) {
-  return dateString.split('T')[0];
-}
-
-function PostCard({ message }) {
+function PostCard({ message, onClick, isEdit, onDeleteClick, setIsMsgEdit }) {
   return (
-    <div className={CStyle.cardBox}>
-      <div className={CStyle.cardTopSection}>
-        <section className={CStyle.cardProfile}>
-          <img
-            src={message.profileImageURL}
-            alt='프로필'
-            className={CStyle.profileImage}
-          />
-        </section>
-        <section className={CStyle.cardWriterInfo}>
-          <div className={CStyle.title}>
-            <span className={CStyle.fromLabel}>From.</span>
-            <span className={CStyle.writerName}>{message.sender}</span>
+    <div className={DStyle.cardWrapper}>
+      {isEdit ? (
+        <>
+          <button className={DStyle.btnPostDelete} onClick={onDeleteClick}>
+            <DeleteIcon />
+          </button>
+          <div onClick={() => setIsMsgEdit(true)}>
+            <CardDetail message={message} variant='card' />
           </div>
-          <img src={message.relationship} alt='배지' className={CStyle.badge} />
-        </section>
-      </div>
-      <hr className={CStyle.Hr} />
-      <section className={CStyle.cardContent}>
-        <p>{message.content}</p>
-      </section>
-      <section className={CStyle.cardDate}>
-        <p>{formatDate(message.createdAt)}</p>
-      </section>
+        </>
+      ) : (
+        <div onClick={onClick}>
+          <CardDetail message={message} variant='card' />
+        </div>
+      )}
     </div>
   );
 }
-
 export default PostCard;

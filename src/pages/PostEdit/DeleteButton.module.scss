@@ -1,0 +1,35 @@
+//AddMessageButton.jsx
+.btnDelete {
+  svg {
+    width: rem(60px);
+    height: rem(60px);
+  }
+
+  &Copy {
+    display: block;
+    color: $gray400;
+    font-size: $font-md;
+    margin-top: rem(24px);
+  }
+}
+
+// PostCard.jsx
+.cardWrapper {
+  position: relative;
+}
+
+.btnPostDelete {
+  position: absolute;
+  width: rem(40px);
+  height: rem(40px);
+  border: 1px solid $gray300;
+  border-radius: rem(6px);
+  top: rem(30px);
+  right: rem(24px);
+  z-index: 2;
+
+  svg {
+    width: rem(16px);
+    height: rem(16px);
+  }
+}

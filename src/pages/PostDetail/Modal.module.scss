@@ -1,0 +1,74 @@
+@use './CardDetailShared.module.scss' as *;
+
+.modalBackdrop {
+  @include flex-center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6); // 투명 회색
+  z-index: 1000;
+}
+
+.modalContent {
+  @include column;
+  background: $white;
+  border-radius: $radius-lg;
+  padding: rem(40px);
+  width: rem(600px);
+  height: rem(476px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  position: relative;
+}
+
+.cardBox {
+  padding: 0;
+}
+
+.cardTopSection {
+  @include cardTopSection;
+}
+
+.cardProfile {
+  @include cardProfile;
+}
+
+.title {
+  @include title;
+}
+
+.fromLabel {
+  @include fromLabel;
+}
+
+.writerName {
+  @include writerName;
+}
+
+.Hr {
+  @include Hr;
+}
+
+.cardContent {
+  @include cardContent(rem(520px), rem(240px));
+  overflow-y: scroll;
+  padding-right: 20px;
+}
+
+.cardContent::-webkit-scrollbar {
+  width: 4px;
+}
+
+.cardContent::-webkit-scrollbar-thumb {
+  background: $gray300;
+}
+
+.cardDate {
+  @include cardDate($top: rem(56px), $right: rem(45px));
+}
+
+.modalButton {
+  margin: 0 auto;
+  width: rem(120px);
+}

@@ -1,0 +1,39 @@
+.box-wrapper {
+  position: relative;
+}
+.box {
+  width: rem(168px);
+  height: rem(168px);
+  border-radius: $radius-lg;
+
+  @include mobile {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+  &-color {
+    border: 2px solid rgba(0, 0, 0, 0.08);
+  }
+}
+.flicker {
+  position: absolute;
+  @include flicker;
+  background-color: $gray300;
+}
+.beige {
+  background-color: $beige200;
+}
+.purple {
+  background-color: $purple200;
+}
+.blue {
+  background-color: $blue200;
+}
+.green {
+  background-color: $green200;
+}
+.icon-wrapper {
+  position: absolute;
+  top: 37.5%;
+  left: 37.5%;
+}

@@ -2,6 +2,7 @@ import { BASE_API_URL } from '@/apis/constants';
 import { customFetch } from '@/apis/customFetch';
 
 const BACKGROUND_COLOR = {
+  default: 'beige',
   beige: 'beige',
   purple: 'purple',
   blue: 'blue',
@@ -16,12 +17,17 @@ const getRecipients = async ({ limit = 8, offset = 0, sort = '' }) => {
 const getRecipientById = async (id = '') => {
   return await customFetch(`${BASE_API_URL}recipients/${id}/`);
 };
-const createRecipient = async ({ name, backgroundColor }) => {
+const createRecipient = async ({
+  name = '',
+  backgroundColor = BACKGROUND_COLOR.default,
+  backgroundImageURL = null,
+}) => {
   return await customFetch(`${BASE_API_URL}recipients/`, {
     method: 'POST',
     body: JSON.stringify({
       name,
       backgroundColor,
+      backgroundImageURL,
     }),
   });
 };

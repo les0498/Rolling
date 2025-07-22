@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Button from '@/components/ui/Button';
 import InputField from '@/components/ui/InputField';
@@ -9,12 +10,15 @@ import ProfileUploader from '@/pages/Message/ProfileUploader';
 import RelationshipSelect from '@/pages/Message/RelationshipSelect';
 
 function MessageForm() {
+  const navigate = useNavigate();
   const [from, setFrom] = useState('');
   const [fromError, setFromError] = useState('');
   const [relationship, setRelationship] = useState('지인');
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState('<p></p>');
   const [font, setFont] = useState('noto-sans');
   const [imageFile, setImageFile] = useState(null);
+
+  const isDisabled = from.trim() === '' || content.trim() === '<p></p>';
 
   //입력 칸에서 포커스 빠질 때 실행
   const handleFromBlur = () => {
@@ -45,6 +49,10 @@ function MessageForm() {
     // TODO: 여기서 실제 메시지 전송 API 호출
   };
 
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   return (
     <form className={styles.form}>
       <InputField
@@ -60,7 +68,25 @@ function MessageForm() {
       <RelationshipSelect value={relationship} onChange={setRelationship} />
       <ContentEditor value={content} onChange={setContent} />
       <FontSelector value={font} onChange={setFont} />
-      <Button onClick={handleSubmit}>생성하기</Button>
+      <div className={styles.buttonGroup}>
+        <Button
+          type='submit'
+          variant='primary'
+          size='big'
+          disabled={isDisabled}
+          onClick={handleSubmit}
+        >
+          생성하기
+        </Button>
+        <Button
+          type='button'
+          variant='secondary'
+          size='big'
+          onClick={handleBack}
+        >
+          뒤로
+        </Button>
+      </div>
     </form>
   );
 }
