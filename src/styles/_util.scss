@@ -8,6 +8,7 @@
 
 @mixin flicker {
   animation: flickerAnimation 1s infinite;
+  background-color: #cccccc;
 
   @keyframes flickerAnimation {
     0% {
