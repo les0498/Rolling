@@ -1,9 +1,10 @@
+.box-wrapper {
+  position: relative;
+}
 .box {
-  @include flex-center;
   width: rem(168px);
   height: rem(168px);
   border-radius: $radius-lg;
-  background-color: $gray300;
 
   @include mobile {
     width: 100%;
@@ -13,11 +14,11 @@
   &-color {
     border: 2px solid rgba(0, 0, 0, 0.08);
   }
-  &-image {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-  }
+}
+.flicker {
+  position: absolute;
+  @include flicker;
+  background-color: $gray300;
 }
 .beige {
   background-color: $beige200;
@@ -30,4 +31,9 @@
 }
 .green {
   background-color: $green200;
+}
+.icon-wrapper {
+  position: absolute;
+  top: 37.5%;
+  left: 37.5%;
 }

@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
 
-import { getRecipientById } from '@/apis/recipients';
 import Header from '@/components/layout/Header';
 import PostNav from '@/components/PostNav';
 import useIsMobile from '@/hooks/useIsMobile';
@@ -10,18 +9,21 @@ import styles from '@/layouts/Layout.module.scss';
 
 export default function PostPageLayout() {
   const isMobile = useIsMobile();
+
   const { id } = useParams();
 
   const navigate = useNavigate();
 
   // 리다이렉트
-  const { author, recentMessages, loading, error } = useRecipientId();
+  const { author, loading, error } = useRecipientId(id);
 
   useEffect(() => {
     if (loading || (!author && !error)) return;
 
     if (error || author?.id !== Number(id)) {
-      navigate('/post', { replace: true });
+      navigate('/list', { replace: true });
+
+      sessionStorage.setItem('errToast', 'true');
     }
   }, [author, id, loading, error, navigate]);
 
@@ -32,13 +34,9 @@ export default function PostPageLayout() {
   return (
     <>
       {isMobile ? null : <Header />}
-      <PostNav
-        author={author}
-        recentMessages={recentMessages}
-        loading={loading}
-      />
+      <PostNav />
       <div className={styles.container}>
-        <Outlet context={{ author, recentMessages, loading, error }} />
+        <Outlet />
       </div>
     </>
   );

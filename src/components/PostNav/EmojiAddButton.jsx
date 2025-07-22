@@ -1,30 +1,19 @@
 import { useRef, useState } from 'react';
 import EmojiPicker, { EmojiStyle } from 'emoji-picker-react';
 
-import { createReactionById, getReactionsById } from '@/apis/reactions';
 import addIcon from '@/assets/images/addIcon.png';
 import lineStyle from '@/components/PostNav/AuthorCount.module.scss';
 import styles from '@/components/PostNav/EmojiAddButton.module.scss';
+import useEmojiClick from '@/components/PostNav/useEmojiClick';
 import useIsMobile from '@/hooks/useIsMobile';
 import useOutsideClick from '@/hooks/useOutsideClick';
 
-function EmojiAddButton({ setTopReactions, id }) {
+function EmojiAddButton({ setReactions, id }) {
   const isMobile = useIsMobile();
 
   const [isEmoji, setIsEmoji] = useState(false);
 
-  const onEmojiClick = async (emojiObject) => {
-    const emoji = emojiObject.emoji;
-
-    try {
-      await createReactionById({ id, emoji, type: 'increase' });
-    } catch (error) {
-      console.error('이모지 추가 실패:', error);
-    }
-
-    const updated = await getReactionsById({ id });
-    setTopReactions(updated.results);
-  };
+  const emojiClickHandler = useEmojiClick({ setReactions, id });
 
   const emojiRef = useRef(null);
   useOutsideClick(emojiRef, () => setIsEmoji(false));
@@ -41,7 +30,7 @@ function EmojiAddButton({ setTopReactions, id }) {
       {isEmoji && (
         <div className={styles.emojiBox}>
           <EmojiPicker
-            onEmojiClick={onEmojiClick}
+            onEmojiClick={(emojiObj) => emojiClickHandler(emojiObj.emoji)}
             emojiStyle={EmojiStyle.NATIVE}
             width={290}
           />
