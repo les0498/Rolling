@@ -30,14 +30,6 @@ function MessageForm({
   const [font, setFont] = useState(initFont);
   const [imageFile, setImageFile] = useState(initImage);
 
-  useEffect(() => {
-    setFrom(initSender);
-    setRelationship(initRelationship);
-    setContent(initContent);
-    setFont(initFont);
-    setImageFile(initImage);
-  }, [initSender, initRelationship, initContent, initFont, initImage]);
-
   const { id } = useParams();
   const isDisabled = from.trim() === '' || content.trim() === '<p></p>';
 
