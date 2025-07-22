@@ -6,6 +6,20 @@
   align-items: center;
 }
 
+@mixin flicker {
+  @keyframes flickerAnimation {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  animation: flickerAnimation 1s infinite;
+}
 /* px to rem */
 $base-rem-size: 16px;
 @function remove-unit($value) {

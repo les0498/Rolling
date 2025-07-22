@@ -6,9 +6,9 @@ import { getBackgroundImages } from '@/apis/images';
 import { BACKGROUND_COLOR } from '@/apis/recipients';
 import useAsync from '@/hooks/useAsync';
 import styles from '@/pages/PostCreate/BackgroundSelect.module.scss';
-import ColorBox from '@/pages/PostCreate/ColorBox';
+import ColorBoxes from '@/pages/PostCreate/ColorBoxes';
 import { BACKGROUND_OPTION } from '@/pages/PostCreate/constants';
-import ImageBox from '@/pages/PostCreate/ImageBox';
+import ImageBoxes from '@/pages/PostCreate/ImageBoxes';
 
 export default function BackgroundSelect({ values, onChange }) {
   const [backgroundImages, setBackgroundImages] = useState([]);
@@ -18,7 +18,6 @@ export default function BackgroundSelect({ values, onChange }) {
   const cx = classNames.bind(styles);
   const isImageOptionSelected = values.option === BACKGROUND_OPTION.image;
   const isColorOptionSelected = values.option === BACKGROUND_OPTION.color;
-  const backgroundColorList = Object.keys(BACKGROUND_COLOR).slice(1);
   const handleOptionSelect = (e) => {
     e.preventDefault();
     onChange({
@@ -35,7 +34,7 @@ export default function BackgroundSelect({ values, onChange }) {
     if (isImageOptionSelected) {
       onChange({
         backgroundColor: BACKGROUND_COLOR.default,
-        backgroundImageURL: e.target.name,
+        backgroundImageURL: e.target.src,
       });
     }
   };
@@ -101,31 +100,17 @@ export default function BackgroundSelect({ values, onChange }) {
       <div className={cx('boxes-wrapper')}>
         {isColorOptionSelected ? (
           <>
-            {backgroundColorList.map((color, i) => (
-              <ColorBox
-                key={i}
-                onClick={handleBackgroundSelect}
-                color={color}
-                isSelected={values.backgroundColor === color}
-                name={color}
-              />
-            ))}
+            <ColorBoxes
+              onClick={handleBackgroundSelect}
+              selectedColor={values.backgroundColor}
+            />
           </>
         ) : (
-          <>
-            {loading ? (
-              <span>loading...</span>
-            ) : (
-              backgroundImages.map((url, i) => (
-                <ImageBox
-                  key={i}
-                  url={url}
-                  onClick={handleBackgroundSelect}
-                  isSelected={values.backgroundImageURL === url}
-                />
-              ))
-            )}
-          </>
+          <ImageBoxes
+            backgroundImages={backgroundImages}
+            onClick={handleBackgroundSelect}
+            selectedImage={values.backgroundImageURL}
+          />
         )}
       </div>
     </section>

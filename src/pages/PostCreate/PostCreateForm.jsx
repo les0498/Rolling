@@ -1,14 +1,17 @@
 import { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { BACKGROUND_COLOR, createRecipient } from '@/apis/recipients';
 import Button from '@/components/ui/Button';
 import InputField from '@/components/ui/InputField';
+import LoadingDots from '@/components/ui/LoadingDots';
 import useAsync from '@/hooks/useAsync';
 import BackgroundSelect from '@/pages/PostCreate/BackgroundSelect';
 import { BACKGROUND_OPTION } from '@/pages/PostCreate/constants';
 import styles from '@/pages/PostCreate/PostCreateForm.module.scss';
 
 export default function PostCreateForm() {
+  const navigate = useNavigate();
   const [submitLoading, submitError, createRecipientAsync] =
     useAsync(createRecipient);
   const [errors, setErrors] = useState({
@@ -47,17 +50,18 @@ export default function PostCreateForm() {
     setErrors(errors);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const errors = validateForm();
     setErrors(errors);
     if (Object.values(errors).some((v) => v)) return;
 
-    createRecipientAsync(values);
+    const { id } = await createRecipientAsync(values);
+    if (!submitError && id) navigate(`/post/${id}`, { replace: true });
   };
 
-  if (submitLoading) return <p>loading...</p>;
+  if (submitLoading) return <LoadingDots />;
   else
     return (
       <form className={styles.form}>

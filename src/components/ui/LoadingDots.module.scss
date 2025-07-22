@@ -1,0 +1,17 @@
+.container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $size-sm;
+}
+
+.dot {
+  width: rem(20px);
+  height: rem(20px);
+  border-radius: $radius-full;
+  background-color: $purple600;
+  will-change: transform;
+}
