@@ -1,10 +1,12 @@
 .badge {
-  padding: rem(8px) $size-md;
+  @include flex-center;
+  width: rem(63px);
+  height: rem(36px);
   border-radius: $radius-2xl;
   background-color: rgba(0, 0, 0, 0.54);
   color: $white;
 }
+
 .count {
   margin-left: $size-xs;
-  line-height: 20px;
 }

@@ -3,7 +3,7 @@
   position: relative;
 }
 
-//공통
+//공통 (shareBtn)
 .btn {
   @include flex-center;
   height: rem(36px);
@@ -14,7 +14,7 @@
   padding: rem(17px) rem(8px);
 }
 
-//공통
+//공통 (shareBtn)
 .icon {
   width: rem(21px);
   height: rem(21px);
