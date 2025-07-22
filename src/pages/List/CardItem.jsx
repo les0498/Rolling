@@ -14,6 +14,7 @@ function CardItem({
   const navigate = useNavigate();
 
   const handleClick = () => {
+    console.log('navigate to', `/post/${id}`);
     navigate(`/post/${id}`);
   };
 
