@@ -1,0 +1,19 @@
+.container {
+  @include flex-center;
+  flex-direction: column;
+  gap: $size-md;
+  & > svg {
+    width: rem(800px);
+  }
+}
+.title {
+  font-size: $font-3xl;
+  font-weight: bold;
+}
+.description {
+  font-weight: 200;
+  color: $gray300;
+}
+.button-wrapper {
+  width: rem(250px);
+}
