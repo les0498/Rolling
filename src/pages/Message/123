@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
+import { createMessageById } from '@/apis/messages';
+import { uploads } from '@/apis/uploads.js';
 import Button from '@/components/ui/Button';
 import InputField from '@/components/ui/InputField';
 import ContentEditor from '@/pages/Message/ContentEditor';
@@ -28,6 +30,7 @@ function MessageForm({
   const [font, setFont] = useState(initFont);
   const [imageFile, setImageFile] = useState(initImage);
 
+  const { id } = useParams();
   const isDisabled = from.trim() === '' || content.trim() === '<p></p>';
 
   useEffect(() => {
@@ -48,7 +51,11 @@ function MessageForm({
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    console.log('imageFile 타입:', typeof imageFile);
+    console.log('imageFile instanceof File:', imageFile instanceof File);
+    console.log('imageFile 값:', imageFile);
+
     e.preventDefault(); // 폼 제출 시 새로고침 방지
 
     if (from.trim() === '') {

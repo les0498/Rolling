@@ -109,7 +109,10 @@ function PostCardList({
               setMsgSelect(msg);
               setIsDeleteMessage(true);
             }}
-            setIsMsgEdit={setIsMsgEdit}
+            editClick={() => {
+              setMsgSelect(msg);
+              setIsMsgEdit(true);
+            }}
           />
         ))}
         {/* 모달 */}

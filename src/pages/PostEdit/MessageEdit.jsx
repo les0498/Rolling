@@ -16,6 +16,7 @@ function MessageEdit({ messageId, setMessages, onClose = () => {} }) {
   const [message, setMessage] = useState(null);
   useEffect(() => {
     if (!messageId) return;
+
     const fetchData = async () => {
       const messageData = await getOneMsgById(messageId);
 
@@ -23,6 +24,7 @@ function MessageEdit({ messageId, setMessages, onClose = () => {} }) {
         setMessage(messageData);
       }
     };
+
     fetchData();
   }, [messageId, fetchMsg]);
 
@@ -36,10 +38,10 @@ function MessageEdit({ messageId, setMessages, onClose = () => {} }) {
 
   const editHandler = async ({
     from,
+    imageFile,
     relationship,
     content,
     font,
-    imageFile,
   }) => {
     await patchMessageById({
       id: messageId,
@@ -56,17 +58,20 @@ function MessageEdit({ messageId, setMessages, onClose = () => {} }) {
 
   return (
     <div>
-      <MessageForm
-        sender={sender}
-        profileImageURL={profileImageURL}
-        relationship={relationship}
-        content={content}
-        font={font}
-        onSubmit={editHandler}
-        onClose={onClose}
-        submitLabel='보내기'
-        backLabel='취소'
-      />
+      {message && (
+        <MessageForm
+          key={messageId}
+          sender={sender}
+          profileImageURL={profileImageURL}
+          relationship={relationship}
+          content={content}
+          font={font}
+          onSubmit={editHandler}
+          onClose={onClose}
+          submitLabel='보내기'
+          backLabel='취소'
+        />
+      )}
     </div>
   );
 }
