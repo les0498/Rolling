@@ -43,7 +43,6 @@ export default function PostDetail() {
     });
   }, [id, offset, limit, fetchMessages]);
 
-  if (pending && messages.length === 0) return <LoadingDots />;
   if (error) return <div>에러 발생!</div>;
 
   return (

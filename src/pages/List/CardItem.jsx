@@ -2,7 +2,9 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 
 import AnimatedNumber from '@/components/ui/AnimateNumber';
+import { PROFILE_ICON_SIZE } from '@/components/ui/constants';
 import EmojiBadge from '@/components/ui/EmojiBadge';
+import ProfileIcon from '@/components/ui/ProfileIcon';
 import styles from '@/pages/List/CardItem.module.scss';
 
 function CardItem({
@@ -44,11 +46,12 @@ function CardItem({
         {/* 참여자 리스트 */}
         <div className={styles.participants}>
           {participants.slice(0, 3).map((url, index) => (
-            <img
+            <ProfileIcon
               key={index}
+              size={PROFILE_ICON_SIZE.small}
+              stroke={true}
               src={url}
               alt={`participant-${index}`}
-              className={styles.avatar}
             />
           ))}
           {participants.length > 3 && (

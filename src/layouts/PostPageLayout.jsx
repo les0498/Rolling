@@ -28,10 +28,6 @@ export default function PostPageLayout() {
     }
   }, [author, id, loading, error, navigate]);
 
-  if (loading) {
-    return <LoadingDots />;
-  }
-
   return (
     <>
       {isMobile ? null : <Header />}

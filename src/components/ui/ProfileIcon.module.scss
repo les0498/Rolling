@@ -1,6 +1,6 @@
 .profile {
+  position: relative;
   border-radius: $radius-full;
-  background-color: $gray300;
   @include flex-center;
 }
 .profile-big {
@@ -16,5 +16,12 @@
 }
 .img {
   width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
   border-radius: $radius-full;
+}
+.profile-skeleton {
+  position: absolute;
+  border-radius: $radius-full;
+  @include flicker;
 }

@@ -50,3 +50,6 @@
 .cardDate {
   @include cardDate($bottom: rem(24), $left: rem(24px));
 }
+.cardSkeleton {
+  @include flicker;
+}
