@@ -70,11 +70,7 @@ function PostCardList({
         <div className={cx('cardListContainer')}>
           {/* Edit 버튼 */}
           <div className={CLStyle.btnEdit}>
-            <EditButton
-              isEdit={isEdit}
-              setIsEdit={setIsEdit}
-              setIsMsgEdit={setIsMsgEdit}
-            />
+            <EditButton isEdit={isEdit} setIsEdit={setIsEdit} />
           </div>
           <div className={cn('cardBoxAdd')}>
             <AddMessageButton isEdit={isEdit} />
@@ -89,7 +85,11 @@ function PostCardList({
       <div className={CLStyle.cardListContainer}>
         {/* Edit 버튼 */}
         <div className={CLStyle.btnEdit}>
-          <EditButton isEdit={isEdit} setIsEdit={setIsEdit} />
+          <EditButton
+            isEdit={isEdit}
+            setIsEdit={setIsEdit}
+            setIsMsgEdit={setIsMsgEdit}
+          />
         </div>
         {/* +버튼 카드(항상 첫 번째) */}
         <div className={CStyle.cardBoxAdd}>
@@ -139,7 +139,12 @@ function PostCardList({
             onClose={() => setIsMsgEdit(false)}
             isMsgEdit={isMsgEdit}
           >
-            <MessageEdit />
+            <MessageEdit
+              messageId={msgSelect.id}
+              editMsg={msgSelect}
+              setMessages={setMessages}
+              onClose={() => setIsMsgEdit(false)}
+            />
           </Modal>
         )}
 

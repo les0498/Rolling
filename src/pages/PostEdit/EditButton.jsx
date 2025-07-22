@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Button from '@/components/ui/Button';
 import { BUTTON_SIZE, BUTTON_VARIANT } from '@/components/ui/constants';
 
-function EditButton({ isEdit, setIsEdit, setIsMsgEdit }) {
+function EditButton({ isEdit, setIsEdit, setIsMsgEdit = null }) {
   const clickHandler = () => {
     setIsEdit((prev) => !prev);
     setIsMsgEdit(false);

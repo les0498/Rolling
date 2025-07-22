@@ -17,7 +17,7 @@ function PostNav() {
 
   //reaction API
   const [reactions, setReactions] = useState(null);
-  const [pending, , fetchReactions] = useAsync(getReactionsById);
+  const [, , fetchReactions] = useAsync(getReactionsById);
 
   useEffect(() => {
     if (!id) return;
@@ -35,8 +35,6 @@ function PostNav() {
   //recipient
   const messageCount = author?.messageCount ?? 0;
   const profileURLs = topMessage?.map((msg) => msg.profileImageURL);
-
-  if (loading || pending) return <div>불러오는 중...</div>;
 
   return (
     <nav className={styles.container}>
