@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 
+import AnimatedNumber from '@/components/ui/AnimateNumber';
 import EmojiBadge from '@/components/ui/EmojiBadge';
 import styles from '@/pages/List/CardItem.module.scss';
 
@@ -56,7 +57,10 @@ function CardItem({
         </div>
 
         <p className={styles.count}>
-          <span className={styles.total}>{totalCount}</span>명이 작성했어요!
+          <span className={styles.total}>
+            <AnimatedNumber value={totalCount} />
+          </span>
+          명이 작성했어요!
         </p>
       </div>
       <hr className={styles.divider} />

@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 
-import img01 from '@/assets/images/img_01-1.png';
+import img01 from '@/assets/images/img_01.png';
 import sectionMotion from '@/pages/Home/sectionMotion';
 
 import '@/pages/Home/MainSection.scss';
