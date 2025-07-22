@@ -32,6 +32,7 @@
     "@tiptap/starter-kit": "^3.0.7",
     "classnames": "^2.5.1",
     "emoji-picker-react": "^4.13.1",
+    "framer-motion": "^12.23.6",
     "motion": "^12.23.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

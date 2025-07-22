@@ -6,44 +6,38 @@ import { getBackgroundImages } from '@/apis/images';
 import { BACKGROUND_COLOR } from '@/apis/recipients';
 import useAsync from '@/hooks/useAsync';
 import styles from '@/pages/PostCreate/BackgroundSelect.module.scss';
-import ColorBox from '@/pages/PostCreate/ColorBox';
+import ColorBoxes from '@/pages/PostCreate/ColorBoxes';
 import { BACKGROUND_OPTION } from '@/pages/PostCreate/constants';
-import ImageBox from '@/pages/PostCreate/ImageBox';
+import ImageBoxes from '@/pages/PostCreate/ImageBoxes';
 
-export default function BackgroundSelect({
-  inputs,
-  onChange,
-  removeBackgroundError,
-}) {
+export default function BackgroundSelect({ values, onChange }) {
   const [backgroundImages, setBackgroundImages] = useState([]);
-  const [select, setSelect] = useState('');
-
   const [loading, error, getBackgroundImagesAsync] =
     useAsync(getBackgroundImages);
 
+  const cx = classNames.bind(styles);
+  const isImageOptionSelected = values.option === BACKGROUND_OPTION.image;
+  const isColorOptionSelected = values.option === BACKGROUND_OPTION.color;
   const handleOptionSelect = (e) => {
     e.preventDefault();
-    setSelect('');
     onChange({
       option: e.target.name,
-      backgroundColor: '',
-      backgroundImageURL: null,
+      backgroundColor: BACKGROUND_COLOR.default, // option과 관계없이 항상 beige 기본값
+      backgroundImageURL: isImageOptionSelected ? backgroundImages[0] : null, // image option일때 첫번째 이미지 선택
     });
   };
   const handleBackgroundSelect = (e) => {
     e.preventDefault();
-    setSelect(e.target.name);
-    if (inputs.option === BACKGROUND_OPTION.color) {
+    if (isColorOptionSelected) {
       onChange({ backgroundColor: e.target.name, backgroundImageURL: null });
     }
-    if (inputs.option === BACKGROUND_OPTION.image) {
-      onChange({ backgroundColor: '', backgroundImageURL: e.target.name });
+    if (isImageOptionSelected) {
+      onChange({
+        backgroundColor: BACKGROUND_COLOR.default,
+        backgroundImageURL: e.target.src,
+      });
     }
-    removeBackgroundError();
   };
-  const cx = classNames.bind(styles);
-  const isColorBackgroundOption = inputs.option === BACKGROUND_OPTION.color;
-  const backgroundColorList = [...Object.keys(BACKGROUND_COLOR)];
 
   useEffect(() => {
     (async function fetchData() {
@@ -54,9 +48,12 @@ export default function BackgroundSelect({
       }
       if (imageUrls) {
         setBackgroundImages(imageUrls);
+        onChange({
+          backgroundImageURL: isImageOptionSelected ? imageUrls[0] : null,
+        });
       }
     })();
-  }, [getBackgroundImagesAsync, error]);
+  }, [getBackgroundImagesAsync, isImageOptionSelected, error, onChange]);
 
   return (
     <section className={cx('container')}>
@@ -76,15 +73,15 @@ export default function BackgroundSelect({
             bounce: 0.2,
           }}
           style={{
-            left: isColorBackgroundOption ? '3px' : 'revert',
+            left: isColorOptionSelected ? '3px' : 'revert',
           }}
         />
         <button
           name={BACKGROUND_OPTION.color}
           onClick={handleOptionSelect}
           className={cx('option', 'option-color', {
-            'option-selected': isColorBackgroundOption,
-            'option-left': !isColorBackgroundOption,
+            'option-selected': isColorOptionSelected,
+            'option-left': !isColorOptionSelected,
           })}
         >
           컬러
@@ -93,41 +90,27 @@ export default function BackgroundSelect({
           name={BACKGROUND_OPTION.image}
           onClick={handleOptionSelect}
           className={cx('option', {
-            'option-selected': !isColorBackgroundOption,
-            'option-right': isColorBackgroundOption,
+            'option-selected': !isColorOptionSelected,
+            'option-right': isColorOptionSelected,
           })}
         >
           이미지
         </button>
       </div>
       <div className={cx('boxes-wrapper')}>
-        {isColorBackgroundOption ? (
+        {isColorOptionSelected ? (
           <>
-            {backgroundColorList.map((color, i) => (
-              <ColorBox
-                key={i}
-                onClick={handleBackgroundSelect}
-                color={color}
-                isSelected={select === color}
-                name={color}
-              />
-            ))}
+            <ColorBoxes
+              onClick={handleBackgroundSelect}
+              selectedColor={values.backgroundColor}
+            />
           </>
         ) : (
-          <>
-            {loading ? (
-              <span>loading...</span>
-            ) : (
-              backgroundImages.map((url, i) => (
-                <ImageBox
-                  key={i}
-                  url={url}
-                  onClick={handleBackgroundSelect}
-                  isSelected={select === url}
-                />
-              ))
-            )}
-          </>
+          <ImageBoxes
+            backgroundImages={backgroundImages}
+            onClick={handleBackgroundSelect}
+            selectedImage={values.backgroundImageURL}
+          />
         )}
       </div>
     </section>

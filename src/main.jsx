@@ -30,7 +30,9 @@ createRoot(document.getElementById('root')).render(
             <Route path='/post/:id' element={<PostDetail />} />
             <Route path='/post/:id/edit' element={<NotFound />} />
           </Route>
-          <Route path='*' element={<NotFound />} />
+          <Route element={<MainLayout />}>
+            <Route path='*' element={<NotFound />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

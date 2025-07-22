@@ -46,6 +46,19 @@
   overflow: hidden;
 }
 
+.font-noto-sans p {
+  font-family: 'Noto Sans', serif;
+}
+.font-pretendard p {
+  font-family: 'Pretendard', serif;
+}
+.font-nanum-myeongjo p {
+  font-family: '나눔명조', serif;
+}
+.font-nanum-pen p {
+  font-family: '나눔손글씨 손편지체', cursive;
+}
+
 @mixin cardDate(
   $position: absolute,
   $top: null,

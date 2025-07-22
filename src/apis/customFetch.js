@@ -12,5 +12,9 @@ export async function customFetch(input, init) {
     throw new Error(`[${res.status}] ${errorText}`);
   }
 
+  if (res.status === 204) {
+    return null;
+  }
+
   return res.json();
 }
