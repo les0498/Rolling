@@ -17,8 +17,8 @@
 }
 .flicker {
   position: absolute;
-  @include flicker;
   background-color: $gray300;
+  @include flicker;
 }
 .beige {
   background-color: $beige200;
