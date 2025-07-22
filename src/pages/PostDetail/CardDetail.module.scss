@@ -44,14 +44,7 @@
 }
 
 .cardContent {
-  @include cardContent(rem(336px), rem(106px));
-
-  @media (max-width: 1247px) {
-    @include cardContent(rem(304px), rem(110px));
-  }
-  @media (max-width: 767px) {
-    @include cardContent(rem(272px), rem(56px));
-  }
+  @include cardContent(100%, rem(106px));
 }
 
 .cardDate {

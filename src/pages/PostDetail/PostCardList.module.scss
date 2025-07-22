@@ -43,6 +43,8 @@
     width: 100%;
     grid-template-columns: repeat(1, 1fr);
     margin: 0 auto;
+    padding-left: rem(16px);
+    padding-right: rem(16px);
   }
 }
 
