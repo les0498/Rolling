@@ -24,11 +24,11 @@ function CardSlider({ cards }) {
   };
 
   const scrollLeft = () => {
-    sliderRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+    sliderRef.current.scrollBy({ left: -1180, behavior: 'smooth' });
   };
 
   const scrollRight = () => {
-    sliderRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+    sliderRef.current.scrollBy({ left: 1180, behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -57,10 +57,12 @@ function CardSlider({ cards }) {
         </div>
       )}
       <div className={styles.sliderOuter} ref={sliderRef}>
-        <div className={styles.slider}>
-          {cards.map((card) => (
-            <CardItem key={card.id} {...card} />
-          ))}
+        <div className={styles.sliderHoverWrapper}>
+          <div className={styles.slider}>
+            {cards.map((card) => (
+              <CardItem key={card.id} {...card} />
+            ))}
+          </div>
         </div>
       </div>
 

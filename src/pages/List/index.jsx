@@ -13,9 +13,18 @@ function ListPage() {
 
   return (
     <div className={styles.wrapper}>
-      <CardSliderSection title='인기 롤링 페이퍼 🔥' />
-      <CardSliderSection title='최근에 만든 롤링 페이퍼 ⭐' />
-      <Button onClick={handleSubmit}>나도 만들어보기</Button>
+      <CardSliderSection title='인기 롤링 페이퍼 🔥' sort='like' />
+      <CardSliderSection title='최근에 만든 롤링 페이퍼 ⭐' sort='createAt' />
+      <div className={styles.buttonField}>
+        <Button
+          type='button'
+          variant='primary'
+          size='big'
+          onClick={handleSubmit}
+        >
+          나도 만들어보기
+        </Button>
+      </div>
     </div>
   );
 }

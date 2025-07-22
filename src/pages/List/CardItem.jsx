@@ -1,6 +1,9 @@
+import { useNavigate } from 'react-router-dom';
+
 import styles from '@/pages/List/CardItem.module.scss';
 
 function CardItem({
+  id,
   title,
   participants = [],
   totalCount,
@@ -8,12 +11,25 @@ function CardItem({
   backgroundImage,
   backgroundColor,
 }) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/post/${id}`);
+  };
+
   return (
     <div
       className={styles.card}
+      onClick={handleClick}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter') handleClick();
+      }}
+      role='button'
+      tabIndex={0}
       style={{
         backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none',
         backgroundColor: backgroundImage ? undefined : backgroundColor,
+        cursor: 'pointer',
       }}
     >
       {/* 단일 카드 구성 요소 */}
