@@ -1,5 +1,7 @@
 # 'Rolling' 프로젝트 
 > 개발 기간: 25.07.10 ~ 25.07.25
+<img width="1253" height="736" alt="image" src="https://github.com/user-attachments/assets/c64d529e-df9d-4654-9e26-f37f23c7381f" />
+
 # 🙋🏻 팀원 소개
 <div align="center">
 <table><tr>
