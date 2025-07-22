@@ -1,3 +1,4 @@
+import { MESSAGE_FONT } from '@/apis/messages';
 import ProfileIcon from '@/components/ui/ProfileIcon';
 import RelationBadge from '@/components/ui/RelationBadge';
 import CStyle from '@/pages/PostDetail/CardDetail.module.scss';
@@ -12,27 +13,38 @@ function CardDetail({ message, variant = 'card' }) {
 
   const style = variant === 'modal' ? MStyle : CStyle;
 
+  const fontClassMap = {
+    [MESSAGE_FONT['Noto Sans']]: style['font-noto-sans'],
+    [MESSAGE_FONT['Pretendard']]: style['font-pretendard'],
+    [MESSAGE_FONT['나눔명조']]: style['font-nanum-myeongjo'],
+    [MESSAGE_FONT['나눔손글씨 손편지체']]: style['font-nanum-pen'],
+  };
+
+  function getFontClass(font) {
+    return fontClassMap[font] || style['font-noto-sans'];
+  }
+
   return (
     <div className={style.cardBox}>
       <div className={style.cardTopSection}>
-        <section className={style.cardProfile}>
+        <div className={style.cardProfile}>
           <ProfileIcon src={message.profileImageURL} />
-        </section>
-        <section className={style.cardWriterInfo}>
+        </div>
+        <div className={style.cardWriterInfo}>
           <div className={style.title}>
             <span className={style.fromLabel}>From. </span>
             <span className={style.writerName}>{message.sender}</span>
           </div>
           <RelationBadge relationship={message.relationship} />
-        </section>
+        </div>
       </div>
       <hr className={style.Hr} />
-      <section className={style.cardContent}>
+      <div className={`${style.cardContent} ${getFontClass(message.font)}`}>
         <p>{message.content}</p>
-      </section>
-      <section className={style.cardDate}>
+      </div>
+      <div className={style.cardDate}>
         <p>{formatDate(message.createdAt)}</p>
-      </section>
+      </div>
     </div>
   );
 }
