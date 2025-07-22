@@ -73,8 +73,8 @@
 🔌 <b>API & Util</b><br/><br/>
 <img src="https://img.shields.io/badge/Intersection_Observer-000000?style=for-the-badge&logo=webcomponents.org&logoColor=white" />
 <img src="https://img.shields.io/badge/Framer_Motion-EF008F?style=for-the-badge&logo=framer&logoColor=white" />
-<img src="https://img.shields.io/badge/Emoji_Picker_React-FFCC00?style=for-the-badge&logo=twemoji&logoColor=black" />
 <br>
+<img src="https://img.shields.io/badge/Emoji_Picker_React-FFCC00?style=for-the-badge&logo=twemoji&logoColor=black" />
 <img src="https://img.shields.io/badge/classnames-222222?style=for-the-badge&logo=javascript&logoColor=white" />
 <img src="https://img.shields.io/badge/tiptap-8E44AD?style=for-the-badge&logo=tiptap&logoColor=white" />
 
