@@ -35,11 +35,11 @@
   &:disabled {
     background-color: $gray300;
   }
-  &:hover {
+  &:enabled:hover {
     background-color: $purple100;
     border: 1px solid $purple700;
   }
-  &:active {
+  &:enabled:active {
     background-color: $purple100;
     border: 1px solid $purple800;
   }

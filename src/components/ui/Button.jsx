@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { motion } from 'motion/react';
 
 import styles from '@/components/ui/Button.module.scss';
 import { BUTTON_SIZE, BUTTON_VARIANT } from '@/components/ui/constants';
@@ -12,7 +13,9 @@ export default function Button({
 }) {
   const cn = classNames.bind(styles);
   return (
-    <button
+    <motion.button
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
       onClick={onClick}
       className={cn(
         {
@@ -27,6 +30,6 @@ export default function Button({
       {...rest}
     >
       {children}
-    </button>
+    </motion.button>
   );
 }
