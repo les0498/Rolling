@@ -25,9 +25,25 @@
   grid-template-columns: repeat(3, 1fr);
   gap: $size-lg;
   padding: rem(113px) 0;
-  width: rem(1200px);
+  width: 100%;
+  max-width: rem(1200px);
   margin: 0 auto;
   position: relative;
+
+  @media (max-width: 1247px) {
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding-right: rem(24px);
+    padding-left: rem(24px);
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+    grid-template-columns: repeat(1, 1fr);
+    margin: 0 auto;
+  }
 }
 
 .btnEdit {
