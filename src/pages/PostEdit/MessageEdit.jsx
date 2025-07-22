@@ -1,15 +1,54 @@
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { getMessagesById, patchMessageById } from '@/apis/messages';
-import Button from '@/components/ui/Button';
-import { BUTTON_VARIANT } from '@/components/ui/constants';
+import {
+  getMessagesById,
+  getOneMsgById,
+  patchMessageById,
+} from '@/apis/messages';
+import useAsync from '@/hooks/useAsync';
 import MessageForm from '@/pages/Message/MessageForm';
 
-function MessageEdit({ editMsg, messageId, setMessages, onClose = () => {} }) {
+function MessageEdit({ messageId, setMessages, onClose = () => {} }) {
   const { id } = useParams();
+  const [, , fetchMsg] = useAsync(getOneMsgById);
 
-  const editHandler = async () => {
-    patchMessageById(messageId);
+  const [message, setMessage] = useState(null);
+  useEffect(() => {
+    if (!messageId) return;
+    const fetchData = async () => {
+      const messageData = await getOneMsgById(messageId);
+
+      if (messageData) {
+        setMessage(messageData);
+      }
+    };
+    fetchData();
+  }, [messageId, fetchMsg]);
+
+  const {
+    sender = '',
+    profileImageURL = '',
+    relationship = '',
+    content = '',
+    font = 'Noto Sans',
+  } = message || {};
+
+  const editHandler = async ({
+    from,
+    relationship,
+    content,
+    font,
+    imageFile,
+  }) => {
+    await patchMessageById({
+      id: messageId,
+      sender: from,
+      profileImageURL: imageFile,
+      relationship,
+      content,
+      font,
+    });
     onClose();
     const update = await getMessagesById({ id });
     setMessages(update?.results || []);
@@ -18,14 +57,16 @@ function MessageEdit({ editMsg, messageId, setMessages, onClose = () => {} }) {
   return (
     <div>
       <MessageForm
-        editMsg={editMsg}
+        sender={sender}
+        profileImageURL={profileImageURL}
+        relationship={relationship}
+        content={content}
+        font={font}
         onSubmit={editHandler}
+        onClose={onClose}
         submitLabel='보내기'
+        backLabel='취소'
       />
-
-      <Button variant={BUTTON_VARIANT.secondary} onClick={onClose}>
-        취소
-      </Button>
     </div>
   );
 }

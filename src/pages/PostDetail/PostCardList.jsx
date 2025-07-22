@@ -141,7 +141,6 @@ function PostCardList({
           >
             <MessageEdit
               messageId={msgSelect.id}
-              editMsg={msgSelect}
               setMessages={setMessages}
               onClose={() => setIsMsgEdit(false)}
             />
