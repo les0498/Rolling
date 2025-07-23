@@ -5,6 +5,10 @@
   border-radius: $radius-2xl;
   background-color: rgba(0, 0, 0, 0.54);
   color: $white;
+  @include mobile {
+    width: rem(53px);
+    height: rem(28px);
+  }
 }
 
 .count {

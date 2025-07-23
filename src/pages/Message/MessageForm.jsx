@@ -50,11 +50,6 @@ function MessageForm({
       return;
     }
 
-    if (onSubmit) {
-      onSubmit({ from, imageFile, relationship, content, font });
-      return;
-    }
-
     try {
       let profileImageURL = '';
 
@@ -62,6 +57,11 @@ function MessageForm({
         profileImageURL = await uploads(imageFile);
       } else if (typeof imageFile === 'string') {
         profileImageURL = imageFile;
+      }
+
+      if (onSubmit) {
+        onSubmit({ from, profileImageURL, relationship, content, font });
+        return;
       }
 
       await createMessageById({

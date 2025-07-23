@@ -8,10 +8,14 @@ import {
 } from '@/apis/messages';
 import useAsync from '@/hooks/useAsync';
 import MessageForm from '@/pages/Message/MessageForm';
+import { useTopMessage } from '@/layouts/PostPageLayout';
+import { getRecipientById } from '@/apis/recipients';
 
 function MessageEdit({ messageId, setMessages, onClose = () => {} }) {
   const { id } = useParams();
   const [, , fetchMsg] = useAsync(getOneMsgById);
+
+  const { setTopMessage } = useTopMessage();
 
   const [message, setMessage] = useState(null);
   useEffect(() => {
@@ -38,7 +42,7 @@ function MessageEdit({ messageId, setMessages, onClose = () => {} }) {
 
   const editHandler = async ({
     from,
-    imageFile,
+    profileImageURL,
     relationship,
     content,
     font,
@@ -46,7 +50,7 @@ function MessageEdit({ messageId, setMessages, onClose = () => {} }) {
     await patchMessageById({
       id: messageId,
       sender: from,
-      profileImageURL: imageFile,
+      profileImageURL,
       relationship,
       content,
       font,
@@ -54,6 +58,8 @@ function MessageEdit({ messageId, setMessages, onClose = () => {} }) {
     onClose();
     const update = await getMessagesById({ id });
     setMessages(update?.results || []);
+    const updateMsg = await getRecipientById(id);
+    setTopMessage([...(updateMsg?.recentMessages || [])]);
   };
 
   return (

@@ -17,14 +17,11 @@
   }
 }
 
-//버튼 리셋 스타일 삭제
 .arrow {
   width: rem(36px);
   height: rem(36px);
-  border: none;
   background: transparent url('@/assets/images/arrow.png') center / 12px
     no-repeat;
-  padding: 0;
   transition: transform 0.3s ease;
 }
 
