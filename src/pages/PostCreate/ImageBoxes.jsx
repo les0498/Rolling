@@ -22,10 +22,7 @@ export default function ImageBoxes({
     </>
   );
 }
-function SkeletonBox() {
-  const cx = classNames.bind(styles);
-  return <div className={cx('box', 'flicker')} />;
-}
+
 function ImageBox({ onClick, url, isSelected }) {
   const cx = classNames.bind(styles);
   const { isLoading, onLoad, onError } = useImageLoader('');
@@ -48,4 +45,8 @@ function ImageBox({ onClick, url, isSelected }) {
       )}
     </button>
   );
+}
+function SkeletonBox() {
+  const cx = classNames.bind(styles);
+  return <div className={cx('box', 'flicker')} />;
 }

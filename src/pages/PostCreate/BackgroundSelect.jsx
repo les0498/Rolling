@@ -29,12 +29,15 @@ export default function BackgroundSelect({ values, onChange }) {
   const handleBackgroundSelect = (e) => {
     e.preventDefault();
     if (isColorOptionSelected) {
-      onChange({ backgroundColor: e.target.name, backgroundImageURL: null });
+      onChange({
+        backgroundColor: e.currentTarget.name,
+        backgroundImageURL: null,
+      });
     }
     if (isImageOptionSelected) {
       onChange({
         backgroundColor: BACKGROUND_COLOR.default,
-        backgroundImageURL: e.target.src,
+        backgroundImageURL: e.currentTarget.src,
       });
     }
   };
