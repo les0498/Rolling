@@ -20,6 +20,7 @@
   gap: common.rem(6px);
   overflow: hidden;
   word-break: break-word;
+  flex: 1;
 }
 
 @mixin fromLabel {
