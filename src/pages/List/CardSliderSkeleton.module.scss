@@ -1,0 +1,13 @@
+.sliderWrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: rem(40px);
+  gap: $size-md;
+}
+.card {
+  width: rem(275px);
+  height: rem(260px);
+  border-radius: $size-md;
+  @include flicker;
+}
