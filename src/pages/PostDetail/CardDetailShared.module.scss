@@ -1,7 +1,8 @@
 @use '@/styles/common' as common;
 
 @mixin column {
-  display: column;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
