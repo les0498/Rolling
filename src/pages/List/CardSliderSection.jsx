@@ -11,11 +11,25 @@ function CardSliderSection({ title, sort = '' }) {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    const fecthRecipients = async () => {
+    const fetchRecipients = async () => {
       try {
-        const data = await getRecipients({ limit: 8, offset: 0, sort });
+        const data = await getRecipients({ limit: 8, offset: 0 });
+        let sorted = data.results;
 
-        const converted = data.results.map((recipient) => ({
+        if (sort === 'like') {
+          // messageCount 기준 내림차순 정렬
+          sorted = sorted.sort(
+            (a, b) => Number(b.messageCount) - Number(a.messageCount)
+          );
+        } else if (sort === 'createdAt') {
+          // createdAt 기준 내림차순 정렬
+          sorted = sorted.sort(
+            (a, b) =>
+              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          );
+        }
+
+        const converted = sorted.map((recipient) => ({
           id: recipient.id,
           title: recipient.name,
           backgroundImage: recipient.backgroundImageURL,
@@ -23,7 +37,7 @@ function CardSliderSection({ title, sort = '' }) {
           totalCount: recipient.messageCount,
           participants: recipient.recentMessages.map(
             (msg) => msg.profileImageURL
-          ),
+          ), // 최대 3명 (이미지용)
           emojiReaction: recipient.topReactions,
         }));
 
@@ -33,7 +47,7 @@ function CardSliderSection({ title, sort = '' }) {
       }
     };
 
-    fecthRecipients();
+    fetchRecipients();
   }, [sort]);
 
   const hasCards = cards.length > 0;

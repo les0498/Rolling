@@ -2,9 +2,10 @@ import styles from '@/pages/Message/FontSelector.module.scss';
 
 function FontSelector({ value, onChange }) {
   const FONT_OPTIONS = [
-    { label: 'Noto Sans', value: 'noto-sans' },
-    { label: 'Pretendard', value: 'pretendard' },
-    { label: '나눔손글씨', value: 'nanum' },
+    { label: 'Noto Sans', value: 'Noto Sans' },
+    { label: 'Pretendard', value: 'Pretendard' },
+    { label: '나눔명조', value: '나눔명조' },
+    { label: '나눔손글씨 손편지체', value: '나눔손글씨 손편지체' },
   ];
 
   return (
