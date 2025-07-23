@@ -31,7 +31,7 @@ export default function PostPageLayout() {
     <>
       {isMobile ? null : <Header />}
       <PostNav />
-      <div className={styles.container}>
+      <div className={styles['container-post']}>
         <Outlet />
       </div>
     </>
