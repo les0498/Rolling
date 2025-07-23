@@ -2,27 +2,46 @@
   display: flex;
   flex-direction: column;
   gap: rem(12px);
+  max-width: rem(320px);
 }
 
 .label {
   font-size: $font-2xl;
   font-weight: 700;
-  font-family: $font-family-primary;
   color: var(--color-gray-text);
 }
 
-.select {
+.font__control {
   width: 100%;
-  padding: rem(12px) $size-md;
+  padding: rem(4px) $size-md;
   background-color: $white;
   border: 1px solid $gray300;
   border-radius: $radius-md;
   font-size: $font-md;
   font-weight: 400;
-  color: $gray500;
+  color: $gray700;
+  box-shadow: none;
+  cursor: pointer;
 
-  &:focus {
-    border-color: $purple500;
-    outline: none;
+  &:hover {
+    border-color: $gray400;
   }
+}
+
+.font__value-container {
+  padding: rem(8px) 0;
+}
+
+.font__indicator-separator {
+  display: none;
+}
+
+.font__menu {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+}
+
+.font__option {
+  padding: rem(10px) rem(12px);
+  cursor: pointer;
 }
