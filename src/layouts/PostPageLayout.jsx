@@ -3,7 +3,6 @@ import { Outlet, useNavigate, useParams } from 'react-router-dom';
 
 import Header from '@/components/layout/Header';
 import PostNav from '@/components/PostNav';
-import LoadingDots from '@/components/ui/LoadingDots';
 import useIsMobile from '@/hooks/useIsMobile';
 import useRecipientId from '@/hooks/useRecipientId';
 import styles from '@/layouts/Layout.module.scss';

@@ -40,7 +40,7 @@
   font-size: common.$font-lg;
   font-weight: 400;
   line-height: common.$font-3xl;
-  color: common.$gray600;
+  color: var(--color-default-text);
   margin-top: common.$size-md;
   margin-bottom: common.$size-md;
   overflow: hidden;

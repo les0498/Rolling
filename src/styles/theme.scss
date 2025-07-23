@@ -6,6 +6,7 @@ html[data-theme='light'] {
 
   --color-gray-text: #{$gray800};
   --color-light-gray-text: #{$gray500};
+  --color-hover-gray: #{$gray100};
 }
 html[data-theme='dark'] {
   --color-default-background: #{$dark};
@@ -15,6 +16,7 @@ html[data-theme='dark'] {
 
   --color-gray-text: #{$gray100};
   --color-light-gray-text: #{$gray400};
+  --color-hover-gray: #{$black};
 }
 body {
   background-color: var(--color-default-background);
