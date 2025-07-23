@@ -44,7 +44,7 @@
 }
 
 .cardContent {
-  @include cardContent(rem(336px), rem(106px));
+  @include cardContent(100%, rem(106px));
 }
 
 .cardDate {

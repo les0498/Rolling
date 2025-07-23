@@ -14,6 +14,7 @@ import MessageEdit from '@/pages/PostEdit/MessageEdit';
 function PostCardList({
   messages,
   backgroundColor,
+  backgroundImage,
   loadMore,
   hasMore,
   loading,
@@ -66,7 +67,12 @@ function PostCardList({
   }
   if (!messages || !Array.isArray(messages) || messages.length === 0) {
     return (
-      <div className={cx('background', `background-${backgroundColor}`)}>
+      <div
+        className={cx('background', `background-${backgroundColor}`)}
+        style={
+          backgroundImage ? { backgroundImage: `url(${backgroundImage})` } : {}
+        }
+      >
         <div className={cx('cardListContainer')}>
           {/* Edit 버튼 */}
           <div className={CLStyle.btnEdit}>
@@ -81,7 +87,14 @@ function PostCardList({
   }
 
   return (
-    <div className={cx('background', `background-${backgroundColor}`)}>
+    <div
+      className={cx('background', `background-${backgroundColor}`)}
+      style={
+        backgroundImage
+          ? { backgroundImage: `url(${backgroundImage})` }
+          : undefined
+      }
+    >
       <div className={CLStyle.cardListContainer}>
         {/* Edit 버튼 */}
         <div className={CLStyle.btnEdit}>
