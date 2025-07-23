@@ -18,6 +18,8 @@
 @mixin title {
   margin-bottom: common.rem(6px);
   gap: common.rem(6px);
+  overflow: hidden;
+  word-break: break-word;
 }
 
 @mixin fromLabel {
@@ -31,8 +33,9 @@
 }
 
 @mixin Hr {
-  border: none;
   border-top: 1px solid common.$gray200;
+  height: 0;
+  width: 100%;
 }
 
 @mixin cardContent($width, $height) {
@@ -45,6 +48,7 @@
   margin-top: common.$size-md;
   margin-bottom: common.$size-md;
   overflow: hidden;
+  word-break: break-word;
 }
 
 .font-noto-sans p {

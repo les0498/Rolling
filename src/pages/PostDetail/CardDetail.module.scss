@@ -6,17 +6,23 @@
   height: rem(280px);
   background-color: var(--color-default-background);
   border-radius: $radius-lg;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .cardBox {
   @include column;
   position: relative;
+  align-items: flex-start;
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   height: rem(280px);
   background-color: var(--color-default-background);
   border-radius: $radius-lg;
   padding: rem(28px) rem(24px) rem(24px);
   cursor: pointer;
+  overflow: hidden;
 }
 
 .cardTopSection {
