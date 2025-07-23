@@ -39,9 +39,10 @@ function CardDetail({ message, variant = 'card' }) {
         </div>
       </div>
       <hr className={style.Hr} />
-      <div className={`${style.cardContent} ${getFontClass(message.font)}`}>
-        <p>{message.content}</p>
-      </div>
+      <div
+        className={`${style.cardContent} ${getFontClass(message.font)}`}
+        dangerouslySetInnerHTML={{ __html: message.content }}
+      />
       <div className={style.cardDate}>
         <p>{formatDate(message.createdAt)}</p>
       </div>

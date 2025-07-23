@@ -62,7 +62,10 @@ function ContentEditor({ value, onChange }) {
     extensions,
     content: value || '<p></p>',
     onUpdate: ({ editor }) => {
-      onChange(editor.getHTML());
+      const html = editor.getHTML().trim();
+      const cleanContent =
+        html === '<p></p>' || html === '<p><br></p>' ? '' : html;
+      onChange(cleanContent);
     },
     onCreate: () => {
       console.log('editor initialized');
