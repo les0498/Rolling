@@ -1,4 +1,5 @@
 .card {
+  position: relative;
   width: rem(275px);
   height: rem(260px);
   z-index: 1;
@@ -11,11 +12,23 @@
   transform-origin: top left;
   transition: box-shadow 0.2s ease;
   will-change: transform;
-
+  cursor: pointer;
   &:hover {
     box-shadow: 0 rem(8px) rem(16px) rgba(0, 0, 0, 0.15);
     z-index: 10;
   }
+}
+.overlay {
+  border-radius: $size-md;
+  opacity: 0.8 !important;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-size: 100%;
+  z-index: -1;
+  content: '';
+  width: 100%;
+  height: 100%;
 }
 
 .thumbnail {
@@ -79,7 +92,12 @@
   font-size: $font-md;
   font-weight: 700;
 }
-
+.white {
+  color: $white;
+  & > span {
+    color: $white;
+  }
+}
 .divider {
   width: rem(227px);
   height: 1px;
@@ -92,4 +110,22 @@
   align-items: center;
   gap: rem(8px);
   margin: $size-md 0 20px 24px;
+}
+.pattern {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+.green {
+  background-color: $green200;
+}
+.beige {
+  background-color: $beige200;
+}
+.purple {
+  background-color: $purple200;
+}
+.blue {
+  background-color: $blue200;
 }

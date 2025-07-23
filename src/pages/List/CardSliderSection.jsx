@@ -14,7 +14,6 @@ function CardSliderSection({ title, sort = '' }) {
     const fecthRecipients = async () => {
       try {
         const data = await getRecipients({ limit: 8, offset: 0, sort });
-
         const converted = data.results.map((recipient) => ({
           id: recipient.id,
           title: recipient.name,
