@@ -1,12 +1,12 @@
 import styles from '@/pages/List/CardSliderSkeleton.module.scss';
 
-export default function CardeSliderSkeleton() {
+export default function CardSliderSkeleton() {
   return (
-    <div className={styles.sliderWrapper}>
-      <div className={styles.card} />
-      <div className={styles.card} />
-      <div className={styles.card} />
-      <div className={styles.card} />
+    <div className={styles.slider}>
+      <div className={styles['card-skeleton']} />
+      <div className={styles['card-skeleton']} />
+      <div className={styles['card-skeleton']} />
+      <div className={styles['card-skeleton']} />
     </div>
   );
 }

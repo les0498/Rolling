@@ -77,7 +77,9 @@ export default function PostCreateForm() {
         <div>
           <BackgroundSelect values={values} onChange={handleValuesChange} />
         </div>
-        <Button onClick={handleSubmit}>생성하기</Button>
+        <Button onClick={handleSubmit} disabled={!values.name}>
+          생성하기
+        </Button>
       </form>
     );
 }

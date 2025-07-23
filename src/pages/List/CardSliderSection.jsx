@@ -2,18 +2,21 @@
 import { useEffect, useState } from 'react';
 
 import { getRecipients } from '@/apis/recipients';
+import useAsync from '@/hooks/useAsync';
 import CardSlider from '@/pages/List/CardSlider';
 import styles from '@/pages/List/CardSliderSection.module.scss';
+import CardSliderSkeleton from '@/pages/List/CardSliderSkeleton';
 import EmptyState from '@/pages/List/EmptyState';
 import SectionTitle from '@/pages/List/SectionTitle';
 
 function CardSliderSection({ title, sort = '' }) {
   const [cards, setCards] = useState([]);
+  const [loading, error, getRecipientsAsync] = useAsync(getRecipients);
 
   useEffect(() => {
     const fetchRecipients = async () => {
       try {
-        const data = await getRecipients({ limit: 8, offset: 0 });
+        const data = await getRecipientsAsync({ limit: 8, offset: 0 });
         let sorted = data.results;
 
         if (sort === 'like') {
@@ -48,14 +51,13 @@ function CardSliderSection({ title, sort = '' }) {
     };
 
     fetchRecipients();
-  }, [sort]);
+  }, [sort, getRecipientsAsync]);
 
   const hasCards = cards.length > 0;
-
   return (
     <section className={styles.wrapper}>
       <SectionTitle>{title}</SectionTitle>
-      {hasCards ? <CardSlider cards={cards} /> : <EmptyState />}
+      {!loading ? <CardSlider cards={cards} /> : <CardSliderSkeleton />}
     </section>
   );
 }
