@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 
-import shareIcon from '@/assets/images/shareIcon.png';
+import ShareIcon from '@/assets/icons/share.svg';
 import buttonStyles from '@/components/PostNav/EmojiAddButton.module.scss';
 import styles from '@/components/PostNav/ShareButton.module.scss';
 import ShareKakaoButton from '@/components/PostNav/ShareKakaoButton';
@@ -30,7 +30,9 @@ function ShareBar() {
   return (
     <div ref={buttonRef} className={styles.shareContainer}>
       <button onClick={toggleOpen} className={buttonStyles.btn}>
-        <img className={buttonStyles.icon} src={shareIcon} alt='공유 아이콘' />
+        <div className={buttonStyles.icon}>
+          <ShareIcon />
+        </div>
       </button>
       {isOpen && (
         <ol className={styles.shareBox}>

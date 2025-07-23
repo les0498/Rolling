@@ -1,15 +1,17 @@
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
-import { useEffect, useRef, useState } from 'react';
-import PostCard from '@/pages/PostDetail/PostCard';
-import CLStyle from '@/pages/PostDetail/PostCardList.module.scss';
+
+import LoadingDots from '@/components/ui/LoadingDots';
 import AddMessageButton from '@/pages/PostDetail/AddMessageButton';
+import CardDetail from '@/pages/PostDetail/CardDetail';
 import CStyle from '@/pages/PostDetail/CardDetail.module.scss';
 import Modal from '@/pages/PostDetail/Modal';
-import CardDetail from '@/pages/PostDetail/CardDetail';
-
+import CLStyle from '@/pages/PostDetail/PostCardList.module.scss';
 import DeleteModal from '@/pages/PostEdit/DeleteModal';
 import EditButton from '@/pages/PostEdit/EditButton';
 import MessageEdit from '@/pages/PostEdit/MessageEdit';
+
+const PostCard = lazy(() => import('@/pages/PostDetail/PostCard'));
 
 function PostCardList({
   messages,
@@ -110,23 +112,24 @@ function PostCardList({
         </div>
         {/* 메시지 카드들 */}
         {messages.map((msg) => (
-          <PostCard
+          <Suspense
             key={msg.id}
-            message={msg}
-            onClick={() => {
-              setMsgSelect(msg);
-              setModalOpen(true);
-            }}
-            isEdit={isEdit}
-            onDeleteClick={() => {
-              setMsgSelect(msg);
-              setIsDeleteMessage(true);
-            }}
-            editClick={() => {
-              setMsgSelect(msg);
-              setIsMsgEdit(true);
-            }}
-          />
+            fallback={<div className={cn('cardBox', 'cardSkeleton')} />}
+          >
+            <PostCard
+              message={msg}
+              onClick={() => {
+                setMsgSelect(msg);
+                setModalOpen(true);
+              }}
+              isEdit={isEdit}
+              onDeleteClick={() => {
+                setMsgSelect(msg);
+                setIsDeleteMessage(true);
+              }}
+              setIsMsgEdit={setIsMsgEdit}
+            />
+          </Suspense>
         ))}
         {/* 모달 */}
         {modalOpen && msgSelect && (
@@ -166,7 +169,7 @@ function PostCardList({
         {/* 무한 스크롤 */}
         <div ref={observerRef} style={{ height: 1 }} />
 
-        {loading && hasMore && <p>로딩중 ...</p>}
+        {loading && hasMore && <LoadingDots />}
       </div>
     </div>
   );

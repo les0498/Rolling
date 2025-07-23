@@ -1,6 +1,7 @@
+import classNames from 'classnames/bind';
+
 import Button from '@/components/ui/Button';
 import styles from '@/pages/PostDetail/Modal.module.scss';
-import classNames from 'classnames/bind';
 import EditStyle from '@/pages/PostEdit/MessageEdit.module.scss';
 
 function Modal({

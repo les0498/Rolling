@@ -9,7 +9,7 @@
   font-size: $font-2xl;
   font-weight: 700;
   font-family: $font-family-primary;
-  color: $gray900;
+  color: var(--color-gray-text);
 }
 
 .select {

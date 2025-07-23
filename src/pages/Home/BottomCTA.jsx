@@ -1,15 +1,18 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+import Button from '@/components/ui/Button';
+import { BUTTON_VARIANT } from '@/components/ui/constants';
 
 import '@/pages/Home/BottomCTA.scss';
 
 export default function BottomCTA() {
-  const navigate = useNavigate();
-
   return (
     <section className='bottom-cta'>
-      <button className='bottom-cta__button' onClick={() => navigate('/list')}>
-        구경해보기
-      </button>
+      <div className='button-wrapper'>
+        <Link to='/list'>
+          <Button variant={BUTTON_VARIANT.primary}>구경해보기</Button>
+        </Link>
+      </div>
     </section>
   );
 }

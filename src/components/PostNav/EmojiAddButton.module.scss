@@ -12,12 +12,20 @@
   border-radius: rem(6px);
   margin: 0;
   padding: rem(17px) rem(8px);
+  color: var(--color-gray-text);
+  font-size: $font-sm;
 }
 
 //공통 (shareBtn)
 .icon {
-  width: rem(21px);
-  height: rem(21px);
+  @include flex-center;
+  & svg {
+    width: rem(21px);
+    height: rem(21px);
+    path {
+      fill: var(--color-default-text);
+    }
+  }
 }
 
 .emojiBox {

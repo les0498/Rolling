@@ -1,13 +1,16 @@
 //AddMessageButton.jsx
 .btnDelete {
-  svg {
+  & > svg {
     width: rem(60px);
     height: rem(60px);
+    path {
+      fill: var(--color-light-gray-text);
+    }
   }
 
   &Copy {
     display: block;
-    color: $gray400;
+    color: var(--color-blight-gray-text);
     font-size: $font-md;
     margin-top: rem(24px);
   }
@@ -28,8 +31,11 @@
   right: rem(24px);
   z-index: 2;
 
-  svg {
+  & > svg {
     width: rem(16px);
     height: rem(16px);
+    path {
+      fill: var(--color-light-gray-text);
+    }
   }
 }

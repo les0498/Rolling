@@ -13,7 +13,7 @@
 
 .modalContent {
   @include column;
-  background: $white;
+  background: var(--color-default-background);
   border-radius: $radius-lg;
   padding: rem(40px);
   width: 100%;
