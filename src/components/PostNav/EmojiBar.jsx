@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import classNames from 'classnames/bind';
+import { motion } from 'motion/react';
 
 import styles from '@/components/PostNav/EmojiBar.module.scss';
 import useEmojiClick from '@/components/PostNav/useEmojiClick';
@@ -49,13 +50,18 @@ function EmojiBar({ reactions, setReactions, id }) {
       {isOpen && (
         <div className={styles.reactionsBox}>
           {sortedReactions.slice(0, 8).map((icon) => (
-            <EmojiBadge
+            <motion.div
               key={icon.id}
-              emoji={icon.emoji}
-              count={icon.count}
-              onClick={() => emojiClickHandler(icon.emoji)}
-              style={{ cursor: 'pointer' }}
-            />
+              whileHover={{ scale: 1.15 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <EmojiBadge
+                emoji={icon.emoji}
+                count={icon.count}
+                onClick={() => emojiClickHandler(icon.emoji)}
+                style={{ cursor: 'pointer' }}
+              />
+            </motion.div>
           ))}
         </div>
       )}

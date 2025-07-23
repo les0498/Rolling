@@ -7,6 +7,9 @@
 }
 
 @mixin flicker {
+  animation: flickerAnimation 1s infinite;
+  background-color: #cccccc;
+
   @keyframes flickerAnimation {
     0% {
       opacity: 1;
@@ -18,7 +21,6 @@
       opacity: 1;
     }
   }
-  animation: flickerAnimation 1s infinite;
 }
 /* px to rem */
 $base-rem-size: 16px;

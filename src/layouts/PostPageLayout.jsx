@@ -27,10 +27,6 @@ export default function PostPageLayout() {
     }
   }, [author, id, loading, error, navigate]);
 
-  if (loading) {
-    return <div>불러오는중...</div>;
-  }
-
   return (
     <>
       {isMobile ? null : <Header />}

@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import EmojiPicker, { EmojiStyle } from 'emoji-picker-react';
 
-import addIcon from '@/assets/images/addIcon.png';
+import EmojiAddIcon from '@/assets/icons/emoji_add.svg';
 import lineStyle from '@/components/PostNav/AuthorCount.module.scss';
 import styles from '@/components/PostNav/EmojiAddButton.module.scss';
 import useEmojiClick from '@/components/PostNav/useEmojiClick';
@@ -24,7 +24,10 @@ function EmojiAddButton({ setReactions, id }) {
         className={styles.btn}
         onClick={() => setIsEmoji((prev) => !prev)}
       >
-        <img className={styles.icon} src={addIcon} alt='이모지추가아이콘' />
+        {/* <img className={styles.icon} src={addIcon} alt='이모지추가아이콘' /> */}
+        <div className={styles.icon}>
+          <EmojiAddIcon />
+        </div>
         {!isMobile && <span>추가</span>}
       </button>
       {isEmoji && (

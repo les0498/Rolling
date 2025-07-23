@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 
 import styles from '@/components/PostNav/AuthorCount.module.scss';
+import AnimatedNumber from '@/components/ui/AnimateNumber';
 import ProfileIcon from '@/components/ui/ProfileIcon';
 
 function AuthorCount({ count = 0, profileURLs }) {
@@ -25,7 +26,10 @@ function AuthorCount({ count = 0, profileURLs }) {
           </>
         )}
       </ul>
-      <span className={styles.allCountAuthor}>{count}명이 작성했어요!</span>
+      <span className={styles.allCountAuthor}>
+        <AnimatedNumber value={count} />
+        명이 작성했어요!
+      </span>
       <div className={`${styles.divider} ${styles['dividerCount']}`} />
     </div>
   );

@@ -44,3 +44,16 @@
     height: rem(52px);
   }
 }
+.authorCountSkeleton {
+  width: rem(280px);
+  height: rem(28px);
+  margin-right: rem(35px);
+  @include flicker;
+}
+.emojiBarSkeleton {
+  width: rem(230px);
+  height: rem(36px);
+  margin-right: rem(20px);
+
+  @include flicker;
+}

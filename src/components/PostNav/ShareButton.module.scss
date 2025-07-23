@@ -4,31 +4,34 @@
 
 .shareBox {
   width: rem(140px);
-  height: rem(120px);
   position: absolute;
-  background-color: $white;
+  background-color: var(--color-default-background);
   border: rem(1px) solid $gray300;
   border-radius: 0.5rem;
   top: rem(50px);
   right: 0;
   z-index: 20;
-  padding: rem(10px) 0;
 
-  > li {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  & > li {
     display: block;
     text-align: center;
     line-height: rem(50px);
 
     &:hover {
-      background-color: $gray100;
+      background-color: var(--color-hover-gray);
     }
   }
 }
 
 //버튼 리셋 스타일 삭제
 .shareBtn {
+  width: 100%;
   border: none;
-  background-color: transparent;
-  padding: 0;
+  color: var(--color-default-text);
+  padding: 1rem 0;
+  border-radius: 0.5rem;
   cursor: pointer;
 }

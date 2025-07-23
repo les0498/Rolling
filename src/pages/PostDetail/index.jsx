@@ -1,16 +1,18 @@
-import PostCardList from '@/pages/PostDetail/PostCardList';
-import useAsync from '@/hooks/useAsync';
-import { getMessagesById } from '@/apis/messages';
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
+import { getMessagesById } from '@/apis/messages';
 import { BACKGROUND_COLOR, getRecipientById } from '@/apis/recipients';
+import LoadingDots from '@/components/ui/LoadingDots';
+import useAsync from '@/hooks/useAsync';
+import PostCardList from '@/pages/PostDetail/PostCardList';
 
 export default function PostDetail() {
   const { id } = useParams();
   const [messages, setMessages] = useState([]);
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState({});
   const limit = 8;
 
   const [pending, error, fetchMessages] = useAsync(getMessagesById);
@@ -41,14 +43,14 @@ export default function PostDetail() {
     });
   }, [id, offset, limit, fetchMessages]);
 
-  if (pending && messages.length === 0) return <div>로딩중...</div>;
   if (error) return <div>에러 발생!</div>;
 
   return (
     <div>
       <PostCardList
         messages={messages}
-        backgroundColor={BACKGROUND_COLOR[user.backgroundColor]}
+        backgroundColor={BACKGROUND_COLOR[user?.backgroundColor]}
+        backgroundImage={user?.backgroundImageURL}
         loadMore={loadMore}
         hasMore={hasMore}
         loading={pending}

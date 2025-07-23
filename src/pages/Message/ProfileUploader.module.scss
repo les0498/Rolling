@@ -8,7 +8,7 @@
 .label {
   font-size: $font-2xl;
   font-weight: 700;
-  color: $gray900;
+  color: var(--color-gray-text);
 }
 
 .previewRow {
@@ -32,7 +32,7 @@
   font-size: $font-md;
   font-weight: 400;
   font-family: $font-family-primary;
-  color: $gray500;
+  color: var(--color-light-gray-text);
 }
 
 .thumbnailRow {
