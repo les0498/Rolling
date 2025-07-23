@@ -50,8 +50,7 @@
 .participants {
   display: flex;
   align-items: center;
-
-  .avatar {
+  & > div {
     width: rem(28px);
     height: rem(28px);
     margin-left: rem(-12px);

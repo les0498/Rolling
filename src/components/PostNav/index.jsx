@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { getReactionsById } from '@/apis/reactions';
+import DarkModeToggle from '@/components/layout/DarkModeToggle';
 import EmojiAddButton from '@/components/PostNav/EmojiAddButton';
 import styles from '@/components/PostNav/index.module.scss';
 import ShareBar from '@/components/PostNav/ShareButton';
