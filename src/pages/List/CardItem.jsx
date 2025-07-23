@@ -10,7 +10,6 @@ import AnimatedNumber from '@/components/ui/AnimateNumber';
 import { PROFILE_ICON_SIZE } from '@/components/ui/constants';
 import EmojiBadge from '@/components/ui/EmojiBadge';
 import ProfileIcon from '@/components/ui/ProfileIcon';
-import { useImageLoader } from '@/hooks/useImageLoader';
 import styles from '@/pages/List/CardItem.module.scss';
 
 function CardItem({
@@ -23,7 +22,6 @@ function CardItem({
   backgroundColor,
 }) {
   const navigate = useNavigate();
-  const { isLoading: imageLoading, onLoad, onError } = useImageLoader();
   const cx = classNames.bind(styles);
   const handleClick = () => {
     console.log('navigate to', `/post/${id}`);
@@ -45,13 +43,13 @@ function CardItem({
       })}
     >
       {hasBackgroundImage && (
-        <img
-          className={styles.overlay}
-          src={backgroundImage}
-          alt='배경 이미지'
-          onLoad={onLoad}
-          onError={onError}
-        />
+        <>
+          <img
+            className={styles.overlay}
+            src={backgroundImage}
+            alt='배경 이미지'
+          />
+        </>
       )}
 
       {/* 단일 카드 구성 요소 */}
