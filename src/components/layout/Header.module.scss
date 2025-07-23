@@ -62,24 +62,7 @@
   &:active {
     background-color: $gray100;
   }
-}
-.button-outlined {
-  background-color: $white;
-  width: 100%;
-  border: 1px solid $gray300;
-  border-radius: rem(6px);
-  padding: rem(8px) $size-md;
-  color: $gray900;
-  font-size: $font-md;
-
-  &:disabled {
-    background-color: $gray300;
-    color: $white;
-  }
-  &:hover {
-    background-color: $gray100;
-  }
-  &:active {
-    background-color: $gray100;
+  @include mobile {
+    padding: rem(8px) $size-sm;
   }
 }

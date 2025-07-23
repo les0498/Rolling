@@ -1,11 +1,17 @@
-.sliderWrapper {
+.slider {
   display: flex;
-  align-items: center;
-  width: 100%;
+  gap: rem(20px);
   margin-bottom: rem(40px);
-  gap: $size-md;
+  @include tablet {
+    width: max-content;
+  }
+
+  @include mobile {
+    width: max-content;
+  }
 }
-.card {
+
+.card-skeleton {
   width: rem(275px);
   height: rem(260px);
   border-radius: $size-md;

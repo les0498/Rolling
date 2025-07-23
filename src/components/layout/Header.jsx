@@ -4,9 +4,11 @@ import classNames from 'classnames/bind';
 import Logo from '@/assets/icons/logo.svg';
 import DarkModeToggle from '@/components/layout/DarkModeToggle';
 import styles from '@/components/layout/Header.module.scss';
+import useIsMobile from '@/hooks/useIsMobile';
 
 export default function Header() {
   const cn = classNames.bind(styles);
+  const isMobile = useIsMobile();
   const location = useLocation();
   const isHome = location?.pathname === '/';
   return (
@@ -23,7 +25,7 @@ export default function Header() {
           {isHome && (
             <Link to='/post' aria-label='만들기 화면으로 이동'>
               <button className={cn('button-outlined')}>
-                롤링 페이퍼 만들기
+                {isMobile ? '만들기' : '롤링 페이퍼 만들기'}
               </button>
             </Link>
           )}
