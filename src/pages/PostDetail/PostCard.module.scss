@@ -17,6 +17,7 @@ $profile: rem(56px);
 
 .cardBox {
   @include column;
+  align-items: flex-start;
   width: 100%;
   height: $card-height;
   background-color: var(--color-default-background);

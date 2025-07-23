@@ -24,7 +24,6 @@ function EmojiAddButton({ setReactions, id }) {
         className={styles.btn}
         onClick={() => setIsEmoji((prev) => !prev)}
       >
-        {/* <img className={styles.icon} src={addIcon} alt='이모지추가아이콘' /> */}
         <div className={styles.icon}>
           <EmojiAddIcon />
         </div>

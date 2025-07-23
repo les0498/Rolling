@@ -69,8 +69,13 @@
     width: 100%;
     padding: 0 rem(24px);
 
-    > li {
+    > div {
       width: 100%;
+
+      button {
+        height: rem(53px);
+        width: 100%;
+      }
     }
   }
 }

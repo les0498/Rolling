@@ -40,8 +40,9 @@
   @include flex-center;
 
   @include mobile {
+    justify-content: flex-end;
     height: rem(52px);
-    height: rem(52px);
+    padding: 0 rem(20px);
   }
 }
 .authorCountSkeleton {
