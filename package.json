@@ -63,6 +63,7 @@
     "vite": "^7.0.3"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.45.1"
+    "@rollup/rollup-linux-x64-gnu": "^4.45.1",
+    "sass-embedded-linux-x64": "^1.89.2"
   }
 }
