@@ -14,7 +14,7 @@ function ListPage() {
   return (
     <div className={styles.wrapper}>
       <CardSliderSection title='인기 롤링 페이퍼 🔥' sort='like' />
-      <CardSliderSection title='최근에 만든 롤링 페이퍼 ⭐' sort='createAt' />
+      <CardSliderSection title='최근에 만든 롤링 페이퍼 ⭐' sort='createdAt' />
       <div className={styles.buttonField}>
         <Button
           type='button'

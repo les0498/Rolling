@@ -2,7 +2,7 @@ import DeleteIcon from '@/assets/icons/delete.svg';
 import CardDetail from '@/pages/PostDetail/CardDetail';
 import DStyle from '@/pages/PostEdit/DeleteButton.module.scss';
 
-function PostCard({ message, onClick, isEdit, onDeleteClick, setIsMsgEdit }) {
+function PostCard({ message, onClick, isEdit, onDeleteClick, editClick }) {
   return (
     <div className={DStyle.cardWrapper}>
       {isEdit ? (
@@ -10,7 +10,7 @@ function PostCard({ message, onClick, isEdit, onDeleteClick, setIsMsgEdit }) {
           <button className={DStyle.btnPostDelete} onClick={onDeleteClick}>
             <DeleteIcon />
           </button>
-          <div onClick={() => setIsMsgEdit(true)}>
+          <div onClick={editClick}>
             <CardDetail message={message} variant='card' />
           </div>
         </>

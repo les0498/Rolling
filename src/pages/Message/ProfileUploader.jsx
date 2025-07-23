@@ -6,10 +6,18 @@ import styles from '@/pages/Message/ProfileUploader.module.scss';
 function ProfileUploader({ imageFile, setImageFile }) {
   const [preview, setPreview] = useState(null);
   const inputRef = useRef(null);
-  const selectImages = [...Array(5)].flatMap(() => [
+  const selectImages = [
     'https://res.cloudinary.com/dxyy6jpne/image/upload/v1753151381/profile1_hg4kxj.png',
     'https://res.cloudinary.com/dxyy6jpne/image/upload/v1753151381/profile2_euveob.png',
-  ]);
+    'https://res.cloudinary.com/dxyy6jpne/image/upload/v1753242755/profile3_st70wb.jpg',
+    'https://res.cloudinary.com/dxyy6jpne/image/upload/v1753241802/profile4_ibbaya.jpg',
+    'https://res.cloudinary.com/dxyy6jpne/image/upload/v1753242879/profile5_nnlml0.png',
+    'https://res.cloudinary.com/dxyy6jpne/image/upload/v1753241941/profile6_txuykb.jpg',
+    'https://res.cloudinary.com/dxyy6jpne/image/upload/v1753241941/profile7_fzf2mz.jpg',
+    'https://res.cloudinary.com/dxyy6jpne/image/upload/v1753241943/profile8_lggp14.jpg',
+    'https://res.cloudinary.com/dxyy6jpne/image/upload/v1753241997/profile9_k9slww.jpg',
+    'https://res.cloudinary.com/dxyy6jpne/image/upload/v1753241998/profile10_pqgjo6.jpg',
+  ];
 
   //imageFile 바뀔 때마다 실행
   useEffect(() => {

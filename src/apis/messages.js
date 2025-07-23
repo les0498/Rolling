@@ -39,6 +39,10 @@ const createMessageById = async ({
   });
 };
 
+const getOneMsgById = async (id = '') => {
+  return await customFetch(`${BASE_API_URL}messages/${id}/`);
+};
+
 const patchMessageById = async ({
   id = '',
   sender,
@@ -47,7 +51,7 @@ const patchMessageById = async ({
   content,
   font,
 }) => {
-  return await customFetch(`${BASE_API_URL}messages/${id}`, {
+  return await customFetch(`${BASE_API_URL}messages/${id}/`, {
     method: 'PATCH',
     body: JSON.stringify({
       sender,
@@ -70,6 +74,7 @@ export {
   MESSAGE_FONT,
   getMessagesById,
   createMessageById,
+  getOneMsgById,
   patchMessageById,
   deleteMessageById,
 };

@@ -11,14 +11,24 @@ import styles from '@/pages/message/MessageForm.module.scss';
 import ProfileUploader from '@/pages/Message/ProfileUploader';
 import RelationshipSelect from '@/pages/Message/RelationshipSelect';
 
-function MessageForm() {
+function MessageForm({
+  sender: initSender = '',
+  profileImageURL: initImage = null,
+  relationship: initRelationship = '지인',
+  content: initContent = '',
+  font: initFont = 'Noto Sans',
+  onSubmit = null,
+  onClose = null,
+  submitLabel = '생성하기',
+  backLabel = '뒤로',
+}) {
   const navigate = useNavigate();
-  const [from, setFrom] = useState('');
+  const [from, setFrom] = useState(initSender);
   const [fromError, setFromError] = useState('');
-  const [relationship, setRelationship] = useState('지인');
-  const [content, setContent] = useState('<p></p>');
-  const [font, setFont] = useState('Noto Sans');
-  const [imageFile, setImageFile] = useState(null);
+  const [relationship, setRelationship] = useState(initRelationship);
+  const [content, setContent] = useState(initContent);
+  const [font, setFont] = useState(initFont);
+  const [imageFile, setImageFile] = useState(initImage);
 
   const { id } = useParams();
   const isDisabled = from.trim() === '' || content.trim() === '<p></p>';
@@ -33,14 +43,15 @@ function MessageForm() {
   };
 
   const handleSubmit = async (e) => {
-    console.log('imageFile 타입:', typeof imageFile);
-    console.log('imageFile instanceof File:', imageFile instanceof File);
-    console.log('imageFile 값:', imageFile);
-
     e.preventDefault(); // 폼 제출 시 새로고침 방지
 
     if (from.trim() === '') {
       setFromError('값을 입력해 주세요.');
+      return;
+    }
+
+    if (onSubmit) {
+      onSubmit({ from, imageFile, relationship, content, font });
       return;
     }
 
@@ -61,6 +72,7 @@ function MessageForm() {
         content,
         font,
       });
+
       navigate(`/post/${id}`);
     } catch (error) {
       console.error('생성 실패: ', error);
@@ -68,6 +80,10 @@ function MessageForm() {
   };
 
   const handleBack = () => {
+    if (onClose) {
+      onClose();
+      return;
+    }
     navigate(-1);
   };
 
@@ -94,7 +110,7 @@ function MessageForm() {
           disabled={isDisabled}
           onClick={handleSubmit}
         >
-          생성하기
+          {submitLabel}
         </Button>
         <Button
           type='button'
@@ -102,7 +118,7 @@ function MessageForm() {
           size='big'
           onClick={handleBack}
         >
-          뒤로
+          {backLabel}
         </Button>
       </div>
     </form>

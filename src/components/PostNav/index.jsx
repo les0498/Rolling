@@ -13,7 +13,7 @@ import useRecipientId from '@/hooks/useRecipientId';
 function PostNav() {
   const { id } = useParams();
   //recipirent API
-  const { author, topMessage, loading } = useRecipientId(id);
+  const { author, topMessage } = useRecipientId(id);
 
   //reaction API
   const [reactions, setReactions] = useState(null);
