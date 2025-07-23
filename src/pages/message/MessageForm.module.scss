@@ -2,6 +2,19 @@
   display: flex;
   flex-direction: column;
   gap: rem(50px);
+  width: 100%;
+  max-width: rem(720px);
+  margin: 0 auto;
+
+  @include tablet {
+    padding: 0 rem(16px);
+    box-sizing: border-box;
+  }
+
+  @include mobile {
+    padding: 0 rem(16px);
+    box-sizing: border-box;
+  }
 }
 
 .buttonGroup {
