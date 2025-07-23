@@ -17,18 +17,21 @@
   border-radius: $radius-lg;
   padding: rem(40px);
   width: 100%;
-  max-width: rem(600px);
   height: rem(476px);
+  max-width: rem(600px);
+  margin: 0 auto;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
   position: relative;
+  box-sizing: border-box;
 
   @media (max-width: 767px) {
-    width: 100%;
-    margin: 0 20px;
+    width: calc(100% - rem(40px));
+    margin: 0 auto;
   }
 }
 
 .cardBox {
+  width: 100%;
   padding: 0;
 }
 
@@ -60,10 +63,6 @@
   @include cardContent(rem(520px), rem(240px));
   overflow-y: scroll;
   padding-right: 20px;
-
-  @media (max-width: 767px) {
-    width: 100%;
-  }
 }
 
 .cardContent::-webkit-scrollbar {
@@ -75,12 +74,7 @@
 }
 
 .cardDate {
-  @include cardDate($top: rem(56px), $right: rem(45px));
-  p {
-    @media (max-width: 767px) {
-      margin-top: rem(40px);
-    }
-  }
+  @include cardDate($top: rem(100px), $right: rem(45px));
 }
 
 .modalButton {
