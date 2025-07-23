@@ -35,9 +35,10 @@ export default function BackgroundSelect({ values, onChange }) {
       });
     }
     if (isImageOptionSelected) {
+      const imageUrl = e.currentTarget.dataset.url;
       onChange({
         backgroundColor: BACKGROUND_COLOR.default,
-        backgroundImageURL: e.currentTarget.src,
+        backgroundImageURL: imageUrl,
       });
     }
   };
