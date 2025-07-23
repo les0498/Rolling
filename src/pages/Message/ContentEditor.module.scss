@@ -1,8 +1,12 @@
 .editorWrapper {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  min-height: rem(260px);
+  overflow: auto;
   font-family: $font-family-primary;
   color: $black;
+  box-sizing: border-box;
 }
 
 .label {
@@ -14,8 +18,8 @@
 }
 
 .wrapper {
-  width: rem(720px);
-  height: rem(260px);
+  width: 100%;
+  max-width: rem(720px);
   border: 1px solid $gray300;
   border-radius: rem(1px);
 }
