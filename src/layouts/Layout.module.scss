@@ -2,12 +2,12 @@
   font-family: $font-family-primary;
 }
 .container {
-  margin: $size-md auto;
+  margin: 0 auto;
   position: relative;
   font-family: $font-family-primary;
 }
 @include mobile {
   .container {
-    margin: $size-md auto;
+    margin: 0 auto;
   }
 }

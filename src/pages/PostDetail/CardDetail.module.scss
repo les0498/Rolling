@@ -11,6 +11,7 @@
 .cardBox {
   @include column;
   position: relative;
+  align-items: flex-start;
   width: 100%;
   height: rem(280px);
   background-color: var(--color-default-background);
