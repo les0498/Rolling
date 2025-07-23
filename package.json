@@ -61,5 +61,8 @@
     "sass": "^1.89.2",
     "terser": "^5.43.1",
     "vite": "^7.0.3"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.45.1"
   }
 }
