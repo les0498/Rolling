@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import classNames from 'classnames/bind';
 
 import styles from '@/pages/List/CardItem.module.scss';
 
@@ -12,6 +13,7 @@ function CardItem({
   backgroundColor,
 }) {
   const navigate = useNavigate();
+  const cx = classNames.bind(styles);
 
   const handleClick = () => {
     console.log('navigate to', `/post/${id}`);
@@ -20,7 +22,7 @@ function CardItem({
 
   return (
     <div
-      className={styles.card}
+      className={cx('card', backgroundColor || 'beige')}
       onClick={handleClick}
       onKeyDown={(e) => {
         if (e.key === 'Enter') handleClick();
@@ -29,7 +31,6 @@ function CardItem({
       tabIndex={0}
       style={{
         backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none',
-        backgroundColor: backgroundImage ? undefined : backgroundColor,
         cursor: 'pointer',
       }}
     >
@@ -46,8 +47,9 @@ function CardItem({
               className={styles.avatar}
             />
           ))}
-          {participants.length > 3 && (
-            <span className={styles.extra}>+{participants.length - 3}</span>
+
+          {totalCount > 3 && (
+            <span className={styles.extra}>+{totalCount - 3}</span>
           )}
         </div>
 

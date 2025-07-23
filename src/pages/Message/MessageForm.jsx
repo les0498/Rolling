@@ -15,8 +15,8 @@ function MessageForm({
   sender: initSender = '',
   profileImageURL: initImage = null,
   relationship: initRelationship = '지인',
-  content: initContent = '<p></p>',
-  font: initFont = 'noto-sans',
+  content: initContent = '',
+  font: initFont = 'Noto Sans',
   onSubmit = null,
   onClose = null,
   submitLabel = '생성하기',
@@ -43,16 +43,13 @@ function MessageForm({
   };
 
   const handleSubmit = async (e) => {
-    console.log('imageFile 타입:', typeof imageFile);
-    console.log('imageFile instanceof File:', imageFile instanceof File);
-    console.log('imageFile 값:', imageFile);
-
     e.preventDefault(); // 폼 제출 시 새로고침 방지
 
     if (from.trim() === '') {
       setFromError('값을 입력해 주세요.');
       return;
     }
+
     if (onSubmit) {
       onSubmit({ from, imageFile, relationship, content, font });
       return;
@@ -75,6 +72,7 @@ function MessageForm({
         content,
         font,
       });
+
       navigate(`/post/${id}`);
     } catch (error) {
       console.error('생성 실패: ', error);
