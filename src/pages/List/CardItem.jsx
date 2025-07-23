@@ -24,7 +24,6 @@ function CardItem({
   const navigate = useNavigate();
   const cx = classNames.bind(styles);
   const handleClick = () => {
-    console.log('navigate to', `/post/${id}`);
     navigate(`/post/${id}`);
   };
   const hasBackgroundImage = backgroundImage !== null;
