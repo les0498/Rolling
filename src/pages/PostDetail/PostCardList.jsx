@@ -39,8 +39,12 @@ function PostCardList({
   const [isMsgEdit, setIsMsgEdit] = useState(false);
   // 메세지 삭제 모달
   const [isDelMessage, setIsDeleteMessage] = useState(false);
+  const [isDeletePost, setIsDeletePost] = useState(false);
   const deleteCloseHandler = () => {
     setIsDeleteMessage(false);
+  };
+  const onDelClick = () => {
+    setIsDeletePost(true);
   };
 
   useEffect(() => {
@@ -80,8 +84,22 @@ function PostCardList({
             <EditButton isEdit={isEdit} setIsEdit={setIsEdit} />
           </div>
           <div className={cn('cardBoxAdd')}>
-            <AddMessageButton isEdit={isEdit} />
+            <AddMessageButton isEdit={isEdit} onDeleteClick={onDelClick} />
           </div>
+
+          {/* 게시판 삭제 모달 */}
+          {isEdit && isDeletePost && (
+            <Modal
+              isOpen={isDeletePost}
+              onClose={() => setIsDeletePost(false)}
+              isDelete
+            >
+              <DeleteModal
+                onClose={() => setIsDeletePost(false)}
+                isPost={true}
+              />
+            </Modal>
+          )}
         </div>
       </div>
     );
@@ -107,7 +125,7 @@ function PostCardList({
         </div>
         {/* +버튼 카드(항상 첫 번째) */}
         <div className={CStyle.cardBoxAdd}>
-          <AddMessageButton isEdit={isEdit} />
+          <AddMessageButton isEdit={isEdit} onDeleteClick={onDelClick} />
         </div>
         {/* 메시지 카드들 */}
         {messages.map((msg) => (
@@ -165,6 +183,16 @@ function PostCardList({
               setMessages={setMessages}
               onClose={() => setIsMsgEdit(false)}
             />
+          </Modal>
+        )}
+        {/* 게시판 삭제 모달 */}
+        {isEdit && isDeletePost && (
+          <Modal
+            isOpen={isDeletePost}
+            onClose={() => setIsDeletePost(false)}
+            isDelete
+          >
+            <DeleteModal onClose={() => setIsDeletePost(false)} isPost={true} />
           </Modal>
         )}
 
