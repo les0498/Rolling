@@ -1,0 +1,83 @@
+$card-width: rem(384px);
+$card-height: rem(280px);
+$profile: rem(56px);
+
+@mixin column {
+  display: column;
+  align-items: center;
+}
+
+.cardBoxAdd {
+  @include flex-center;
+  width: 100%;
+  height: $card-height;
+  background-color: var(--color-default-background);
+  border-radius: $radius-lg;
+}
+
+.cardBox {
+  @include column;
+  align-items: flex-start;
+  width: 100%;
+  height: $card-height;
+  background-color: var(--color-default-background);
+  border-radius: 1rem;
+  padding: rem(28px) rem(24px) rem(24px);
+}
+
+.cardTopSection {
+  display: flex;
+  gap: 14px;
+}
+
+.cardProfile {
+  border-radius: 100px;
+  margin-bottom: $size-md;
+}
+.profileImage {
+  width: $profile;
+  height: $profile;
+  border-radius: $radius-full;
+}
+
+.cardWriterInfo {
+}
+
+.title {
+  margin-bottom: rem(6px);
+}
+
+.fromLabel {
+  font-size: $font-xl;
+  font-weight: 400;
+}
+
+.writerName {
+  font-size: $font-xl;
+  font-weight: 700;
+}
+
+.badge {
+  width: rem(41px);
+  height: rem(20px);
+  border-radius: $radius-sm;
+}
+
+.hr {
+  border-top: 1px solid $gray200;
+}
+
+.cardContent {
+  font-size: $font-lg;
+  font-weight: 400;
+  line-height: $font-3xl;
+  color: var(--color-gray-text);
+  margin-top: $size-md;
+  margin-bottom: $size-md;
+}
+
+.cardDate {
+  font-size: $font-xs;
+  font-weight: 400;
+  color: $gray400;
+}

@@ -1,25 +1,26 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { getReactionsById } from '@/apis/reactions';
+import AuthorCount from '@/components/PostNav/AuthorCount';
 import EmojiAddButton from '@/components/PostNav/EmojiAddButton';
+import EmojiBar from '@/components/PostNav/EmojiBar';
 import styles from '@/components/PostNav/index.module.scss';
 import ShareBar from '@/components/PostNav/ShareButton';
 import useAsync from '@/hooks/useAsync';
-import useRecipientId from '@/hooks/useRecipientId';
-
-const AuthorName = lazy(() => import('@/components/PostNav/AuthorName'));
-const AuthorCount = lazy(() => import('@/components/PostNav/AuthorCount'));
-const EmojiBar = lazy(() => import('@/components/PostNav/EmojiBar'));
+import { useTopMessage } from '@/layouts/PostPageLayout';
 
 function PostNav() {
   const { id } = useParams();
-  //recipirent API
-  const { author, topMessage } = useRecipientId(id);
 
   //reaction API
   const [reactions, setReactions] = useState(null);
   const [, , fetchReactions] = useAsync(getReactionsById);
+
+  const { author, topMessage } = useTopMessage();
+  useEffect(() => {
+    console.log('topMessage changed in PostNav:', topMessage, author);
+  }, [author, topMessage]);
 
   useEffect(() => {
     if (!id) return;
@@ -40,16 +41,10 @@ function PostNav() {
 
   return (
     <nav className={styles.container}>
-      <Suspense fallback={<div className={styles.authorCountSkeleton} />}>
-        <AuthorName name={author?.name} />
-      </Suspense>
+      <h2 className={styles.recipient}>To.{author?.name}</h2>
       <div className={styles.navRight}>
-        <Suspense fallback={<div className={styles.authorCountSkeleton} />}>
-          <AuthorCount count={messageCount} profileURLs={profileURLs} />
-        </Suspense>
-        <Suspense fallback={<div className={styles.emojiBarSkeleton} />}>
-          <EmojiBar reactions={reactions} setReactions={setReactions} id={id} />
-        </Suspense>
+        <AuthorCount count={messageCount} profileURLs={profileURLs} />
+        <EmojiBar reactions={reactions} setReactions={setReactions} id={id} />
         <EmojiAddButton setReactions={setReactions} id={id} />
         <ShareBar />
       </div>

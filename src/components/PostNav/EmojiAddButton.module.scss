@@ -32,5 +32,9 @@
   position: absolute;
   top: rem(50px);
   right: rem(25px);
-  z-index: 50;
+  z-index: 20;
+
+  @include mobile {
+    right: 0;
+  }
 }

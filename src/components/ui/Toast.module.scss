@@ -17,10 +17,10 @@
   bottom: rem(70px);
   left: 50%;
   z-index: 20;
-  transform: translateX(-50%);
 
   @include mobile {
     max-width: rem(320px);
+    bottom: rem(90px);
   }
 }
 .text-wrapper {

@@ -1,11 +1,15 @@
-import { useEffect } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
 
 import Header from '@/components/layout/Header';
 import PostNav from '@/components/PostNav';
 import useIsMobile from '@/hooks/useIsMobile';
-import useRecipientId from '@/hooks/useRecipientId';
 import styles from '@/layouts/Layout.module.scss';
+import useAsync from '@/hooks/useAsync';
+import { getRecipientById } from '@/apis/recipients';
+
+export const TopMessageContext = createContext(null);
+export const useTopMessage = () => useContext(TopMessageContext);
 
 export default function PostPageLayout() {
   const isMobile = useIsMobile();
@@ -15,25 +19,42 @@ export default function PostPageLayout() {
   const navigate = useNavigate();
 
   // 리다이렉트
-  const { author, loading, error } = useRecipientId(id);
+  const [author, setAuthor] = useState(null);
+  const [topMessage, setTopMessage] = useState([]);
+
+  const [pending, error, fetchRecipient] = useAsync(getRecipientById);
 
   useEffect(() => {
-    if (loading || (!author && !error)) return;
+    if (!id) return;
+
+    async function fetchData() {
+      const recipientData = await fetchRecipient(id);
+
+      if (recipientData) {
+        setAuthor(recipientData);
+        setTopMessage([...(recipientData?.recentMessages || [])]);
+      }
+    }
+    fetchData();
+  }, [id, fetchRecipient]);
+
+  useEffect(() => {
+    if (pending || (!author && !error)) return;
 
     if (error || author?.id !== Number(id)) {
       navigate('/list', { replace: true });
 
       sessionStorage.setItem('errToast', 'true');
     }
-  }, [author, id, loading, error, navigate]);
+  }, [author, id, pending, error, navigate]);
 
   return (
-    <>
+    <TopMessageContext.Provider value={{ author, topMessage, setTopMessage }}>
       {isMobile ? null : <Header />}
       <PostNav />
       <div className={styles['container-post']}>
         <Outlet />
       </div>
-    </>
+    </TopMessageContext.Provider>
   );
 }
