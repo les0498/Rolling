@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
+import { motion } from 'motion/react';
 
 import LoadingDots from '@/components/ui/LoadingDots';
 import AddMessageButton from '@/pages/PostDetail/AddMessageButton';
@@ -106,9 +107,13 @@ function PostCardList({
           />
         </div>
         {/* +버튼 카드(항상 첫 번째) */}
-        <div className={CStyle.cardBoxAdd}>
+        <motion.div
+          className={CStyle.cardBoxAdd}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.95 }}
+        >
           <AddMessageButton isEdit={isEdit} />
-        </div>
+        </motion.div>
         {/* 메시지 카드들 */}
         {messages.map((msg) => (
           <Suspense
