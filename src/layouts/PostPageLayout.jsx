@@ -49,7 +49,9 @@ export default function PostPageLayout() {
   }, [author, id, pending, error, navigate]);
 
   return (
-    <TopMessageContext.Provider value={{ author, topMessage, setTopMessage }}>
+    <TopMessageContext.Provider
+      value={{ author, setAuthor, topMessage, setTopMessage }}
+    >
       {isMobile ? null : <Header />}
       <PostNav />
       <div className={styles['container-post']}>

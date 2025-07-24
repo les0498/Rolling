@@ -18,7 +18,7 @@ function DeleteModal({
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { setTopMessage } = useTopMessage();
+  const { setAuthor, setTopMessage } = useTopMessage();
 
   const handleDelete = async () => {
     try {
@@ -38,6 +38,7 @@ function DeleteModal({
         setMessages(update?.results || []);
         const updateMsg = await getRecipientById(id);
         setTopMessage([...(updateMsg?.recentMessages || [])]);
+        setAuthor(updateMsg);
       }
     } catch (error) {
       console.error('삭제 실패: ', error);
