@@ -2,6 +2,7 @@
   min-height: 100vh;
   width: 100%;
   overflow-y: auto;
+  background-size: cover;
 }
 
 .background-purple {
@@ -29,6 +30,7 @@
   max-width: rem(1200px);
   margin: 0 auto;
   position: relative;
+  box-sizing: border-box;
 
   @media (max-width: 1247px) {
     width: 100%;
@@ -45,6 +47,9 @@
     margin: 0 auto;
     padding-left: rem(16px);
     padding-right: rem(16px);
+  }
+  @media (max-width: 380px) {
+    grid-template-columns: 1fr;
   }
 }
 

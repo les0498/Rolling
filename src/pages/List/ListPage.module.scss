@@ -3,16 +3,30 @@
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  padding: 50px 0;
+  padding: rem(50px) 0;
   overflow: visible;
+
+  @include tablet {
+    padding: 0 rem(24px);
+  }
+  @include mobile {
+    padding: 0 rem(20px);
+  }
 }
 
 .buttonField {
   display: flex;
-  width: 280px;
-  height: 56px;
+  width: rem(280px);
+  height: rem(56px);
   margin: 0 auto;
-  border-radius: 12px;
+  border-radius: rem(12px);
   font-weight: 700;
   text-align: center;
+
+  @include tablet {
+    width: 100%;
+  }
+  @include mobile {
+    width: 100%;
+  }
 }

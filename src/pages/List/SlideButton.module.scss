@@ -29,4 +29,11 @@
     opacity: 0.3;
     transform: none;
   }
+
+  @include tablet {
+    display: none;
+  }
+  @include mobile {
+    display: none;
+  }
 }

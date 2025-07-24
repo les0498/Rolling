@@ -6,17 +6,38 @@
   height: rem(280px);
   background-color: var(--color-default-background);
   border-radius: $radius-lg;
+  max-width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+  &:hover {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+    transform: translateY(-6px) scale(1.03);
+  }
 }
 
 .cardBox {
   @include column;
   position: relative;
+  align-items: flex-start;
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   height: rem(280px);
   background-color: var(--color-default-background);
   border-radius: $radius-lg;
   padding: rem(28px) rem(24px) rem(24px);
   cursor: pointer;
+  overflow: hidden;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+  &:hover {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+    transform: translateY(-6px) scale(1.03);
+  }
 }
 
 .cardTopSection {

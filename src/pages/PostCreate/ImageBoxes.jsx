@@ -28,7 +28,12 @@ function ImageBox({ onClick, url, isSelected }) {
   const { isLoading, onLoad, onError } = useImageLoader('');
 
   return (
-    <button name={url} onClick={onClick} className={cx('box-wrapper')}>
+    <button
+      type='button'
+      onClick={onClick}
+      data-url={url}
+      className={cx('box-wrapper')}
+    >
       {isLoading && <SkeletonBox />}
       <img
         className={cx('box', 'box-image')}

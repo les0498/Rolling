@@ -39,7 +39,8 @@
     "react-helmet": "^6.1.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.6.3",
-    "reactjs-tiptap-editor": "^0.3.5",
+    "react-select": "^5.10.2",
+    "reactjs-tiptap-editor": "^0.3.12",
     "tippy.js": "^6.3.7",
     "vite-plugin-svgr": "^4.3.0"
   },
