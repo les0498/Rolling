@@ -80,11 +80,4 @@
   font-size: common.$font-xs;
   font-weight: 400;
   color: common.$gray400;
-  transition:
-    transform 0.3s ease,
-    opacity 0.3s ease;
-  .cardBox:hover & {
-    transform: translateY(-5px);
-    opacity: 1;
-  }
 }
