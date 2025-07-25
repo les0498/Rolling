@@ -6,10 +6,10 @@ import {
   getOneMsgById,
   patchMessageById,
 } from '@/apis/messages';
-import useAsync from '@/hooks/useAsync';
-import MessageForm from '@/pages/Message/MessageForm';
-import { useTopMessage } from '@/layouts/PostPageLayout';
 import { getRecipientById } from '@/apis/recipients';
+import useAsync from '@/hooks/useAsync';
+import { useTopMessage } from '@/layouts/PostPageLayout';
+import MessageForm from '@/pages/Message/MessageForm';
 
 function MessageEdit({ messageId, setMessages, onClose = () => {} }) {
   const { id } = useParams();

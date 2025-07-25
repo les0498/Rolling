@@ -1,5 +1,3 @@
-import { motion } from 'motion/react';
-
 import { MESSAGE_FONT } from '@/apis/messages';
 import ProfileIcon from '@/components/ui/ProfileIcon';
 import RelationBadge from '@/components/ui/RelationBadge';
@@ -27,11 +25,7 @@ function CardDetail({ message, variant = 'card' }) {
   }
 
   return (
-    <motion.div
-      className={style.cardBox}
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.95 }}
-    >
+    <div className={style.cardBox}>
       <div className={style.cardTopSection}>
         <div className={style.cardProfile}>
           <ProfileIcon src={message.profileImageURL} />
@@ -52,7 +46,7 @@ function CardDetail({ message, variant = 'card' }) {
       <div className={style.cardDate}>
         <p>{formatDate(message.createdAt)}</p>
       </div>
-    </motion.div>
+    </div>
   );
 }
 

@@ -63,6 +63,9 @@
   @include cardContent(rem(520px), rem(240px));
   overflow-y: scroll;
   padding-right: 20px;
+  @media (max-width: 767px) {
+    max-width: 100%;
+  }
 }
 
 .cardContent::-webkit-scrollbar {
