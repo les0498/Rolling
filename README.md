@@ -5,7 +5,7 @@
 단순 메시지 작성 그 이상의 경험을 제공하며, 사용자 친화적인 UI와 직관적인 흐름으로 구성되어 있습니다.
 <br>
 
-## [👉 `<Rolling>` 배포 링크 바로가기](https://rolling-g4r9ru4gx-suhyungs-projects.vercel.app/)
+## [👉 `<Rolling>` 배포 링크 바로가기](https://rolling-vert.vercel.app/)
 
 
  <a href="https://rolling-g4r9ru4gx-suhyungs-projects.vercel.app/">
