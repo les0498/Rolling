@@ -27,39 +27,32 @@ function CardDetail({ message, variant = 'card' }) {
   }
 
   return (
-    <div>
-      <motion.div
-        className={style.cardBox}
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <div className={style.cardTopSection}>
-          <div className={style.cardProfile}>
-            <ProfileIcon src={message.profileImageURL} />
-          </div>
-          <div className={style.cardWriterInfo}>
-            <div className={style.title}>
-              <span className={style.fromLabel}>From. </span>
-              <span className={style.writerName}>{message.sender}</span>
-            </div>
-            <RelationBadge relationship={message.relationship} />
-          </div>
+    <motion.div
+      className={style.cardBox}
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      <div className={style.cardTopSection}>
+        <div className={style.cardProfile}>
+          <ProfileIcon src={message.profileImageURL} />
         </div>
-        <hr className={style.Hr} />
-        <div
-          className={`${style.cardContent} ${getFontClass(message.font)}`}
-          dangerouslySetInnerHTML={{ __html: message.content }}
-        />
-      </motion.div>
-      <motion.div
-        className={style.cardDate}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
-      >
+        <div className={style.cardWriterInfo}>
+          <div className={style.title}>
+            <span className={style.fromLabel}>From. </span>
+            <span className={style.writerName}>{message.sender}</span>
+          </div>
+          <RelationBadge relationship={message.relationship} />
+        </div>
+      </div>
+      <hr className={style.Hr} />
+      <div
+        className={`${style.cardContent} ${getFontClass(message.font)}`}
+        dangerouslySetInnerHTML={{ __html: message.content }}
+      />
+      <div className={style.cardDate}>
         <p>{formatDate(message.createdAt)}</p>
-      </motion.div>
-    </div>
+      </div>
+    </motion.div>
   );
 }
 
